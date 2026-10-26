@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vellora | Sites, identidade visual e Instagram profissional</title>
+<meta name="description" content="A Vellora cria sites institucionais, landing pages, identidade visual e Instagram profissional para negócios que querem ser reconhecidos e levados a sério no digital.">
+<meta name="theme-color" content="#0A0712">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<!-- CONFIGURAR: troque pelos endereços absolutos do domínio final (ex.: https://vellora.com.br/) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Vellora">
+<meta property="og:title" content="Vellora | Sua marca, levada a sério.">
+<meta property="og:description" content="Sites, landing pages, identidade visual e Instagram profissional com um só padrão.">
+<meta property="og:image" content="assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<script>
+  /* Portão do preloader e do movimento, antes da primeira pintura.
+     Sem preloader (e sem WebGL) para robôs, testes de laboratório e "reduzir movimento".
+     O preloader roda uma vez por sessão: na volta, a página abre direto. */
+  (function () {
+    var d = document.documentElement;
+    var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var bot = /lighthouse|googlebot|pagespeed|headlesschrome|gtmetrix|pingdom|bingbot|yandexbot/i.test(navigator.userAgent);
+    var again = false;
+    try { again = sessionStorage.getItem('vl-intro') === '1'; } catch (e) {}
+    d.classList.add(rm || bot ? 'is-still' : 'is-motion');
+    if (bot) d.dataset.bot = '';
+    if (!rm && !bot && !again) d.dataset.preload = '';
+    // Se o script principal falhar, o conteúdo aparece mesmo assim.
+    setTimeout(function () {
+      if (d.dataset.ready) return;
+      d.classList.remove('is-motion'); d.classList.add('is-still');
+      delete d.dataset.preload; delete d.dataset.preloadClosing;
+      var p = document.querySelector('[data-preloader]'); if (p) p.remove();
+    }, 9000);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/",
+  "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs" } }
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Vellora",
+  "description": "Sites institucionais, landing pages, identidade visual e Instagram profissional.",
+  "areaServed": { "@type": "City", "name": "Brasília" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" }
+}
+</script>
+
+<link rel="stylesheet" href="assets/css/vellora.css">
+<script src="assets/js/stream.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+
+<!-- ============================== ÍCONES ============================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 0C12.6 6.6 17.4 11.4 24 12 17.4 12.6 12.6 17.4 12 24 11.4 17.4 6.6 12.6 0 12 6.6 11.4 11.4 6.6 12 0Z" fill="currentColor"/></symbol>
+  <symbol id="i-check" viewBox="0 0 16 16"><path d="M3.5 8.5 6.5 11.5 12.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 16 16"><path d="M8 2.5v11M2.5 8h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-out" viewBox="0 0 16 16"><path d="M5 11 11 5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="10" cy="10" r="7"/><path d="M3 10h14M10 3c2 2.2 2.9 4.5 2.9 7s-.9 4.8-2.9 7c-2-2.2-2.9-4.5-2.9-7s.9-4.8 2.9-7Z"/></g></symbol>
+  <symbol id="i-insta" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3.5" y="3.5" width="13" height="13" rx="4"/><circle cx="10" cy="10" r="3"/><circle cx="14" cy="6" r=".6" fill="currentColor"/></g></symbol>
+  <symbol id="i-doc" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M5.5 2.75h6l3.5 3.5v11h-9.5z"/><path d="M11.5 2.75v3.5H15M8 10h5M8 13h3.5"/></g></symbol>
+  <symbol id="i-store" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.5 8v8.5h13V8"/><path d="M2.75 4h14.5l-.9 3.2a2.2 2.2 0 0 1-4.2 0 2.2 2.2 0 0 1-4.3 0 2.2 2.2 0 0 1-4.2 0z"/><path d="M8 16.5v-4h4v4"/></g></symbol>
+  <symbol id="i-cursor" viewBox="0 0 20 20"><path d="M5 3.5 15 9.2l-4.4 1.2-1.9 4.3z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-frame" viewBox="0 0 20 20"><path d="M6.5 3v14M13.5 3v14M3 6.5h14M3 13.5h14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-text" viewBox="0 0 20 20"><path d="M4.5 5.5V4h11v1.5M10 4v12M7.5 16h5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M10 16.5 4 8.5 10 3l6 5.5z"/><circle cx="10" cy="9.25" r="1.25"/><path d="M10 3v5"/></g></symbol>
+  <symbol id="i-lock" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5.25a2.5 2.5 0 0 1 5 0V7"/></g></symbol>
+  <symbol id="i-pointer" viewBox="0 0 24 24"><path d="M5 2.5v16.2l4.3-4 2.8 6.4 3-1.3-2.8-6.3 5.9-.4z" fill="#F4F1FF" stroke="#0A0712" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- ============================== PRELOADER ============================== -->
+<div class="pre" data-preloader aria-hidden="true">
+  <div class="pre__stage" data-pre-stage></div>
+  <svg class="pre__ring" data-pre-ring><rect pathLength="100" stroke-dasharray="100 100" stroke-dashoffset="100"/></svg>
+  <svg class="pre__flood" data-pre-flood>
+    <defs><linearGradient id="pre-aurora" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3A14C0"/><stop offset=".46" stop-color="#5B21E6"/><stop offset="1" stop-color="#7B3FFF"/></linearGradient></defs>
+    <path fill="url(#pre-aurora)" fill-rule="evenodd"/>
+  </svg>
+  <div class="pre__tile" data-pre-tile>
+    <img class="pre__logo" src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409">
+    <span class="mark pre__mark" data-pre-mark><span class="mark__glyph"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span></span>
+  </div>
+</div>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="site">
+<main class="page" id="conteudo">
+
+  <!-- ============================== FUNDO ============================== -->
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop__top">
+      <div class="backdrop__light"></div>
+      <div class="backdrop__dots"></div>
+      <svg class="backdrop__marks" viewBox="0 0 1440 1160" preserveAspectRatio="xMinYMin slice">
+        <use href="#i-star" x="132" y="178" width="14" height="14" opacity=".55"/>
+        <use href="#i-star" x="1302" y="642" width="12" height="12" opacity=".4"/>
+        <use href="#i-star" x="682" y="96" width="10" height="10" opacity=".35"/>
+        <use href="#i-star" x="884" y="1010" width="12" height="12" opacity=".3"/>
+        <circle cx="64" cy="560" r="1.5" opacity=".5"/>
+        <circle cx="742" cy="740" r="1.2" opacity=".4"/>
+        <circle cx="1218" cy="128" r="1.5" opacity=".45"/>
+        <circle cx="410" cy="1090" r="1.2" opacity=".35"/>
+      </svg>
+    </div>
+    <div class="backdrop__field"></div>
+  </div>
+
+  <!-- ============================== STREAM (WebGL) ============================== -->
+  <canvas class="stream" data-stream aria-hidden="true"></canvas>
+
+  <!-- ============================== 01 NAVEGAÇÃO ============================== -->
+  <header class="nav" data-nav>
+    <div class="nav__plate" data-nav-plate></div>
+    <div class="nav__row" data-nav-row>
+      <a class="nav__brand" href="#inicio" aria-label="Vellora, voltar ao início">
+        <img src="assets/img/vellora-wordmark.webp" alt="Vellora" width="584" height="122">
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        <ul>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#trabalhos">Trabalhos</a></li>
+          <li><a href="#processo">Processo</a></li>
+          <li><a href="#duvidas">Dúvidas</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--light btn--md" href="#contato" data-open-contact data-cursor="none"><span class="btn__label">Fale conosco</span></a>
+        <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu" data-menu-btn><i></i><i></i><i></i></button>
+      </div>
+      <nav class="menu" id="menu" aria-label="Menu" data-menu>
+        <ul>
+          <li><a href="#servicos"><span class="menu__tile">01</span><span class="menu__txt"><strong>Serviços</strong><small>Sites, landing pages, identidade e Instagram</small></span></a></li>
+          <li><a href="#trabalhos"><span class="menu__tile">02</span><span class="menu__txt"><strong>Trabalhos</strong><small>Projeto próprio e estudos de conceito</small></span></a></li>
+          <li><a href="#processo"><span class="menu__tile">03</span><span class="menu__txt"><strong>Processo</strong><small>Do primeiro papo ao lançamento</small></span></a></li>
+          <li><a href="#duvidas"><span class="menu__tile">04</span><span class="menu__txt"><strong>Dúvidas</strong><small>Antes de começar</small></span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="nav-slot" aria-hidden="true"></div>
+
+  <!-- ============================== 02 HERO ============================== -->
+  <section class="hero" id="inicio" aria-labelledby="hero-title" data-hero>
+    <div class="hero__frame">
+
+      <div class="hero__copy">
+        <p class="chip" data-h="chip"><span class="chip__sq"></span><span class="chip__txt" data-h-type="120">Sites · Identidade visual · Instagram</span></p>
+        <h1 class="display hero__title" id="hero-title" data-h="title"><span class="hero__l">Sua marca,</span> <span class="hero__l">levada a <em>sério</em>.</span></h1>
+        <p class="hero__sub" data-h="sub">Criamos sites, landing pages, identidade visual e Instagram profissional com um só padrão, para que o seu negócio seja reconhecido e escolhido no digital.</p>
+        <div class="hero__actions" data-h="actions">
+          <a class="btn btn--glow btn--lg" href="#contato" data-open-contact data-cursor="none"><span class="btn__label">Fale com a gente</span></a>
+          <a class="btn btn--glass btn--lg" href="#servicos"><span class="btn__label">Ver serviços</span></a>
+        </div>
+        <p class="hero__note" data-h="note"><span data-h-type="400">Brasília, DF · presencial ou online ·</span> <span data-h-type="1180">orçamento sem compromisso</span></p>
+      </div>
+
+      <!-- a janela de projeto: identidade que alimenta site e Instagram -->
+      <div class="hero__tilt" data-tilt aria-hidden="true">
+        <div class="hero__bloom" data-depth="60"></div>
+        <div class="win" data-win>
+          <div class="win__grid" data-depth="10" data-h="grid"></div>
+          <div class="win__chrome" data-h="chrome">
+            <span class="win__corner win__corner--a"></span><span class="win__corner win__corner--b"></span>
+            <p class="win__title">Marca completa</p>
+            <span class="win__div"></span>
+            <p class="win__meta">3 canais · 1 padrão</p>
+            <span class="win__rule"></span>
+            <ul class="win__tools">
+              <li class="is-on"><svg><use href="#i-cursor"/></svg></li>
+              <li><svg><use href="#i-frame"/></svg></li>
+              <li><svg><use href="#i-text"/></svg></li>
+              <li><svg><use href="#i-pen"/></svg></li>
+            </ul>
+            <p class="win__zoom">100%</p>
+          </div>
+          <p class="win__status" data-h="status"><span></span>sincronizado</p>
+
+          <div class="win__flow" data-depth="22" data-win-flow>
+            <svg class="fan fan--a" data-fan="a" overflow="visible"></svg>
+            <svg class="fan fan--b" data-fan="b" overflow="visible"></svg>
+            <p class="blabel blabel--a" data-h="blabel">web</p>
+            <p class="blabel blabel--b" data-h="blabel">feed</p>
+            <div class="node node--a" data-h="node1"><strong>Site</strong><span>institucional ou landing</span></div>
+            <div class="node node--b" data-h="node2"><strong>Instagram</strong><span>perfil profissional</span></div>
+            <div class="node node--c is-glow" data-h="node3"><strong>Sua marca</strong><span>um só padrão</span></div>
+            <p class="wchip" data-h="wchip"><span></span>em todo canal</p>
+            <span class="port port--1" data-h="port"></span><span class="port port--2" data-h="port"></span>
+            <span class="port port--3" data-h="port"></span><span class="port port--4" data-h="port"></span>
+            <span class="port port--5" data-h="port5"></span>
+            <span class="flash flash--a" data-flash="a"></span>
+            <span class="flash flash--b" data-flash="b"></span>
+            <span class="flash flash--c" data-flash="c"></span>
+            <svg class="packets" data-packets overflow="visible" preserveAspectRatio="none">
+              <g data-pk="main" opacity="0"><circle r="6" class="pk-halo"/><circle r="2.5" class="pk-core"/></g>
+              <g data-pk="alt" opacity="0"><circle r="5" class="pk-halo pk-halo--alt"/><circle r="2.25" class="pk-core pk-core--alt"/></g>
+            </svg>
+          </div>
+
+          <div class="win__runs">
+            <span class="win__rule2" data-h="chrome"></span>
+            <p class="win__runs-label" data-h="chrome">o que entra</p>
+            <ul class="feed" data-feed></ul>
+          </div>
+        </div>
+
+        <div class="hero__trigger" data-depth="22">
+          <span class="port port--over" data-h="pover"></span>
+          <div class="node node--t" data-h="node0"><strong>Identidade visual</strong><span>o ponto de partida</span></div>
+          <span class="port port--out" data-h="pout"></span>
+          <span class="flash flash--t" data-flash="t"></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================== 03 SEGMENTOS ============================== -->
+  <div class="sb" data-sb="leave still"><div class="sb__in" data-sb-in>
+  <section class="segs" id="segmentos" aria-labelledby="segs-cap" data-segs>
+    <p class="segs__cap segs__cap--one label" id="segs-cap"><span data-segs-type>Para negócios que vivem da confiança do cliente</span></p>
+    <p class="segs__cap segs__cap--two label" aria-hidden="true"><span data-segs-type>Para negócios que vivem</span><span data-segs-type>da confiança do cliente</span></p>
+    <div class="segs__row" data-segs-row>
+      <div class="segs__rail" data-segs-rail>
+        <svg class="segs__line" preserveAspectRatio="none" overflow="visible">
+          <defs><linearGradient id="segs-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="0">
+            <stop offset="0" stop-color="#857E9E" stop-opacity=".45" data-g="0"/>
+            <stop offset=".1" class="segs__peak" stop-opacity=".9" data-g="1"/>
+            <stop offset="1" stop-color="#857E9E" stop-opacity=".45" data-g="2"/>
+          </linearGradient></defs>
+          <path d="M0 1H1000" stroke="url(#segs-grad)" stroke-width="2" stroke-dasharray="2 8" fill="none"/>
+        </svg>
+        <span class="segs__packet" data-segs-packet></span>
+      </div>
+      <ul class="segs__tiles">
+        <li class="tile"><span class="tile__box"><span class="tile__on"></span><span class="tile__txt">CL</span></span><span class="tile__label">Clínicas</span></li>
+        <li class="tile"><span class="tile__box"><span class="tile__on"></span><span class="tile__txt">AD</span></span><span class="tile__label">Advocacia</span></li>
+        <li class="tile"><span class="tile__box"><span class="tile__on"></span><span class="tile__txt">AR</span></span><span class="tile__label">Arquitetura</span></li>
+        <li class="tile tile--h390"><span class="tile__box"><span class="tile__on"></span><span class="tile__txt">ES</span></span><span class="tile__label">Estética</span></li>
+        <li class="tile tile--h1024"><span class="tile__box"><span class="tile__on"></span><span class="tile__txt">GA</span></span><span class="tile__label">Gastronomia</span></li>
+        <li class="tile tile--h1024"><span class="tile__box"><span class="tile__on"></span><span class="tile__txt">IM</span></span><span class="tile__label">Imobiliárias</span></li>
+        <li class="tile tile--h390"><span class="tile__box"><span class="tile__on"></span><span class="tile__txt">CO</span></span><span class="tile__label">Consultorias</span></li>
+        <li class="tile"><span class="tile__box"><span class="tile__on"></span><span class="tile__txt"><svg><use href="#i-plus"/></svg></span></span><span class="tile__label">E outros</span></li>
+      </ul>
+    </div>
+  </section>
+  </div></div>
+
+  <!-- ============================== PLACA DE VIDRO: Serviços → Processo ============================== -->
+  <div class="slab">
+
+  <!-- ============================== 04 SERVIÇOS ============================== -->
+  <div class="sb" data-sb="enter"><div class="sb__in" data-sb-in>
+  <section class="svc" id="servicos" aria-labelledby="svc-title">
+    <div class="head" data-stage>
+      <div class="head__main" data-r="rise">
+        <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Serviços</p>
+        <h2 class="h2" id="svc-title" data-r="focus" data-d="70">Tudo em um só <em>lugar</em>.</h2>
+      </div>
+      <p class="head__aside" data-r="soft" data-d="140">Sites, landing pages, identidade visual e Instagram profissional, com o mesmo padrão em cada canal. Você pode começar por um serviço ou fazer tudo junto.</p>
+    </div>
+
+    <span class="hair" data-r="draw"></span>
+
+    <article class="feat" id="sites" data-stage>
+      <div class="feat__copy" data-r="rise">
+        <p class="feat__idx" data-r="roll" data-d="150">01</p>
+        <h3 class="feat__title" data-r="soft" data-d="70">Sites institucionais</h3>
+        <p class="feat__body" data-r="soft" data-d="140">Um site que apresenta o seu negócio com clareza e transforma visitas em contatos. Cada página tem um papel: explicar o que você faz, gerar confiança e levar à conversa.</p>
+        <ol class="nlist" data-r="fade" data-d="210">
+          <li><span>01</span>Páginas pensadas para gerar contatos</li>
+          <li><span>02</span>Perfeito no celular e no computador</li>
+          <li><span>03</span>Rápido para carregar</li>
+        </ol>
+        <a class="link" href="#contato" data-open-contact="Site institucional" data-r="fade" data-d="280">Quero um site <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <figure class="card feat__card" data-r="rise" data-d="70" data-loop="site" role="img" aria-label="Ilustração: a página inicial de um site institucional sendo montada.">
+        <div class="bw">
+          <div class="bw__bar"><i></i><i></i><i></i><span class="bw__url"><svg><use href="#i-lock"/></svg><span data-k="url">suaempresa.com.br</span></span></div>
+          <div class="bw__page">
+            <div class="pg-nav" data-k="nav"><span class="pg-logo"></span><span class="pg-links"><i></i><i></i><i></i></span><span class="pg-cta"></span></div>
+            <div class="pg-hero">
+              <div class="pg-hero__txt">
+                <span class="bar bar--t" data-k="t1"></span>
+                <span class="bar bar--t bar--62" data-k="t2"></span>
+                <span class="bar bar--p" data-k="p1"></span>
+                <span class="bar bar--p bar--70" data-k="p2"></span>
+                <span class="pg-btn" data-k="btn"></span>
+              </div>
+              <div class="pg-img" data-k="img"><svg><use href="#i-star"/></svg></div>
+            </div>
+            <div class="pg-cards">
+              <span class="pg-card" data-k="c1"><i></i><b></b><b></b></span>
+              <span class="pg-card" data-k="c2"><i></i><b></b><b></b></span>
+              <span class="pg-card" data-k="c3"><i></i><b></b><b></b></span>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </article>
+
+    <span class="hair hair--in" data-r="draw"></span>
+
+    <article class="feat feat--rev" id="landing-pages" data-stage>
+      <div class="feat__copy" data-r="rise">
+        <p class="feat__idx" data-r="roll" data-d="150">02</p>
+        <h3 class="feat__title" data-r="soft" data-d="70">Landing pages</h3>
+        <p class="feat__body" data-r="soft" data-d="140">Uma página com um único objetivo: apresentar um serviço ou uma campanha e levar o visitante a entrar em contato. Texto, estrutura e botões trabalham juntos para isso.</p>
+        <ol class="nlist" data-r="fade" data-d="210">
+          <li><span>01</span>Uma oferta, um objetivo</li>
+          <li><span>02</span>Estrutura pensada para a ação</li>
+          <li><span>03</span>Pronta para campanhas e anúncios</li>
+        </ol>
+        <a class="link" href="#contato" data-open-contact="Landing page" data-r="fade" data-d="280">Quero uma landing page <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <figure class="card feat__card" data-r="rise" data-d="70" data-loop="lp" role="img" aria-label="Ilustração: uma landing page com promessa, benefícios, prova e chamada para ação.">
+        <div class="lp">
+          <div class="lp__phone">
+            <div class="lp__screen">
+              <span class="lp__logo" data-k="logo"></span>
+              <span class="bar bar--t" data-k="h1"></span>
+              <span class="bar bar--t bar--62" data-k="h2"></span>
+              <span class="bar bar--p bar--84" data-k="sub"></span>
+              <ul class="lp__ben">
+                <li data-k="b1"><svg><use href="#i-check"/></svg><i></i></li>
+                <li data-k="b2"><svg><use href="#i-check"/></svg><i></i></li>
+                <li data-k="b3"><svg><use href="#i-check"/></svg><i></i></li>
+              </ul>
+              <span class="lp__proof" data-k="proof"><i></i><i></i><i></i><b></b></span>
+              <span class="lp__btn" data-k="btn">Quero saber mais</span>
+            </div>
+          </div>
+          <ol class="lp__steps">
+            <li data-k="s1"><span>01</span>Promessa clara</li>
+            <li data-k="s2"><span>02</span>Benefícios</li>
+            <li data-k="s3"><span>03</span>Prova</li>
+            <li data-k="s4"><span>04</span>Chamada para ação</li>
+          </ol>
+          <span class="lp__toast" data-k="toast"><svg><use href="#i-check"/></svg>Mensagem enviada</span>
+          <svg class="lp__cursor" data-k="cursor"><use href="#i-pointer"/></svg>
+        </div>
+      </figure>
+    </article>
+
+    <span class="hair hair--in" data-r="draw"></span>
+
+    <article class="feat" id="identidade-visual" data-stage>
+      <div class="feat__copy" data-r="rise">
+        <p class="feat__idx" data-r="roll" data-d="150">03</p>
+        <h3 class="feat__title" data-r="soft" data-d="70">Identidade visual</h3>
+        <p class="feat__body" data-r="soft" data-d="140">Logo, cores e tipografia que fazem sua marca ser reconhecida. Um padrão que se mantém igual em qualquer canal: no site, no Instagram, nas propostas e na fachada.</p>
+        <ol class="nlist" data-r="fade" data-d="210">
+          <li><span>01</span>Logotipo e suas variações</li>
+          <li><span>02</span>Paleta de cores</li>
+          <li><span>03</span>Tipografia</li>
+        </ol>
+        <a class="link" href="#contato" data-open-contact="Identidade visual" data-r="fade" data-d="280">Quero uma identidade <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <figure class="card feat__card" data-r="rise" data-d="70" data-loop="id" role="img" aria-label="Ilustração: paleta de cores e tipografia da própria Vellora.">
+        <div class="pal">
+          <div class="pal__head"><span>paleta e tipografia</span><span>exemplo: a própria Vellora</span></div>
+          <div class="pal__type">
+            <span class="pal__aa" data-k="aa">Aa</span>
+            <span class="pal__aa pal__aa--serif" data-k="ai">Aa</span>
+            <small data-k="fn">Hanken Grotesk<br>Instrument Serif</small>
+          </div>
+          <ul class="pal__cols">
+            <li style="--c:#0A0712;--h:.46"><span class="pal__hex" data-k="x0">0A0712</span><span class="pal__sw pal__sw--edge" data-k="w0"></span><span class="pal__name">Noite</span></li>
+            <li style="--c:#1A1033;--h:.56"><span class="pal__hex" data-k="x1">1A1033</span><span class="pal__sw" data-k="w1"></span><span class="pal__name">Ameixa</span></li>
+            <li style="--c:#3A14C0;--h:.66"><span class="pal__hex" data-k="x2">3A14C0</span><span class="pal__sw" data-k="w2"></span><span class="pal__name">900</span></li>
+            <li style="--c:#5B21E6;--h:.76"><span class="pal__hex" data-k="x3">5B21E6</span><span class="pal__sw" data-k="w3"></span><span class="pal__name">700</span></li>
+            <li style="--c:#7B3FFF;--h:.94" class="is-key"><span class="pal__glow" data-k="glow"></span><span class="pal__hex" data-k="x4">7B3FFF</span><span class="pal__sw" data-k="w4"></span><span class="pal__name">500</span></li>
+            <li style="--c:#B69CFF;--h:.84"><span class="pal__hex" data-k="x5">B69CFF</span><span class="pal__sw" data-k="w5"></span><span class="pal__name">Lilás</span></li>
+          </ul>
+        </div>
+      </figure>
+    </article>
+
+    <span class="hair hair--in" data-r="draw"></span>
+
+    <article class="feat feat--rev feat--last" id="instagram" data-stage>
+      <div class="feat__copy" data-r="rise">
+        <p class="feat__idx" data-r="roll" data-d="150">04</p>
+        <h3 class="feat__title" data-r="soft" data-d="70">Instagram profissional</h3>
+        <p class="feat__body" data-r="soft" data-d="140">Um perfil organizado para que quem chega entenda o que você faz, confie e entre em contato. Bio, destaques e posts seguem o mesmo padrão visual da marca.</p>
+        <ol class="nlist" data-r="fade" data-d="210">
+          <li><span>01</span>Bio estratégica</li>
+          <li><span>02</span>Destaques organizados</li>
+          <li><span>03</span>Modelos de posts e carrosséis</li>
+        </ol>
+        <a class="link" href="#contato" data-open-contact="Instagram profissional" data-r="fade" data-d="280">Quero meu Instagram <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <figure class="card feat__card" data-r="rise" data-d="70" data-loop="ig" role="img" aria-label="Ilustração: perfil da Vellora no Instagram com os posts de apresentação da marca.">
+        <div class="ig">
+          <div class="ig__profile">
+            <div class="ig__top">
+              <span class="ig__avatar" data-k="av">
+                <svg class="ig__ring" viewBox="0 0 64 64"><defs><linearGradient id="ig-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B69CFF"/><stop offset="1" stop-color="#5B21E6"/></linearGradient></defs><circle cx="32" cy="32" r="30" pathLength="1" data-k="ring"/></svg>
+                <img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409">
+              </span>
+              <span class="ig__id"><strong data-k="name">Vellora</strong><small data-k="cat">Sites · Identidade · Instagram</small></span>
+            </div>
+            <p class="ig__bio" data-k="bio">Posicionamos sua marca com clareza, consistência e personalidade.</p>
+            <ul class="ig__hl">
+              <li data-k="h0"><i></i><span>Sites</span></li>
+              <li data-k="h1"><i></i><span>Marca</span></li>
+              <li data-k="h2"><i></i><span>Feed</span></li>
+              <li data-k="h3"><i></i><span>Contato</span></li>
+            </ul>
+          </div>
+          <ul class="ig__grid">
+            <li data-k="g0"><img src="assets/img/post-01-capa.webp" alt="" width="864" height="1080" loading="lazy"></li>
+            <li data-k="g1"><img src="assets/img/post-02-quem-somos.webp" alt="" width="864" height="1080" loading="lazy"></li>
+            <li data-k="g2"><img src="assets/img/post-03-sites.webp" alt="" width="864" height="1080" loading="lazy"></li>
+            <li data-k="g3"><img src="assets/img/post-04-identidade-visual.webp" alt="" width="864" height="1080" loading="lazy"></li>
+            <li data-k="g4"><img src="assets/img/post-05-instagram.webp" alt="" width="864" height="1080" loading="lazy"></li>
+            <li data-k="g5"><img src="assets/img/post-06-contato.webp" alt="" width="864" height="1080" loading="lazy"></li>
+          </ul>
+        </div>
+      </figure>
+    </article>
+  </section>
+  </div></div>
+
+  <!-- ============================== 05 MANIFESTO (abre do logo e volta para ele) ============================== -->
+  <div class="lo-wrap" data-lo-wrap data-open="false">
+    <div class="lo" data-lo>
+      <section class="mf" id="sobre" aria-labelledby="mf-title" data-lo-plate>
+        <div class="mf__dots" aria-hidden="true"></div>
+        <canvas class="mf__swell" data-mf-canvas aria-hidden="true"></canvas>
+        <div class="mf__in">
+          <p class="mf__kicker label" data-mf="kicker">[ quem somos ]</p>
+          <h2 class="mf__title" id="mf-title" data-mf="title">
+            <span class="mf__line"><span class="w">Posicionamos</span> <span class="w">sua</span> <span class="w">marca</span> <em class="w w--c">com</em></span>
+            <span class="mf__line"><span class="w">clareza,</span> <span class="w">consistência</span> <em class="w w--c">e</em> <span class="w">personalidade.</span></span>
+          </h2>
+          <p class="mf__copy" data-mf="copy">Site, identidade visual e Instagram giram em torno de uma coisa só: a forma como sua marca é vista. Por isso cuidamos dos três juntos.</p>
+          <span class="mf__mark mark" data-statement-mark><span class="mark__glyph" data-mf="glyph"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span></span>
+          <span class="mf__stem" data-mf="stem"></span>
+          <div class="mf__ruler" data-mf-ruler>
+            <svg class="mf__ticks" data-mf-ticks overflow="visible" aria-hidden="true"></svg>
+            <span class="mf__dot" data-mf="dot"><i data-mf="ring"></i></span>
+            <ul class="mf__labels label">
+              <li data-mf-label>Clareza</li>
+              <li data-mf-label>Consistência</li>
+              <li data-mf-label>Personalidade</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <span class="lo__mark mark" data-lo-mark aria-hidden="true"><span class="mark__glyph"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span></span>
+    </div>
+  </div>
+
+  <!-- ============================== 06 DIFERENCIAIS ============================== -->
+  <div class="sb" data-sb="leave"><div class="sb__in" data-sb-in>
+  <section class="dif" id="diferenciais" aria-labelledby="dif-title">
+    <div class="head" data-stage>
+      <div class="head__main" data-r="rise">
+        <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Diferenciais</p>
+        <h2 class="h2" id="dif-title" data-r="focus" data-d="70">Quem não é lembrado, não é <em>escolhido</em>.</h2>
+      </div>
+      <p class="head__aside" data-r="soft" data-d="140">Cuidamos do site, da identidade e do Instagram como uma coisa só. Cada projeto é desenhado para o seu negócio, com atenção ao que o seu cliente precisa entender.</p>
+    </div>
+
+    <div class="dif__cards">
+      <article class="dcard" data-stage>
+        <h3 class="dcard__title" data-r="soft" data-d="140">Um padrão em todos os canais</h3>
+        <p class="dcard__copy" data-r="soft" data-d="210">Site, Instagram, propostas e fachada falam a mesma língua. Quando o cliente reconhece a marca em qualquer canal, ela passa a ser lembrada.</p>
+        <div class="dcard__art hub-art" data-hub-card>
+          <p class="hub__label label" data-r="type" data-d="140">uma marca, todos os canais</p>
+          <div class="hub" data-hub>
+            <span class="hub__glow" data-hub-glow></span>
+            <span class="hub__orbit hub__orbit--in" data-hub-orbit="in"></span>
+            <span class="hub__orbit hub__orbit--out" data-hub-orbit="out"></span>
+            <svg class="hub__wires" data-hub-wires overflow="visible"></svg>
+            <span class="hub__pk" data-hub-pk></span><span class="hub__pk" data-hub-pk></span>
+            <span class="hub__pk" data-hub-pk></span><span class="hub__pk" data-hub-pk></span>
+            <ul class="hub__nodes" aria-label="Canais da marca">
+              <li class="hub__node hub__node--1"><span class="hub__ic"><svg><use href="#i-globe"/></svg><i class="hub__flash" data-hub-flash></i></span><span class="hub__name">site</span></li>
+              <li class="hub__node hub__node--2"><span class="hub__ic"><svg><use href="#i-insta"/></svg><i class="hub__flash" data-hub-flash></i></span><span class="hub__name">instagram</span></li>
+              <li class="hub__node hub__node--3"><span class="hub__ic"><svg><use href="#i-doc"/></svg><i class="hub__flash" data-hub-flash></i></span><span class="hub__name">propostas</span></li>
+              <li class="hub__node hub__node--4"><span class="hub__ic"><svg><use href="#i-store"/></svg><i class="hub__flash" data-hub-flash></i></span><span class="hub__name">fachada</span></li>
+            </ul>
+            <span class="hub__core" data-logo-target><img src="assets/img/vellora-simbolo-branco.webp" alt="" width="374" height="372"></span>
+          </div>
+          <p class="hub__cap label" data-hub-cap>logo · cores · tipografia · tom de voz</p>
+        </div>
+      </article>
+
+      <article class="dcard" data-stage>
+        <h3 class="dcard__title" data-r="soft" data-d="210">Pensado para o celular</h3>
+        <p class="dcard__copy" data-r="soft" data-d="280">Cada site é pensado para o celular e para o computador, com textos legíveis, botões fáceis de tocar e carregamento rápido.</p>
+        <div class="dcard__art rsp" data-rsp>
+          <p class="rsp__label label" data-r="type" data-d="210">o mesmo site, em qualquer tela</p>
+          <div class="rsp__stage" data-rsp-stage>
+            <div class="rsp__frame" data-rsp-frame>
+              <span class="rsp__bar" data-rsp-bar><i></i><i></i><i></i></span>
+              <div class="rsp__inner" data-rsp-inner>
+                <i class="rb rb--nav" data-b="nav"></i>
+                <i class="rb rb--t" data-b="t1"></i>
+                <i class="rb rb--t" data-b="t2"></i>
+                <i class="rb rb--p" data-b="p"></i>
+                <i class="rb rb--btn" data-b="btn"></i>
+                <i class="rb rb--img" data-b="img"></i>
+                <i class="rb rb--card" data-b="c1"></i>
+                <i class="rb rb--card" data-b="c2"></i>
+                <i class="rb rb--card" data-b="c3"></i>
+              </div>
+            </div>
+          </div>
+          <div class="rsp__seg" data-rsp-seg><span class="rsp__pill" data-rsp-pill></span><span class="is-on">computador</span><span>celular</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+  </div></div>
+
+  <!-- ============================== 07 TRABALHOS ============================== -->
+  <div class="sb" data-sb="enter leave"><div class="sb__in" data-sb-in>
+  <section class="work" id="trabalhos" aria-labelledby="work-title">
+    <div class="work__blooms" aria-hidden="true" data-r="fade"><span class="bloom bloom--l" data-drift="1"></span><span class="bloom bloom--r" data-drift="-1"></span></div>
+    <div class="head" data-stage>
+      <div class="head__main" data-r="rise">
+        <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Trabalhos</p>
+        <h2 class="h2" id="work-title" data-r="focus" data-d="70">Marcas levadas a <em>sério</em>.</h2>
+      </div>
+      <div class="head__aside">
+        <p data-r="soft" data-d="140">Nossa própria marca e estudos de conceito que mostram como pensamos negócios de segmentos diferentes.</p>
+        <a class="link" href="#contato" data-open-contact data-r="fade" data-d="280">Quer ver a sua aqui? <svg><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+
+    <span class="hair" data-r="draw" data-d="210"></span>
+
+    <article class="case case--feat" data-stage aria-labelledby="case-vellora">
+      <div class="case__media" data-r="rise">
+        <div class="carousel" data-carousel>
+          <ul class="carousel__track">
+            <li><img src="assets/img/post-01-capa.webp" alt="Capa do carrossel: Sua marca, levada a sério." width="864" height="1080" loading="lazy"></li>
+            <li><img src="assets/img/post-02-quem-somos.webp" alt="Slide: Quem não é lembrado, não é escolhido." width="864" height="1080" loading="lazy"></li>
+            <li><img src="assets/img/post-03-sites.webp" alt="Slide: Criação de sites, um site que trabalha por você." width="864" height="1080" loading="lazy"></li>
+            <li><img src="assets/img/post-04-identidade-visual.webp" alt="Slide: Identidade visual, o que faz sua marca ser reconhecida." width="864" height="1080" loading="lazy"></li>
+            <li><img src="assets/img/post-05-instagram.webp" alt="Slide: Instagram profissional, confiança desde o primeiro olhar." width="864" height="1080" loading="lazy"></li>
+            <li><img src="assets/img/post-06-contato.webp" alt="Slide final: Vamos tirar sua marca do improviso?" width="864" height="1080" loading="lazy"></li>
+          </ul>
+          <div class="carousel__dots" data-carousel-dots></div>
+        </div>
+      </div>
+      <div class="case__body">
+        <p class="tag tag--glow" data-r="fade" data-d="70">Projeto próprio</p>
+        <h3 class="case__name" id="case-vellora" data-r="focus" data-d="140">Vellora</h3>
+        <p class="case__svc" data-r="type" data-d="210">Identidade visual · Instagram · Site</p>
+        <p class="case__text" data-r="soft" data-d="280">Uma marca que pratica o que entrega: o mesmo padrão no Instagram, nas propostas e neste site. O sistema parte de um símbolo facetado, como um cristal, e de um wordmark de traço fino, sobre uma base escura com brilho violeta.</p>
+        <dl class="ficha" data-r="fade" data-d="350">
+          <div><dt>Cliente</dt><dd>Vellora</dd></div>
+          <div><dt>Serviços</dt><dd>Identidade, Instagram e site</dd></div>
+          <div><dt>Ano</dt><dd>2026</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <ul class="cases">
+      <li class="case" data-stage>
+        <div class="case__art" data-r="rise"><span class="art art--aurea" aria-hidden="true"><span class="a-arc" data-drift-in="1"></span><span class="a-arc"></span><span class="a-orb" data-drift-in="-1"></span><span class="a-brand"><span class="a-word">áurea</span><span class="a-sub">Odontologia</span></span></span></div>
+        <p class="tag" data-r="fade" data-d="70">Estudo de conceito</p>
+        <h3 class="case__title" data-r="soft" data-d="140">Áurea Odontologia</h3>
+        <p class="case__svc" data-r="type" data-d="210">Site · Identidade visual</p>
+        <p class="case__text" data-r="soft" data-d="280">Uma marca serena e um site que leva o paciente direto ao agendamento, com o botão sempre à vista.</p>
+      </li>
+      <li class="case" data-stage>
+        <div class="case__art" data-r="rise" data-d="90"><span class="art art--vao" aria-hidden="true"><span class="v-grid"></span><span class="v-beam" data-drift-in="1"></span><span class="v-word">VÃO</span><span class="v-cap">Arquitetura</span><span class="v-slab"></span><span class="v-pilotis"><i></i><i></i><i></i><i></i></span><span class="v-ground"></span></span></div>
+        <p class="tag" data-r="fade" data-d="160">Estudo de conceito</p>
+        <h3 class="case__title" data-r="soft" data-d="230">Vão Arquitetura</h3>
+        <p class="case__svc" data-r="type" data-d="300">Identidade visual · Instagram</p>
+        <p class="case__text" data-r="soft" data-d="370">Linhas retas e muito respiro, inspirados nos vãos livres de Brasília, com um feed que valoriza as fotos das obras.</p>
+      </li>
+      <li class="case" data-stage>
+        <div class="case__art" data-r="rise" data-d="180"><span class="art art--paranoa" aria-hidden="true"><span class="p-waves" data-drift-in="1"><i></i><i></i><i></i><i></i></span><span class="p-seal">P</span><span class="p-word">Paranoá</span><span class="p-sub">Advocacia</span></span></div>
+        <p class="tag" data-r="fade" data-d="250">Estudo de conceito</p>
+        <h3 class="case__title" data-r="soft" data-d="320">Paranoá Advocacia</h3>
+        <p class="case__svc" data-r="type" data-d="390">Site · Instagram</p>
+        <p class="case__text" data-r="soft" data-d="460">Presença sóbria, que passa segurança antes da primeira reunião e leva ao contato sem rodeios.</p>
+      </li>
+    </ul>
+  </section>
+  </div></div>
+
+  <!-- ============================== 08 PROCESSO ============================== -->
+  <div class="sb" data-sb="enter leave"><div class="sb__in" data-sb-in>
+  <section class="proc" id="processo" aria-labelledby="proc-title">
+    <div class="head" data-stage>
+      <div class="head__main" data-r="rise">
+        <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Processo</p>
+        <h2 class="h2" id="proc-title" data-r="focus" data-d="70">Do primeiro papo ao <em>lançamento</em>.</h2>
+      </div>
+      <p class="head__aside" data-r="soft" data-d="140">Um processo claro, com você por perto em cada etapa. Na primeira conversa, você recebe um cronograma com cada fase e a data de entrega.</p>
+    </div>
+
+    <ol class="proc__grid">
+      <li class="wdg wdg--wide" data-stage data-wdg="chat">
+        <div class="wdg__txt">
+          <p class="wdg__n label" data-r="type" data-d="140">01 · conversa</p>
+          <h3 class="wdg__title" data-r="soft" data-d="210">Conversa</h3>
+          <p class="wdg__body" data-r="soft" data-d="280">Entendemos o seu negócio, o seu público e onde você quer chegar.</p>
+        </div>
+        <div class="wdg__art chat" aria-hidden="true">
+          <div class="chat__msg chat__msg--in" data-k="m1"><span class="chat__av"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span><p>Conte sobre o seu negócio.</p></div>
+          <div class="chat__typing" data-k="typing"><i></i><i></i><i></i></div>
+          <div class="chat__msg chat__msg--out" data-k="m2"><p><i></i><i></i></p></div>
+          <div class="chat__msg chat__msg--in" data-k="m3"><span class="chat__av"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span><p>Combinado. Vamos montar o caminho juntos.</p></div>
+        </div>
+      </li>
+      <li class="wdg" data-stage data-wdg="curves">
+        <div class="wdg__txt">
+          <p class="wdg__n label" data-r="type" data-d="210">02 · estratégia</p>
+          <h3 class="wdg__title" data-r="soft" data-d="280">Estratégia</h3>
+          <p class="wdg__body" data-r="soft" data-d="350">Definimos posicionamento, mensagem e o papel de cada canal.</p>
+        </div>
+        <div class="wdg__art curves" aria-hidden="true">
+          <div class="curves__box">
+          <svg viewBox="0 0 416 132" data-curves>
+            <path class="cv cv--a" data-cv="0" pathLength="1"/>
+            <path class="cv cv--b" data-cv="1" pathLength="1"/>
+            <path class="cv cv--c" data-cv="2" pathLength="1"/>
+            <g class="cv__end" data-cv-end><circle r="13" class="cv__halo"/><use href="#i-star" x="-7" y="-7" width="14" height="14"/></g>
+          </svg>
+          <ul class="curves__labels label"><li data-k="l0">público</li><li data-k="l1">mensagem</li><li data-k="l2">canais</li></ul>
+          </div>
+        </div>
+      </li>
+      <li class="wdg" data-stage data-wdg="grid">
+        <div class="wdg__txt">
+          <p class="wdg__n label" data-r="type" data-d="280">03 · criação</p>
+          <h3 class="wdg__title" data-r="soft" data-d="350">Criação</h3>
+          <p class="wdg__body" data-r="soft" data-d="420">Desenhamos identidade, site e perfil com o mesmo padrão visual.</p>
+        </div>
+        <div class="wdg__art vgrid" aria-hidden="true"><ul data-vgrid></ul></div>
+      </li>
+      <li class="wdg wdg--wide" data-stage data-wdg="pins">
+        <div class="wdg__txt">
+          <p class="wdg__n label" data-r="type" data-d="350">04 · lançamento</p>
+          <h3 class="wdg__title" data-r="soft" data-d="420">Lançamento</h3>
+          <p class="wdg__body" data-r="soft" data-d="490">Colocamos tudo no ar e entregamos os arquivos organizados para o dia a dia.</p>
+        </div>
+        <div class="wdg__art pins" aria-hidden="true">
+          <div class="pins__field"></div>
+          <div class="pin pin--1" data-pin><span class="pin__plate"><span data-pin-type>site no ar</span></span><span class="pin__ring"></span><span class="pin__ping" data-pin-ping></span><span class="pin__dot" data-pin-dot></span></div>
+          <div class="pin pin--2" data-pin><span class="pin__plate"><span data-pin-type>perfil atualizado</span></span><span class="pin__ring"></span><span class="pin__ping" data-pin-ping></span><span class="pin__dot" data-pin-dot></span></div>
+          <div class="pin pin--3" data-pin><span class="pin__plate"><span data-pin-type>arquivos entregues</span></span><span class="pin__ring"></span><span class="pin__ping" data-pin-ping></span><span class="pin__dot" data-pin-dot></span></div>
+        </div>
+      </li>
+    </ol>
+  </section>
+  </div></div>
+
+  </div><!-- /slab -->
+
+  <!-- ============================== 09 DÚVIDAS ============================== -->
+  <section class="faq" id="duvidas" aria-labelledby="faq-title">
+    <div class="faq__head" data-stage>
+      <div data-r="rise">
+        <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Dúvidas</p>
+        <h2 class="h2" id="faq-title" data-r="focus" data-d="70">Antes de <em>começar</em>.</h2>
+      </div>
+      <p class="faq__aside" data-r="soft" data-d="140">Não encontrou a sua dúvida? <a class="link link--inline" href="#contato" data-open-contact>Pergunte direto pra gente <svg><use href="#i-arrow"/></svg></a></p>
+    </div>
+    <ul class="faq__list">
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-1" id="qa-1-q">Preciso contratar os três serviços?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-1" role="region" aria-labelledby="qa-1-q" hidden><p>Não. Você pode começar por um deles. Quando site, identidade e Instagram andam juntos, a marca ganha mais consistência, e a gente indica o melhor caminho para o seu momento.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-2" id="qa-2-q">Qual a diferença entre site institucional e landing page?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-2" role="region" aria-labelledby="qa-2-q" hidden><p>O site institucional apresenta o negócio como um todo: quem você é, o que faz e como falar com você. A landing page tem um objetivo só, como divulgar um serviço ou uma campanha, e leva o visitante direto ao contato.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-3" id="qa-3-q">Quanto tempo leva um projeto?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-3" role="region" aria-labelledby="qa-3-q" hidden><p>Depende do escopo. Na primeira conversa, você recebe um cronograma com cada etapa e a data de entrega.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-4" id="qa-4-q">Quanto custa?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-4" role="region" aria-labelledby="qa-4-q" hidden><p>Cada proposta é montada a partir do que o seu negócio precisa. Conte sobre o projeto e enviamos um orçamento sem compromisso.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-5" id="qa-5-q">Já tenho logo. Vocês fazem só o site?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-5" role="region" aria-labelledby="qa-5-q" hidden><p>Sim. Partimos da identidade que você já tem e, se fizer sentido, sugerimos ajustes para que ela funcione bem no digital.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-6" id="qa-6-q">O site funciona bem no celular?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-6" role="region" aria-labelledby="qa-6-q" hidden><p>Sim. Cada site é pensado para o celular e para o computador, com textos legíveis, botões fáceis de tocar e carregamento rápido.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-7" id="qa-7-q">E depois que tudo estiver no ar?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-7" role="region" aria-labelledby="qa-7-q" hidden><p>Você recebe os arquivos organizados para o dia a dia. Se precisar de ajustes ou atualizações depois do lançamento, é só falar com a gente para combinarmos o melhor formato.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-8" id="qa-8-q">Vocês atendem fora de Brasília?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-8" role="region" aria-labelledby="qa-8-q" hidden><p>Nosso foco são negócios de Brasília, com reuniões presenciais ou online. Se você está em outra cidade, fale com a gente do mesmo jeito.</p></div><span class="hair hair--qa hair--end" data-r="draw" data-d="120"></span></li>
+    </ul>
+  </section>
+
+  <!-- ============================== 10 CONTATO + RODAPÉ ============================== -->
+  <footer class="foot" id="contato" aria-label="Contato e rodapé" data-foot>
+    <div class="foot__glows" aria-hidden="true"><span class="aur aur--violet"></span><span class="aur aur--blue"></span><span class="aur aur--bloom"></span></div>
+
+    <div class="foot__panels" data-foot-top>
+      <div class="foot__cta" data-f="cta">
+        <p class="foot__eyebrow label" data-f="eyebrow">contato</p>
+        <h2 class="foot__title"><span class="foot__line" data-f="line">Vamos tirar sua marca do <em>improviso?</em></span></h2>
+        <p class="foot__copy" data-f="copy">Conte sobre o seu negócio. A gente responde com os próximos passos e um orçamento sem compromisso.</p>
+        <div class="foot__actions" data-f="actions">
+          <a class="btn btn--noite btn--lg" href="#contato" data-open-contact data-cursor="none"><span class="btn__label">Fale com a gente</span></a>
+          <a class="btn btn--outline btn--lg" data-contact="whatsapp" target="_blank" rel="noopener" hidden><span class="btn__label">WhatsApp</span><svg class="btn__out"><use href="#i-out"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot__brand" data-f="brand">
+        <svg class="foot__glyph" viewBox="0 0 300 300" overflow="visible" aria-hidden="true">
+          <path class="g-back" data-f="gback" d="M52 70 L132 236 L148 172 Z"/>
+          <path class="g-front" data-f="gfront" d="M170 128 L238 70 L150 236 Z"/>
+        </svg>
+        <a class="foot__logo" href="#inicio" aria-label="Vellora, voltar ao início"><img src="assets/img/vellora-wordmark.webp" alt="Vellora" width="584" height="122"></a>
+        <p class="foot__tag" data-f="tag">Sites, landing pages, identidade visual e Instagram profissional para negócios que querem ser levados a sério.</p>
+        <span class="foot__hair" data-f="bhair"></span>
+        <div class="foot__social" data-f="social">
+          <p class="label" id="foot-social">fale com a gente</p>
+          <ul aria-labelledby="foot-social">
+            <li data-contact-item="whatsapp" hidden><a class="schip" data-contact="whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">wa</a></li>
+            <li data-contact-item="instagram" hidden><a class="schip" data-contact="instagram" target="_blank" rel="noopener" aria-label="Instagram">ig</a></li>
+            <li data-contact-item="email" hidden><a class="schip" data-contact="email" aria-label="E-mail">@</a></li>
+            <li data-contact-fallback><button class="schip schip--wide" type="button" data-open-contact>escrever mensagem</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <ul class="foot__status" aria-label="Sobre o atendimento">
+      <li><span class="sdot" data-f="sdot"></span><span data-f="slabel">Brasília, DF</span></li>
+      <li><span class="sdot" data-f="sdot"></span><span data-f="slabel">Reuniões presenciais ou online</span></li>
+      <li><span class="sdot" data-f="sdot"></span><span data-f="slabel">Orçamento sem compromisso</span></li>
+    </ul>
+
+    <div class="foot__bottom" data-foot-bottom>
+      <span class="foot__rule" data-f="rule1"></span>
+      <div class="foot__company" data-f="company">
+        <span class="foot__mark"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span>
+        <p class="foot__name">Vellora</p>
+        <p class="foot__about">Criamos sites, identidade visual e Instagram profissional com clareza, consistência e personalidade.</p>
+        <p class="foot__base label">Sites · Identidade visual · Instagram</p>
+      </div>
+      <nav class="foot__cols" aria-label="Rodapé">
+        <div class="foot__col" data-f="col"><p class="label">serviços</p><ul><li><a href="#sites">Sites institucionais</a></li><li><a href="#landing-pages">Landing pages</a></li><li><a href="#identidade-visual">Identidade visual</a></li><li><a href="#instagram">Instagram profissional</a></li></ul></div>
+        <div class="foot__col" data-f="col"><p class="label">vellora</p><ul><li><a href="#sobre">Quem somos</a></li><li><a href="#trabalhos">Trabalhos</a></li><li><a href="#processo">Processo</a></li><li><a href="#duvidas">Dúvidas</a></li></ul></div>
+        <div class="foot__col" data-f="col"><p class="label">contato</p><ul><li><a href="#contato" data-open-contact>Fale conosco</a></li><li data-contact-item="whatsapp" hidden><a data-contact="whatsapp" target="_blank" rel="noopener">WhatsApp</a></li><li data-contact-item="instagram" hidden><a data-contact="instagram" target="_blank" rel="noopener">Instagram</a></li><li data-contact-item="email" hidden><a data-contact="email">E-mail</a></li></ul></div>
+      </nav>
+      <span class="foot__rule foot__rule--2" data-f="rule2"></span>
+      <div class="foot__legal" data-f="legal"><p>© 2026 Vellora. Todos os direitos reservados.</p><p>Brasília, DF</p></div>
+    </div>
+  </footer>
+</main>
+</div>
+
+<!-- voo do logo: da placa do manifesto até o centro dos canais -->
+<div class="flight" data-flight hidden aria-hidden="true">
+  <span class="mark"><span class="mark__glyph"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span></span>
+  <span class="flight__cover" data-flight-cover><img src="assets/img/vellora-simbolo-branco.webp" alt="" width="374" height="372"></span>
+</div>
+
+<div class="cursor" data-cursor-ring aria-hidden="true"><i></i></div>
+
+<!-- ============================== CONTATO (janela) ============================== -->
+<dialog class="contact" data-contact-dialog aria-labelledby="contact-title">
+  <div class="contact__panel">
+    <button class="contact__close" type="button" data-contact-close aria-label="Fechar"><svg><use href="#i-close"/></svg></button>
+    <div data-contact-form-wrap>
+      <p class="label contact__eyebrow">fale com a gente</p>
+      <h2 class="contact__title" id="contact-title">Vamos <em>conversar</em>.</h2>
+      <p class="contact__lead" data-contact-lead>Conte um pouco sobre o seu negócio. A mensagem fica pronta para você enviar.</p>
+      <form class="contact__form" data-contact-form novalidate>
+        <div class="field"><label for="cf-nome">Nome</label><input id="cf-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required></div>
+        <div class="field"><label for="cf-empresa">Empresa</label><input id="cf-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Nome da empresa"></div>
+        <div class="field"><label for="cf-servico">Serviço</label>
+          <select id="cf-servico" name="servico">
+            <option value="">Ainda não sei</option>
+            <option>Site institucional</option>
+            <option>Landing page</option>
+            <option>Identidade visual</option>
+            <option>Instagram profissional</option>
+            <option>Marca completa</option>
+          </select>
+        </div>
+        <div class="field field--full"><label for="cf-msg">Sobre o seu negócio</label><textarea id="cf-msg" name="mensagem" rows="3" placeholder="O que você faz e o que precisa agora"></textarea></div>
+        <p class="field__err" data-contact-err role="alert" hidden>Conte como podemos te chamar.</p>
+        <button class="btn btn--glow btn--lg contact__send" type="submit" data-cursor="none"><span class="btn__label" data-contact-send>Enviar</span></button>
+      </form>
+    </div>
+    <div class="contact__done" data-contact-done hidden>
+      <p class="label contact__eyebrow">mensagem pronta</p>
+      <h2 class="contact__title">Quase <em>lá</em>.</h2>
+      <p class="contact__lead" data-contact-done-text></p>
+      <pre class="contact__preview" data-contact-preview></pre>
+      <div class="contact__done-actions">
+        <button class="btn btn--light btn--md" type="button" data-contact-copy><span class="btn__label">Copiar mensagem</span></button>
+        <button class="btn btn--glass btn--md" type="button" data-contact-close><span class="btn__label">Fechar</span></button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+</body>
+</html>

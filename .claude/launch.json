@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "vellora-final",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [".claude/serve.py", "5182"],
+      "port": 5182
+    }
+  ]
+}

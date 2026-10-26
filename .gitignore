@@ -1,0 +1,6 @@
+# Saídas de teste e arquivos do sistema
+.playwright-mcp/
+node_modules/
+.DS_Store
+Thumbs.db
+desktop.ini
