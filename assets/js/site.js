@@ -28,7 +28,6 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const clamp = (v, a = 0, b = 1) => (v < a ? a : v > b ? b : v);
 const mix = (a, b, t) => a + (b - a) * t;
-const smooth = (t) => t * t * (3 - 2 * t);
 const smoothstep = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
 const E = {
   linear: (t) => t,
@@ -43,11 +42,6 @@ let UNIT = 1;
 const measureUnit = () => { UNIT = (parseFloat(getComputedStyle(d).fontSize) || 16) / 16; };
 measureUnit();
 
-function offsetWithin(el, ancestor) {
-  let left = 0, top = 0, n = el;
-  while (n && n !== ancestor) { left += n.offsetLeft; top += n.offsetTop; n = n.offsetParent; }
-  return { left, top };
-}
 function docTop(el) { let y = 0; for (let n = el; n; n = n.offsetParent) y += n.offsetTop; return y; }
 
 /* ==========================================================================
@@ -59,7 +53,6 @@ const STEP = 70;
 const GROW = { tension: 180, friction: 31.72, clamp: true };
 const QUICK = { tension: 420, friction: 39.04 };
 const POP = { tension: 420, friction: 14 };
-const DROP = { tension: 260, friction: 15 };
 
 const motions = new Set();
 const subs = new Set();
@@ -384,7 +377,7 @@ function enhanceButton(b) {
   const m = new Motion({ p: 0, s: 1 }, (v) => {
     if (halo) halo.style.opacity = v.p;
     if (fillw) fillw.style.opacity = v.p;
-    if (ink) ink.style.clipPath = `inset(0 ${(1 - clamp(v.p)) * 100}% 0 0 round 999px)`;
+    if (ink) ink.style.clipPath = `inset(0 ${(1 - clamp(v.p)) * 100}% 0 0 round var(--vl-raio-botao))`;
     if (arrow && FINE.matches) {
       label.style.transform = `translateX(${-5 * v.p}px)`;
       arrow.style.transform = `translateX(${-8 + 8 * v.p}px)`;
@@ -1074,250 +1067,6 @@ function initCards() {
 }
 
 /* ==========================================================================
-   05 Manifesto: a placa abre do logo e volta para ele (LogoOpen)
-   ========================================================================== */
-function foldBox(g, w, h, cx, cy, tile, plateRound, curve) {
-  const R = 24 / 76;
-  const side0 = Math.max(tile, 2 * Math.min(cx, w - cx, cy, h - cy));
-  if (g < .5) {
-    const t = curve(Math.max(g, 0) / .5);
-    const half = (tile + (side0 - tile) * t) / 2;
-    return { top: cy - half, left: cx - half, bottom: h - (cy + half), right: w - (cx + half), round: half * 2 * R };
-  }
-  const t = curve(Math.min(g, 1) * 2 - 1);
-  const half = side0 / 2;
-  return { top: (cy - half) * (1 - t), right: (w - (cx + half)) * (1 - t), bottom: (h - (cy + half)) * (1 - t), left: (cx - half) * (1 - t),
-    round: side0 * R * (1 - t) + plateRound * t };
-}
-function fold(g, w, h, cx, cy, tile, plateRound, curve = smooth) {
-  if (g <= 0) return 'inset(50%)';
-  const b = foldBox(g, w, h, cx, cy, tile, plateRound, curve);
-  return `inset(${b.top}px ${b.right}px ${b.bottom}px ${b.left}px round ${b.round}px)`;
-}
-const manifesto = { scrollTo: null };
-function initManifesto() {
-  const wrap = $('[data-lo-wrap]'); if (!wrap) return;
-  const lo = $('[data-lo]', wrap), plate = $('[data-lo-plate]', wrap), loMark = $('[data-lo-mark]', wrap), mark = $('[data-statement-mark]', wrap);
-  const target = $('[data-logo-target]'), flight = $('[data-flight]'), cover = $('[data-flight-cover]');
-  const PIN = 240, OPEN = 300, CLOSE = 320, POPK = 60, FLIGHT = 300;
-  let plateRound = 32, markSize = 76, mx = 0, my = 0, openEndAt = 0;
-
-  function measure() {
-    plateRound = parseFloat(getComputedStyle(plate).borderTopLeftRadius) || 0;
-    markSize = mark.offsetWidth;
-    const o = offsetWithin(mark, plate);
-    mx = o.left + markSize / 2; my = o.top + mark.offsetHeight / 2;
-    lo.style.setProperty('--mx', `${mx}px`); lo.style.setProperty('--my', `${my}px`); lo.style.setProperty('--msize', `${markSize}px`);
-    buildTicks();
-    update();
-  }
-  function update() {
-    if (!MOTION) return;
-    const k = UNIT, vh = innerHeight, plateH = plate.offsetHeight, plateW = plate.offsetWidth;
-    const wrapTop = wrap.getBoundingClientRect().top;
-    const pinTop = parseFloat(getComputedStyle(lo).top) || (vh - plateH) / 2;
-    const s = pinTop - wrapTop;
-    const seenAt = pinTop + my - vh;
-    const openEnd = seenAt + (POPK + OPEN) * k;
-    openEndAt = openEnd;
-    const closeEnd = PIN * k + CLOSE * k;
-    const pop = smooth(clamp((s - seenAt) / (POPK * k)));
-    const opening = clamp((s - seenAt - POPK * k) / (OPEN * k));
-    const closing = clamp((closeEnd - s) / (CLOSE * k));
-    const grow = smooth(Math.min(opening, closing));
-    lo.style.setProperty('--pop', pop); lo.style.setProperty('--shift', '0px'); lo.style.setProperty('--grow', grow);
-    plate.style.clipPath = fold(grow, plateW, plateH, mx, my, markSize, plateRound, (t) => t);
-    let open = wrap.dataset.open === 'true';
-    if (s >= openEnd) open = true;
-    if (s < seenAt) open = false;
-    if (s > closeEnd) open = false;
-    if ((wrap.dataset.open === 'true') !== open) wrap.dataset.open = String(open);
-    const t = clamp((s - closeEnd) / (FLIGHT * k)), flying = t > 0 && t < 1;
-    lo.style.setProperty('--flying', t > 0 ? 1 : 0);
-    if (target) target.style.opacity = flying ? 0 : '';
-    flight.hidden = !flying;
-    if (flying && target) {
-      const e = smooth(t), from = loMark.getBoundingClientRect(), to = target.getBoundingClientRect();
-      const size = from.width + (to.width - from.width) * e;
-      flight.style.width = flight.style.height = `${size}px`;
-      flight.style.transform = `translate(${from.left + (to.left - from.left) * e}px, ${from.top + (to.top - from.top) * e}px)`;
-      cover.style.opacity = clamp((e - .35) / .5);
-    }
-  }
-  manifesto.scrollTo = () => {
-    const vh = innerHeight, pinTop = parseFloat(getComputedStyle(lo).top) || 0;
-    const wrapDoc = wrap.getBoundingClientRect().top + scroll.y;
-    const sTarget = MOTION ? Math.max(openEndAt + 40 * UNIT, 0) : 0;
-    const y = wrapDoc - (pinTop - sTarget);
-    return MOTION ? y : wrapDoc - (vh - plate.offsetHeight) / 2;
-  };
-
-  /* --- linha do tempo da placa (toca a cada visita) --- */
-  const kicker = $('[data-mf="kicker"]', plate), copy = $('[data-mf="copy"]', plate), stem = $('[data-mf="stem"]', plate);
-  const dot = $('[data-mf="dot"]', plate), ringEl = $('[data-mf="ring"]', plate), glyph = $('[data-mf="glyph"]', plate);
-  const labels = $$('[data-mf-label]', plate), ticksSvg = $('[data-mf-ticks]', plate), ruler = $('[data-mf-ruler]', plate);
-  const allWords = $$('.mf__title .w', plate);
-  const words = allWords.filter((w) => !w.classList.contains('w--c')).concat(allWords.filter((w) => w.classList.contains('w--c')));
-  const kickerTyper = makeTyper(kicker, 30);
-  let ticks = [], dotScale = MOTION ? 0 : 1, waveW = 1.12, shown = !MOTION, seen = false, inView = false, waveTimer = 0, chevTimer = 0;
-  const NS = 'http://www.w3.org/2000/svg';
-
-  function buildTicks() {
-    const W = ruler.offsetWidth, k = UNIT;
-    ticksSvg.textContent = ''; ticks = [];
-    for (let i = 0; i <= 120; i++) {
-      if (i === 60) continue;
-      const x = 1 + i * (W - 2) / 120;
-      const y0 = i % 12 === 0 ? 0 : i % 6 === 0 ? 7 * k : 12 * k;
-      const p = document.createElementNS(NS, 'path');
-      p.setAttribute('d', `M${x} ${y0}V${18 * k}`);
-      p.setAttribute('stroke-width', i % 12 === 0 ? 2 : 1);
-      p.style.opacity = .35;
-      ticksSvg.append(p);
-      ticks.push({ p, pos: i / 120 });
-    }
-    renderWave(waveW);
-  }
-  const crest = (w, p) => { const dd = Math.abs(w - p) / .06; return dd >= 1 ? 0 : .5 + .5 * Math.cos(Math.PI * dd); };
-  const reveal = (w, p) => (shown ? 1 : clamp((w - p + .03) / .03));
-  const LPOS = [20 / 120, .5, 100 / 120];
-  function renderWave(w) {
-    waveW = w;
-    for (const t of ticks) {
-      const r = reveal(w, t.pos), c = crest(w, t.pos);
-      t.p.style.opacity = r * (.35 + .4 * c);
-      t.p.style.transform = `scaleY(${(.2 + .8 * r) * (1 + .5 * c)})`;
-    }
-    labels.forEach((l, i) => { l.style.opacity = reveal(w, LPOS[i]); });
-    const tt = (w - .5) / .22;
-    ringEl.style.transform = `scale(${1 + 2.2 * clamp(tt)})`;
-    ringEl.style.opacity = tt > 0 && tt < 1 ? .6 * (1 - tt) : 0;
-    dot.style.transform = `scale(${dotScale * (1 + .6 * crest(w, .5))})`;
-  }
-  const waveM = new Motion({ w: 1.12 }, (v) => renderWave(v.w));
-  const markM = new Motion({ y: -40, o: 0 }, (v) => { mark.style.opacity = clamp(v.o); mark.style.transform = `translateY(${v.y * UNIT}px)`; });
-  const wordM = words.map((el) => {
-    const accent = el.classList.contains('w--c');
-    return new Motion({ o: 0, y: accent ? 28 : 22, sk: accent ? -16 : 0 }, (v) => {
-      el.style.opacity = clamp(v.o);
-      el.style.transform = `translateY(${v.y * UNIT}px)${v.sk ? ` skewX(${v.sk}deg)` : ''}`;
-    });
-  });
-  const copyM = new Motion({ p: 0 }, renderFocus(copy, 8), SOFT);
-  const kickO = new Motion({ o: 0 }, (v) => { kicker.style.opacity = v.o; });
-  const stemM = new Motion({ s: 0 }, (v) => { stem.style.transform = `scaleY(${Math.max(0, v.s)})`; }, SOFT);
-  const dotM = new Motion({ s: 0 }, (v) => { dotScale = Math.max(0, v.s); dot.style.transform = `scale(${dotScale * (1 + .6 * crest(waveW, .5))})`; }, POP);
-  const glyphM = new Motion({ y: 0 }, (v) => { glyph.style.transform = v.y ? `translateY(${v.y}px)` : ''; }, SPRING);
-
-  function play() {
-    clearTimeout(waveTimer);
-    markM.to({ y: 0 }, { cfg: DROP }); markM.to({ o: 1 }, { cfg: SPRING });
-    wordM.forEach((m, i) => m.to({ o: 1, y: 0, sk: 0 }, { delay: 380 + i * 60, cfg: words[i].classList.contains('w--c') ? SOFT : SPRING }));
-    kickO.to({ o: 1 }, { delay: 460, immediate: true });
-    kickerTyper.play(460);
-    copyM.to({ p: 1 }, { delay: 820 });
-    stemM.to({ s: 1 }, { delay: 1150 });
-    dotM.to({ s: 1 }, { delay: 1600 });
-    shown = false;
-    waveM.set({ w: -.12 });
-    waveM.to({ w: 1.12 }, { delay: 1750, cfg: { duration: 1600 }, onRest: () => { shown = true; scheduleWave(); } });
-    scheduleChev();
-  }
-  function reset() {
-    clearTimeout(waveTimer); clearTimeout(chevTimer);
-    markM.set({ y: -40, o: 0 });
-    wordM.forEach((m, i) => m.set({ o: 0, y: words[i].classList.contains('w--c') ? 28 : 22, sk: words[i].classList.contains('w--c') ? -16 : 0 }));
-    kickO.set({ o: 0 }); kickerTyper.reset();
-    copyM.set({ p: 0 }); copy.style.filter = 'blur(8px)';
-    stemM.set({ s: 0 }); dotM.set({ s: 0 });
-    shown = false; waveM.set({ w: -.12 });
-  }
-  function scheduleWave() {
-    clearTimeout(waveTimer);
-    if (!seen || !inView) return;
-    waveTimer = setTimeout(() => {
-      waveM.set({ w: -.12 });
-      waveM.to({ w: 1.12 }, { cfg: { duration: 1600, easing: E.inOutSine }, onRest: scheduleWave });
-    }, 3600);
-  }
-  function scheduleChev() {
-    clearTimeout(chevTimer);
-    if (!seen || !inView) return;
-    chevTimer = setTimeout(() => { glyphM.to({ y: -4 * UNIT }); setTimeout(() => glyphM.to({ y: 0 }), 200); scheduleChev(); }, 4000);
-  }
-
-  measure();
-  onLayout(measure);
-  onReleaseStart(measure);
-  if (!MOTION) {
-    wrap.dataset.reduced = 'true'; wrap.dataset.open = 'true';
-    lo.style.setProperty('--grow', 1); plate.style.clipPath = 'none';
-    markM.set({ y: 0, o: 1 });
-    wordM.forEach((m) => m.set({ o: 1, y: 0, sk: 0 }));
-    kickO.set({ o: 1 }); kicker.style.clipPath = 'none';
-    copyM.set({ p: 1 }); stemM.set({ s: 1 }); dotM.set({ s: 1 });
-    shown = true; renderWave(1.12);
-    return;
-  }
-  onScroll(update);
-  reset();
-  new MutationObserver(() => {
-    const v = wrap.dataset.open === 'true';
-    if (v === seen) return;
-    seen = v;
-    if (v) play(); else reset();
-  }).observe(wrap, { attributes: true, attributeFilter: ['data-open'] });
-  inViewWatch(plate, (on) => { inView = on; if (on && seen && shown) { scheduleWave(); scheduleChev(); } if (!on) { clearTimeout(waveTimer); clearTimeout(chevTimer); if (shown) waveM.set({ w: 1.12 }); } });
-
-  /* --- pontos que incham sob o ponteiro --- */
-  const canvas = $('[data-mf-canvas]', plate);
-  if (!canvas || !FINE.matches) return;
-  const ctx = canvas.getContext('2d');
-  let dots = [], cols = 0, rows = 0, raf = null, px = -1e4, py = -1e4, lastT = 0, drawing = false;
-  const sizeCanvas = () => {
-    const dpr = Math.min(2, devicePixelRatio || 1);
-    canvas.width = Math.ceil(plate.offsetWidth * dpr); canvas.height = Math.ceil(plate.offsetHeight * dpr);
-    const k = UNIT;
-    cols = Math.ceil(plate.offsetWidth / (48 * k)) + 1; rows = Math.ceil(plate.offsetHeight / (48 * k)) + 1;
-    dots = [];
-    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) dots.push({ x: (25.5 + c * 48) * k, y: (25.5 + r * 48) * k, s: 1, v: 0, t: 1 });
-    canvas._dpr = dpr;
-  };
-  sizeCanvas(); onLayout(sizeCanvas);
-  const color = 'rgba(221, 247, 255, .26)';
-  function tick(now) {
-    const dt = Math.min(32, now - (lastT || now)) / 1000; lastT = now;
-    const k = UNIT, R = 120 * k;
-    let moving = false;
-    for (const p of dots) {
-      const dd = Math.hypot(p.x - px, p.y - py);
-      const f = dd < R ? 1 - (dd / R) ** 2 : 0;
-      p.t = 1 + (2.4 - 1) * f * f;
-      p.v += (170 * (p.t - p.s) - 11 * p.v) * dt; p.s += p.v * dt;
-      if (Math.abs(p.s - 1) > .002 || Math.abs(p.v) > .002) moving = true;
-    }
-    const dpr = canvas._dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (moving) {
-      if (!drawing) { drawing = true; plate.classList.add('is-swelling'); }
-      ctx.fillStyle = color; ctx.beginPath();
-      for (const p of dots) { const r = 1.5 * k * p.s; ctx.moveTo(p.x + r, p.y); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); }
-      ctx.fill();
-    } else {
-      drawing = false; plate.classList.remove('is-swelling');
-      if (raf) { raf(); raf = null; } lastT = 0;
-    }
-  }
-  plate.addEventListener('pointermove', (e) => {
-    if (e.pointerType !== 'mouse') return;
-    const r = plate.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top;
-    if (!raf) raf = onFrame(tick);
-  });
-  plate.addEventListener('pointerleave', () => { px = py = -1e4; if (!raf) raf = onFrame(tick); });
-}
-
-/* ==========================================================================
    06 Diferenciais: canais em órbita e a tela que se adapta
    ========================================================================== */
 function initHub() {
@@ -1469,10 +1218,9 @@ function initWork() {
     loopWatch(car, () => { live = true; restart(); }, () => { live = false; restart(); });
   }
   if (!MOTION) return;
-  /* deriva: blooms (±40 px) e o interior das artes (±12 px), presa à rolagem */
+  /* deriva: blooms (±40 px), presa à rolagem */
   const items = [];
   $$('[data-drift]').forEach((el) => items.push({ el, scope: el.closest('section'), amp: 40, dir: +el.dataset.drift }));
-  $$('[data-drift-in]').forEach((el) => items.push({ el, scope: el.closest('.case__art'), amp: 12, dir: +el.dataset.driftIn }));
   const geo = new Map();
   const measure = () => items.forEach((it) => { const r = it.scope.getBoundingClientRect(); geo.set(it, { top: r.top + scroll.y, h: r.height }); });
   measure(); onLayout(measure); onReleaseStart(measure);
@@ -1779,44 +1527,12 @@ function initAnchors() {
     menuCtl.close();
     const navH = ($('.nav-slot') || {}).offsetHeight || 0;
     let y;
-    if (id === '#sobre' && manifesto.scrollTo) y = manifesto.scrollTo();
-    else if (id === '#inicio') y = 0;
+    if (id === '#inicio') y = 0;
     else y = el.getBoundingClientRect().top + scroll.y - navH + (el.matches('section, footer') ? 0 : -16);
     if (scroll.lenis) scroll.lenis.scrollTo(Math.max(0, y), { duration: 1.4 });
     else window.scrollTo({ top: Math.max(0, y), behavior: RM ? 'auto' : 'smooth' });
     if (id !== '#inicio') { el.setAttribute('tabindex', '-1'); el.focus({ preventScroll: true }); }
   });
-}
-
-/* ==========================================================================
-   Cursor: anel Lilás que segue o ponteiro
-   ========================================================================== */
-function initCursor() {
-  const ring = $('[data-cursor-ring]');
-  if (!ring || !MOTION || !FINE.matches) { if (ring) ring.remove(); return; }
-  const fill = $('i', ring);
-  const FOLLOW = { tension: 210, friction: 24, mass: 1 }, SHAPE = { tension: 400, friction: 30 };
-  let placed = false, pos = null, shape = null;
-  pos = new Motion({ x: -200, y: -200 }, () => render(), FOLLOW);
-  shape = new Motion({ size: 28, f: 0, press: 1, vis: 1 }, () => render(), SHAPE);
-  function render() {
-    if (!pos || !shape) return;
-    const s = shape.v;
-    ring.style.width = ring.style.height = `${s.size}px`;
-    ring.style.transform = `translate3d(${pos.v.x}px, ${pos.v.y}px, 0) translate(-50%, -50%) scale(${s.press * s.vis})`;
-    fill.style.opacity = s.f;
-  }
-  const SEL = 'a, button, input, textarea, select, label, [role="button"], [role="radio"], [role="slider"]';
-  document.addEventListener('pointermove', (e) => {
-    if (e.pointerType !== 'mouse') return;
-    ring.style.opacity = 1;
-    if (!placed) { placed = true; pos.set({ x: e.clientX, y: e.clientY }); } else pos.to({ x: e.clientX, y: e.clientY });
-    const none = e.target.closest('[data-cursor="none"]'), hot = e.target.closest(SEL);
-    shape.to({ size: hot ? 44 : 28, f: hot ? .12 : 0, vis: none ? 0 : 1 });
-  });
-  document.addEventListener('pointerdown', () => shape.to({ press: .82 }));
-  document.addEventListener('pointerup', () => shape.to({ press: 1 }));
-  document.documentElement.addEventListener('pointerleave', () => { placed = false; pos.set({ x: -200, y: -200 }); });
 }
 
 /* ==========================================================================
@@ -1838,7 +1554,6 @@ function boot() {
   safe('segmentos', initSegs);
   safe('passagens', initScrollBlur);
   safe('serviços', initCards);
-  safe('manifesto', initManifesto);
   safe('canais', initHub);
   safe('telas', initRsp);
   safe('trabalhos', initWork);
@@ -1847,7 +1562,6 @@ function boot() {
   safe('rodapé', initFooter);
   safe('contato', initContact);
   safe('âncoras', initAnchors);
-  safe('cursor', initCursor);
   safe('preloader', initPreloader);
   emitScroll();
   /* a altura da página muda (fontes, imagens): todos os módulos medem de novo */
