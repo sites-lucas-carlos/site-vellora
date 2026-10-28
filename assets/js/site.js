@@ -351,7 +351,7 @@ function initReveals() {
 }
 
 /* ==========================================================================
-   Botões: brilho, claro, vidro e sobre Violeta
+   Botões: principal (ciano), navegação, secundário e sobre faixa Profundo
    ========================================================================== */
 function arrowSvg() {
   const ns = 'http://www.w3.org/2000/svg';
@@ -419,7 +419,8 @@ const menuCtl = { close: () => {} };
 function initNav() {
   const nav = $('[data-nav]'); if (!nav) return;
   const plate = $('[data-nav-plate]', nav), row = $('[data-nav-row]', nav), slot = $('.nav-slot');
-  const pm = new Motion({ o: 0 }, (v) => { plate.style.opacity = v.o; }, SPRING);
+  /* o logo iluminado (brilho ciano) só no topo: apaga quando a placa da navegação aparece */
+  const pm = new Motion({ o: 0 }, (v) => { plate.style.opacity = v.o; nav.style.setProperty('--lit', (1 - clamp(v.o)).toFixed(3)); }, SPRING);
   let on = false;
   const check = (y) => { const want = y > (slot ? slot.offsetHeight : 88); if (want !== on) { on = want; pm.to({ o: want ? 1 : 0 }); } };
   onScroll(check); check(scroll.y);
@@ -465,7 +466,7 @@ function initNav() {
 }
 
 /* ==========================================================================
-   Preloader: anel = progresso real, inunda de Violeta e dobra até o logo
+   Preloader: anel = progresso real, inunda de Profundo e dobra até o logo
    ========================================================================== */
 function initPreloader() {
   const el = $('[data-preloader]');
@@ -628,10 +629,10 @@ function initHero() {
         const g = document.createElementNS(ns, 'linearGradient');
         const gid = `${id}-${i}`; g.id = gid; g.setAttribute('gradientUnits', 'userSpaceOnUse');
         g.setAttribute('x1', p.g[0]); g.setAttribute('y1', p.g[1]); g.setAttribute('x2', p.g[2]); g.setAttribute('y2', p.g[3]);
-        [[0, p.g[4]], [1, p.g[5]]].forEach(([o, a]) => { const s = document.createElementNS(ns, 'stop'); s.setAttribute('offset', o); s.setAttribute('stop-color', '#B69CFF'); s.setAttribute('stop-opacity', a); g.append(s); });
+        [[0, p.g[4]], [1, p.g[5]]].forEach(([o, a]) => { const s = document.createElementNS(ns, 'stop'); s.setAttribute('offset', o); s.setAttribute('stop-color', '#5FD3F3'); s.setAttribute('stop-opacity', a); g.append(s); });
         defs.append(g);
         path.setAttribute('stroke', `url(#${gid})`);
-      } else path.setAttribute('stroke', 'rgba(133,126,158,.6)');
+      } else path.setAttribute('stroke', 'rgba(143,166,188,.6)');
       if (!fansDrawn) { path.style.strokeDasharray = '1 1'; path.style.strokeDashoffset = '1'; }
       else { path.style.visibility = 'visible'; }
       svg.append(path);
@@ -1283,7 +1284,7 @@ function initManifesto() {
     canvas._dpr = dpr;
   };
   sizeCanvas(); onLayout(sizeCanvas);
-  const color = 'rgba(244, 241, 255, .26)';
+  const color = 'rgba(221, 247, 255, .26)';
   function tick(now) {
     const dt = Math.min(32, now - (lastT || now)) / 1000; lastT = now;
     const k = UNIT, R = 120 * k;
@@ -1336,7 +1337,7 @@ function initHub() {
       const g = document.createElementNS(NS, 'linearGradient');
       g.id = `hubw-${i}`; g.setAttribute('gradientUnits', 'userSpaceOnUse');
       g.setAttribute('x1', sx); g.setAttribute('y1', sy); g.setAttribute('x2', cc.x); g.setAttribute('y2', cc.y);
-      [[0, .1], [1, .55]].forEach(([o, a]) => { const s = document.createElementNS(NS, 'stop'); s.setAttribute('offset', o); s.setAttribute('stop-color', '#B69CFF'); s.setAttribute('stop-opacity', a); g.append(s); });
+      [[0, .1], [1, .55]].forEach(([o, a]) => { const s = document.createElementNS(NS, 'stop'); s.setAttribute('offset', o); s.setAttribute('stop-color', '#5FD3F3'); s.setAttribute('stop-opacity', a); g.append(s); });
       defs.append(g);
       const l = document.createElementNS(NS, 'line');
       l.setAttribute('x1', sx); l.setAttribute('y1', sy); l.setAttribute('x2', cc.x); l.setAttribute('y2', cc.y);
@@ -1819,55 +1820,6 @@ function initCursor() {
 }
 
 /* ==========================================================================
-   Stream de partículas (WebGL): carregado depois da liberação
-   ========================================================================== */
-function initStream() {
-  const canvas = $('[data-stream]');
-  if (!canvas) return;
-  if (BOT || !window.VelloraStream || COARSE.matches && innerWidth <= 380 && (navigator.hardwareConcurrency || 4) <= 2) { canvas.remove(); return; }
-  const main = $('.page');
-  const tierOf = () => (COARSE.matches || innerWidth <= 900 ? 'low' : 'full');
-  let api = null, stop = null, lastW = 0, lastH = 0, lastTier = '', releasedAt = 0;
-  const size = () => {
-    const w = canvas.clientWidth, h = canvas.clientHeight, tier = tierOf();
-    if (!api || (w === lastW && h === lastH && tier === lastTier)) return false;
-    lastW = w; lastH = h; lastTier = tier;
-    api.resize(w, h, tier);
-    return true;
-  };
-  const still = () => { if (api) api.render(24000); };
-  const startLoop = () => {
-    if (!api || RM || stop || document.hidden) return;
-    stop = onFrame((now) => api.render(now), COARSE.matches ? 20 : 0);
-  };
-  const stopLoop = () => { if (stop) { stop(); stop = null; } };
-  onRelease(() => {
-    releasedAt = performance.now();
-    const go = () => window.VelloraStream.create(canvas, { main, unit: () => UNIT, frame, tier: tierOf() }).then((s) => {
-      api = s;
-      canvas.classList.add('is-drawn');
-      size();
-      api.setScroll(scroll.y);
-      if (RM) { api.reveal(24000, true); still(); return; }
-      const wait = Math.max(0, 416 - (performance.now() - releasedAt));
-      setTimeout(() => api.reveal(performance.now()), wait);
-      startLoop();
-    }).catch((e) => { console.warn('[Vellora] stream indisponível:', e); canvas.remove(); });
-    if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 600 }); else setTimeout(go, 60);
-  });
-  onScroll((y) => { if (api) { api.setScroll(y); if (RM) requestAnimationFrame(still); } });
-  onLayout(() => { if (api) { const changed = size(); if (!changed) api.rebake(); if (RM) still(); } });
-  let rebakeQueued = false;
-  new ResizeObserver(() => { if (!api || rebakeQueued) return; rebakeQueued = true; requestAnimationFrame(() => { rebakeQueued = false; api.rebake(); if (RM) still(); }); }).observe(main);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stopLoop(); else startLoop(); });
-  addEventListener('pointermove', (e) => {
-    if (!api || e.pointerType !== 'mouse' || !FINE.matches) return;
-    api.setPointer((e.clientX / innerWidth) * 2 - 1, -((e.clientY / innerHeight) * 2 - 1));
-  }, { passive: true });
-  COARSE.addEventListener && COARSE.addEventListener('change', () => size());
-}
-
-/* ==========================================================================
    Partida
    ========================================================================== */
 function safe(name, fn) {
@@ -1896,7 +1848,6 @@ function boot() {
   safe('contato', initContact);
   safe('âncoras', initAnchors);
   safe('cursor', initCursor);
-  safe('stream', initStream);
   safe('preloader', initPreloader);
   emitScroll();
   /* a altura da página muda (fontes, imagens): todos os módulos medem de novo */

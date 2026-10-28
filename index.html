@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vellora | Sites, identidade visual e Instagram profissional</title>
 <meta name="description" content="A Vellora cria sites institucionais, landing pages, identidade visual e Instagram profissional para negócios que querem ser reconhecidos e levados a sério no digital.">
-<meta name="theme-color" content="#0A0712">
+<meta name="theme-color" content="#06121F">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
@@ -43,12 +44,12 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
 
 <script type="importmap">
 { "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
-  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/",
+  "three": "https://unpkg.com/three@0.143.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.143.0/examples/jsm/",
   "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs" } }
 </script>
 
@@ -64,15 +65,15 @@
 </script>
 
 <link rel="stylesheet" href="assets/css/vellora.css">
-<script src="assets/js/stream.js" defer></script>
 <script src="assets/js/site.js" defer></script>
+<script type="module" src="assets/js/fundo.js"></script>
 </head>
 <body>
 
 <!-- ============================== ÍCONES ============================== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 0C12.6 6.6 17.4 11.4 24 12 17.4 12.6 12.6 17.4 12 24 11.4 17.4 6.6 12.6 0 12 6.6 11.4 11.4 6.6 12 0Z" fill="currentColor"/></symbol>
+  <symbol id="i-star" viewBox="0 -115 602 602"><path d="M0 371A371 371 0 0 1 371 0V371Z" fill="currentColor"/><path d="M411 73V371H602Z" fill="currentColor" opacity=".62"/></symbol>
   <symbol id="i-check" viewBox="0 0 16 16"><path d="M3.5 8.5 6.5 11.5 12.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></symbol>
   <symbol id="i-plus" viewBox="0 0 16 16"><path d="M8 2.5v11M2.5 8h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
   <symbol id="i-out" viewBox="0 0 16 16"><path d="M5 11 11 5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -86,7 +87,7 @@
   <symbol id="i-text" viewBox="0 0 20 20"><path d="M4.5 5.5V4h11v1.5M10 4v12M7.5 16h5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-pen" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M10 16.5 4 8.5 10 3l6 5.5z"/><circle cx="10" cy="9.25" r="1.25"/><path d="M10 3v5"/></g></symbol>
   <symbol id="i-lock" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5.25a2.5 2.5 0 0 1 5 0V7"/></g></symbol>
-  <symbol id="i-pointer" viewBox="0 0 24 24"><path d="M5 2.5v16.2l4.3-4 2.8 6.4 3-1.3-2.8-6.3 5.9-.4z" fill="#F4F1FF" stroke="#0A0712" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pointer" viewBox="0 0 24 24"><path d="M5 2.5v16.2l4.3-4 2.8 6.4 3-1.3-2.8-6.3 5.9-.4z" fill="#DDF7FF" stroke="#06121F" stroke-width="1.3" stroke-linejoin="round"/></symbol>
 </svg>
 
 <!-- ============================== PRELOADER ============================== -->
@@ -94,48 +95,31 @@
   <div class="pre__stage" data-pre-stage></div>
   <svg class="pre__ring" data-pre-ring><rect pathLength="100" stroke-dasharray="100 100" stroke-dashoffset="100"/></svg>
   <svg class="pre__flood" data-pre-flood>
-    <defs><linearGradient id="pre-aurora" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3A14C0"/><stop offset=".46" stop-color="#5B21E6"/><stop offset="1" stop-color="#7B3FFF"/></linearGradient></defs>
+    <defs><linearGradient id="pre-aurora" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2236"/><stop offset=".55" stop-color="#0D3B66"/><stop offset="1" stop-color="#1E88B6"/></linearGradient></defs>
     <path fill="url(#pre-aurora)" fill-rule="evenodd"/>
   </svg>
   <div class="pre__tile" data-pre-tile>
-    <img class="pre__logo" src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409">
-    <span class="mark pre__mark" data-pre-mark><span class="mark__glyph"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span></span>
+    <img class="pre__logo" src="assets/img/vellora-simbolo-cor.svg" alt="" width="602" height="372">
+    <span class="mark pre__mark" data-pre-mark><span class="mark__glyph"><img src="assets/img/vellora-simbolo-cor.svg" alt="" width="602" height="372"></span></span>
   </div>
 </div>
 
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
+<!-- ============================== FUNDO (WebGL: chamas de canto) ============================== -->
+<canvas class="fundo" id="scene" aria-hidden="true"></canvas>
+
 <div class="site">
 <main class="page" id="conteudo">
 
-  <!-- ============================== FUNDO ============================== -->
-  <div class="backdrop" aria-hidden="true">
-    <div class="backdrop__top">
-      <div class="backdrop__light"></div>
-      <div class="backdrop__dots"></div>
-      <svg class="backdrop__marks" viewBox="0 0 1440 1160" preserveAspectRatio="xMinYMin slice">
-        <use href="#i-star" x="132" y="178" width="14" height="14" opacity=".55"/>
-        <use href="#i-star" x="1302" y="642" width="12" height="12" opacity=".4"/>
-        <use href="#i-star" x="682" y="96" width="10" height="10" opacity=".35"/>
-        <use href="#i-star" x="884" y="1010" width="12" height="12" opacity=".3"/>
-        <circle cx="64" cy="560" r="1.5" opacity=".5"/>
-        <circle cx="742" cy="740" r="1.2" opacity=".4"/>
-        <circle cx="1218" cy="128" r="1.5" opacity=".45"/>
-        <circle cx="410" cy="1090" r="1.2" opacity=".35"/>
-      </svg>
-    </div>
-    <div class="backdrop__field"></div>
-  </div>
 
-  <!-- ============================== STREAM (WebGL) ============================== -->
-  <canvas class="stream" data-stream aria-hidden="true"></canvas>
 
   <!-- ============================== 01 NAVEGAÇÃO ============================== -->
   <header class="nav" data-nav>
     <div class="nav__plate" data-nav-plate></div>
     <div class="nav__row" data-nav-row>
       <a class="nav__brand" href="#inicio" aria-label="Vellora, voltar ao início">
-        <img src="assets/img/vellora-wordmark.webp" alt="Vellora" width="584" height="122">
+        <img src="assets/img/vellora-horizontal-cor.webp" alt="Vellora" width="1551" height="278">
       </a>
       <nav class="nav__links" aria-label="Principal">
         <ul>
@@ -245,9 +229,9 @@
       <div class="segs__rail" data-segs-rail>
         <svg class="segs__line" preserveAspectRatio="none" overflow="visible">
           <defs><linearGradient id="segs-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="0">
-            <stop offset="0" stop-color="#857E9E" stop-opacity=".45" data-g="0"/>
+            <stop offset="0" stop-color="#8FA6BC" stop-opacity=".45" data-g="0"/>
             <stop offset=".1" class="segs__peak" stop-opacity=".9" data-g="1"/>
-            <stop offset="1" stop-color="#857E9E" stop-opacity=".45" data-g="2"/>
+            <stop offset="1" stop-color="#8FA6BC" stop-opacity=".45" data-g="2"/>
           </linearGradient></defs>
           <path d="M0 1H1000" stroke="url(#segs-grad)" stroke-width="2" stroke-dasharray="2 8" fill="none"/>
         </svg>
@@ -383,15 +367,15 @@
           <div class="pal__type">
             <span class="pal__aa" data-k="aa">Aa</span>
             <span class="pal__aa pal__aa--serif" data-k="ai">Aa</span>
-            <small data-k="fn">Hanken Grotesk<br>Instrument Serif</small>
+            <small data-k="fn">Inter<br>Regular e Bold</small>
           </div>
           <ul class="pal__cols">
-            <li style="--c:#0A0712;--h:.46"><span class="pal__hex" data-k="x0">0A0712</span><span class="pal__sw pal__sw--edge" data-k="w0"></span><span class="pal__name">Noite</span></li>
-            <li style="--c:#1A1033;--h:.56"><span class="pal__hex" data-k="x1">1A1033</span><span class="pal__sw" data-k="w1"></span><span class="pal__name">Ameixa</span></li>
-            <li style="--c:#3A14C0;--h:.66"><span class="pal__hex" data-k="x2">3A14C0</span><span class="pal__sw" data-k="w2"></span><span class="pal__name">900</span></li>
-            <li style="--c:#5B21E6;--h:.76"><span class="pal__hex" data-k="x3">5B21E6</span><span class="pal__sw" data-k="w3"></span><span class="pal__name">700</span></li>
-            <li style="--c:#7B3FFF;--h:.94" class="is-key"><span class="pal__glow" data-k="glow"></span><span class="pal__hex" data-k="x4">7B3FFF</span><span class="pal__sw" data-k="w4"></span><span class="pal__name">500</span></li>
-            <li style="--c:#B69CFF;--h:.84"><span class="pal__hex" data-k="x5">B69CFF</span><span class="pal__sw" data-k="w5"></span><span class="pal__name">Lilás</span></li>
+            <li style="--c:#06121F;--h:.46"><span class="pal__hex" data-k="x0">06121F</span><span class="pal__sw pal__sw--edge" data-k="w0"></span><span class="pal__name">Fundo</span></li>
+            <li style="--c:#0B2236;--h:.56"><span class="pal__hex" data-k="x1">0B2236</span><span class="pal__sw pal__sw--edge" data-k="w1"></span><span class="pal__name">Superfície</span></li>
+            <li style="--c:#0D3B66;--h:.66"><span class="pal__hex" data-k="x2">0D3B66</span><span class="pal__sw" data-k="w2"></span><span class="pal__name">Profundo</span></li>
+            <li style="--c:#1E88B6;--h:.76"><span class="pal__hex" data-k="x3">1E88B6</span><span class="pal__sw" data-k="w3"></span><span class="pal__name">Azul</span></li>
+            <li style="--c:#5FD3F3;--h:.94" class="is-key"><span class="pal__glow" data-k="glow"></span><span class="pal__hex" data-k="x4">5FD3F3</span><span class="pal__sw" data-k="w4"></span><span class="pal__name">Ciano</span></li>
+            <li style="--c:#DDF7FF;--h:.84"><span class="pal__hex" data-k="x5">DDF7FF</span><span class="pal__sw" data-k="w5"></span><span class="pal__name">Gelo</span></li>
           </ul>
         </div>
       </figure>
@@ -416,8 +400,8 @@
           <div class="ig__profile">
             <div class="ig__top">
               <span class="ig__avatar" data-k="av">
-                <svg class="ig__ring" viewBox="0 0 64 64"><defs><linearGradient id="ig-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B69CFF"/><stop offset="1" stop-color="#5B21E6"/></linearGradient></defs><circle cx="32" cy="32" r="30" pathLength="1" data-k="ring"/></svg>
-                <img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409">
+                <svg class="ig__ring" viewBox="0 0 64 64"><defs><linearGradient id="ig-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5FD3F3"/><stop offset="1" stop-color="#1E88B6"/></linearGradient></defs><circle cx="32" cy="32" r="30" pathLength="1" data-k="ring"/></svg>
+                <img src="assets/img/vellora-simbolo-cor.svg" alt="" width="602" height="372">
               </span>
               <span class="ig__id"><strong data-k="name">Vellora</strong><small data-k="cat">Sites · Identidade · Instagram</small></span>
             </div>
@@ -456,7 +440,7 @@
             <span class="mf__line"><span class="w">clareza,</span> <span class="w">consistência</span> <em class="w w--c">e</em> <span class="w">personalidade.</span></span>
           </h2>
           <p class="mf__copy" data-mf="copy">Site, identidade visual e Instagram giram em torno de uma coisa só: a forma como sua marca é vista. Por isso cuidamos dos três juntos.</p>
-          <span class="mf__mark mark" data-statement-mark><span class="mark__glyph" data-mf="glyph"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span></span>
+          <span class="mf__mark mark" data-statement-mark><span class="mark__glyph" data-mf="glyph"><img src="assets/img/vellora-simbolo-cor.svg" alt="" width="602" height="372"></span></span>
           <span class="mf__stem" data-mf="stem"></span>
           <div class="mf__ruler" data-mf-ruler>
             <svg class="mf__ticks" data-mf-ticks overflow="visible" aria-hidden="true"></svg>
@@ -469,7 +453,7 @@
           </div>
         </div>
       </section>
-      <span class="lo__mark mark" data-lo-mark aria-hidden="true"><span class="mark__glyph"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span></span>
+      <span class="lo__mark mark" data-lo-mark aria-hidden="true"><span class="mark__glyph"><img src="assets/img/vellora-simbolo-cor.svg" alt="" width="602" height="372"></span></span>
     </div>
   </div>
 
@@ -503,7 +487,7 @@
               <li class="hub__node hub__node--3"><span class="hub__ic"><svg><use href="#i-doc"/></svg><i class="hub__flash" data-hub-flash></i></span><span class="hub__name">propostas</span></li>
               <li class="hub__node hub__node--4"><span class="hub__ic"><svg><use href="#i-store"/></svg><i class="hub__flash" data-hub-flash></i></span><span class="hub__name">fachada</span></li>
             </ul>
-            <span class="hub__core" data-logo-target><img src="assets/img/vellora-simbolo-branco.webp" alt="" width="374" height="372"></span>
+            <span class="hub__core" data-logo-target><img src="assets/img/vellora-simbolo-branco.svg" alt="" width="602" height="372"></span>
           </div>
           <p class="hub__cap label" data-hub-cap>logo · cores · tipografia · tom de voz</p>
         </div>
@@ -572,7 +556,7 @@
         <p class="tag tag--glow" data-r="fade" data-d="70">Projeto próprio</p>
         <h3 class="case__name" id="case-vellora" data-r="focus" data-d="140">Vellora</h3>
         <p class="case__svc" data-r="type" data-d="210">Identidade visual · Instagram · Site</p>
-        <p class="case__text" data-r="soft" data-d="280">Uma marca que pratica o que entrega: o mesmo padrão no Instagram, nas propostas e neste site. O sistema parte de um símbolo facetado, como um cristal, e de um wordmark de traço fino, sobre uma base escura com brilho violeta.</p>
+        <p class="case__text" data-r="soft" data-d="280">Uma marca que pratica o que entrega: o mesmo padrão no Instagram, nas propostas e neste site. O sistema parte da Vela, um quarto de círculo e um triângulo em dois tons, sobre um fundo azul quase preto em que o ciano é a única luz.</p>
         <dl class="ficha" data-r="fade" data-d="350">
           <div><dt>Cliente</dt><dd>Vellora</dd></div>
           <div><dt>Serviços</dt><dd>Identidade, Instagram e site</dd></div>
@@ -626,10 +610,10 @@
           <p class="wdg__body" data-r="soft" data-d="280">Entendemos o seu negócio, o seu público e onde você quer chegar.</p>
         </div>
         <div class="wdg__art chat" aria-hidden="true">
-          <div class="chat__msg chat__msg--in" data-k="m1"><span class="chat__av"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span><p>Conte sobre o seu negócio.</p></div>
+          <div class="chat__msg chat__msg--in" data-k="m1"><span class="chat__av"><img src="assets/img/vellora-simbolo-cor.svg" alt="" width="602" height="372"></span><p>Conte sobre o seu negócio.</p></div>
           <div class="chat__typing" data-k="typing"><i></i><i></i><i></i></div>
           <div class="chat__msg chat__msg--out" data-k="m2"><p><i></i><i></i></p></div>
-          <div class="chat__msg chat__msg--in" data-k="m3"><span class="chat__av"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span><p>Combinado. Vamos montar o caminho juntos.</p></div>
+          <div class="chat__msg chat__msg--in" data-k="m3"><span class="chat__av"><img src="assets/img/vellora-simbolo-cor.svg" alt="" width="602" height="372"></span><p>Combinado. Vamos montar o caminho juntos.</p></div>
         </div>
       </li>
       <li class="wdg" data-stage data-wdg="curves">
@@ -708,17 +692,17 @@
         <h2 class="foot__title"><span class="foot__line" data-f="line">Vamos tirar sua marca do <em>improviso?</em></span></h2>
         <p class="foot__copy" data-f="copy">Conte sobre o seu negócio. A gente responde com os próximos passos e um orçamento sem compromisso.</p>
         <div class="foot__actions" data-f="actions">
-          <a class="btn btn--noite btn--lg" href="#contato" data-open-contact data-cursor="none"><span class="btn__label">Fale com a gente</span></a>
+          <a class="btn btn--glow btn--lg" href="#contato" data-open-contact data-cursor="none"><span class="btn__label">Fale com a gente</span></a>
           <a class="btn btn--outline btn--lg" data-contact="whatsapp" target="_blank" rel="noopener" hidden><span class="btn__label">WhatsApp</span><svg class="btn__out"><use href="#i-out"/></svg></a>
         </div>
       </div>
 
       <div class="foot__brand" data-f="brand">
         <svg class="foot__glyph" viewBox="0 0 300 300" overflow="visible" aria-hidden="true">
-          <path class="g-back" data-f="gback" d="M52 70 L132 236 L148 172 Z"/>
-          <path class="g-front" data-f="gfront" d="M170 128 L238 70 L150 236 Z"/>
+          <path class="g-back" data-f="gback" d="M30 218 A148 148 0 0 1 178 70 V218 Z"/>
+          <path class="g-front" data-f="gfront" d="M194 99 V218 H271 Z"/>
         </svg>
-        <a class="foot__logo" href="#inicio" aria-label="Vellora, voltar ao início"><img src="assets/img/vellora-wordmark.webp" alt="Vellora" width="584" height="122"></a>
+        <a class="foot__logo" href="#inicio" aria-label="Vellora, voltar ao início"><img src="assets/img/vellora-horizontal-cor.webp" alt="Vellora" width="1551" height="278"></a>
         <p class="foot__tag" data-f="tag">Sites, landing pages, identidade visual e Instagram profissional para negócios que querem ser levados a sério.</p>
         <span class="foot__hair" data-f="bhair"></span>
         <div class="foot__social" data-f="social">
@@ -742,7 +726,7 @@
     <div class="foot__bottom" data-foot-bottom>
       <span class="foot__rule" data-f="rule1"></span>
       <div class="foot__company" data-f="company">
-        <span class="foot__mark"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span>
+        <span class="foot__mark"><img src="assets/img/vellora-simbolo-cor.svg" alt="" width="602" height="372"></span>
         <p class="foot__name">Vellora</p>
         <p class="foot__about">Criamos sites, identidade visual e Instagram profissional com clareza, consistência e personalidade.</p>
         <p class="foot__base label">Sites · Identidade visual · Instagram</p>
@@ -761,8 +745,8 @@
 
 <!-- voo do logo: da placa do manifesto até o centro dos canais -->
 <div class="flight" data-flight hidden aria-hidden="true">
-  <span class="mark"><span class="mark__glyph"><img src="assets/img/vellora-simbolo.webp" alt="" width="386" height="409"></span></span>
-  <span class="flight__cover" data-flight-cover><img src="assets/img/vellora-simbolo-branco.webp" alt="" width="374" height="372"></span>
+  <span class="mark"><span class="mark__glyph"><img src="assets/img/vellora-simbolo-cor.svg" alt="" width="602" height="372"></span></span>
+  <span class="flight__cover" data-flight-cover><img src="assets/img/vellora-simbolo-branco.svg" alt="" width="602" height="372"></span>
 </div>
 
 <div class="cursor" data-cursor-ring aria-hidden="true"><i></i></div>

@@ -1,15 +1,16 @@
 # Vellora — site institucional
 
 Site da Vellora: sites institucionais, landing pages, identidade visual e Instagram profissional.
-Estrutura e movimento adaptados do template Relay; identidade do design system Vellora v1.0.
+Estrutura e movimento adaptados do template Relay; identidade do guia da marca para o site
+(paleta Cobalto e ciano, fonte Inter, logo Vela).
 
 ## Estrutura
 
 - `index.html` — página única com todas as seções
-- `assets/css/vellora.css` — tokens do design system e estilos (grade em 4 quadros: 1440 / 1024 / 768 / 390)
+- `assets/css/vellora.css` — tokens do guia da marca (`--vl-*`) e estilos (grade em 4 quadros: 1440 / 1024 / 768 / 390)
 - `assets/js/site.js` — motor de molas, entradas, seções e janela de contato
-- `assets/js/stream.js` — stream de partículas em WebGL (three.js via CDN)
-- `assets/img/` — logos oficiais e posts da Vellora
+- `assets/js/fundo.js` — fundo da página inteira em WebGL: chamas nos cantos (three.js r0.143.0 via CDN)
+- `assets/img/` — logo horizontal, Vela (SVG colorida e branca), favicons e posts da Vellora
 
 ## Antes de publicar
 
