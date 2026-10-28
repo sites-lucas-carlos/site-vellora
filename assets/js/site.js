@@ -1067,126 +1067,6 @@ function initCards() {
 }
 
 /* ==========================================================================
-   06 Diferenciais: canais em órbita e a tela que se adapta
-   ========================================================================== */
-function initHub() {
-  const card = $('[data-hub-card]'); if (!card) return;
-  const hub = $('[data-hub]', card), core = $('.hub__core', hub), nodes = $$('.hub__node', hub);
-  const pks = $$('[data-hub-pk]', hub), flashes = $$('[data-hub-flash]', hub), wires = $('[data-hub-wires]', hub);
-  const glow = $('[data-hub-glow]', hub), oin = $('[data-hub-orbit="in"]', hub), oout = $('[data-hub-orbit="out"]', hub);
-  const label = $('.hub__label', card), cap = $('[data-hub-cap]', card);
-  const NS = 'http://www.w3.org/2000/svg';
-  let vec = [];
-  function measure() {
-    const cc = { x: core.offsetLeft + core.offsetWidth / 2, y: core.offsetTop + core.offsetHeight / 2 };
-    wires.textContent = '';
-    const defs = document.createElementNS(NS, 'defs'); wires.append(defs);
-    vec = nodes.map((n, i) => {
-      const sx = n.offsetLeft + n.offsetWidth / 2, sy = n.offsetTop + n.offsetHeight / 2;
-      const g = document.createElementNS(NS, 'linearGradient');
-      g.id = `hubw-${i}`; g.setAttribute('gradientUnits', 'userSpaceOnUse');
-      g.setAttribute('x1', sx); g.setAttribute('y1', sy); g.setAttribute('x2', cc.x); g.setAttribute('y2', cc.y);
-      [[0, .1], [1, .55]].forEach(([o, a]) => { const s = document.createElementNS(NS, 'stop'); s.setAttribute('offset', o); s.setAttribute('stop-color', '#5FD3F3'); s.setAttribute('stop-opacity', a); g.append(s); });
-      defs.append(g);
-      const l = document.createElementNS(NS, 'line');
-      l.setAttribute('x1', sx); l.setAttribute('y1', sy); l.setAttribute('x2', cc.x); l.setAttribute('y2', cc.y);
-      l.setAttribute('stroke', `url(#hubw-${i})`);
-      if (Math.abs(cc.y - sy) > 8) l.setAttribute('stroke-dasharray', '2 7');
-      wires.append(l);
-      pks[i].style.left = `${sx}px`; pks[i].style.top = `${sy}px`;
-      return { dx: cc.x - sx, dy: cc.y - sy };
-    });
-    if (!MOTION) pks.forEach((p) => { p.style.opacity = 0; });
-  }
-  measure();
-  onLayout(measure);
-  if (cap) whenSeen(label, () => typeText(cap, 350));
-  if (!MOTION) return;
-  let stop = null, t0 = 0, last = 0;
-  const OFF = [0, .25, .5, .75];
-  function draw(t) {
-    const turn = (t % 32000) / 32000 * 360;
-    oout.style.transform = `rotate(${turn}deg)`;
-    oin.style.transform = `rotate(${-turn}deg)`;
-    const b = (1 - Math.cos(2 * Math.PI * t / 3840)) / 2;
-    glow.style.opacity = 1 - .3 * b; glow.style.transform = `scale(${1 + .06 * b})`;
-    vec.forEach((v, i) => {
-      const p = (t / 1920 + OFF[i]) % 1, f = 1 - p;
-      pks[i].style.transform = `translate(${f * v.dx}px, ${f * v.dy}px)`;
-      pks[i].style.opacity = smoothstep(0, .15, p) * (1 - smoothstep(.85, 1, p));
-      flashes[i].style.opacity = Math.max(0, 1 - p / .3) ** 2;
-    });
-  }
-  draw(0);
-  loopWatch(card, () => {
-    t0 = 0; last = 0;
-    stop = onFrame((now) => { if (!last) last = now; t0 += Math.min(100, now - last); last = now; draw(t0); });
-  }, () => { if (stop) { stop(); stop = null; } t0 = 0; draw(0); });
-}
-
-function initRsp() {
-  const art = $('[data-rsp]'); if (!art) return;
-  const stage = $('[data-rsp-stage]', art), frameEl = $('[data-rsp-frame]', art), inner = $('[data-rsp-inner]', art);
-  const seg = $('[data-rsp-seg]', art), pill = $('[data-rsp-pill]', art), labels = $$('span:not(.rsp__pill)', seg);
-  const blocks = {};
-  $$('[data-b]', inner).forEach((b) => { blocks[b.dataset.b] = b; });
-  const ORDER = ['nav', 't1', 't2', 'p', 'btn', 'img', 'c1', 'c2', 'c3'];
-  let mode = 'desk', S = 0, H = 0;
-  const frameW = (m) => (m === 'desk' ? Math.min(S, H * 1.9) : Math.min(S, Math.max(H * .52, 96 * UNIT)));
-  function layout(m, iw, ih) {
-    const u = UNIT, g = 8 * u, out = {};
-    if (m === 'desk') {
-      out.nav = [0, 0, iw, 6 * u];
-      out.t1 = [0, 18 * u, iw * .46, 10 * u];
-      out.t2 = [0, 34 * u, iw * .32, 10 * u];
-      out.p = [0, 52 * u, iw * .4, 5 * u];
-      out.btn = [0, 66 * u, 56 * u, 14 * u];
-      out.img = [iw * .54, 18 * u, iw * .46, 62 * u];
-      const cw = (iw - 2 * g) / 3, ch = Math.max(14 * u, ih - 92 * u);
-      ['c1', 'c2', 'c3'].forEach((c, i) => { out[c] = [i * (cw + g), 92 * u, cw, ch]; });
-    } else {
-      out.nav = [0, 0, iw, 6 * u];
-      out.t1 = [0, 16 * u, iw * .9, 9 * u];
-      out.t2 = [0, 30 * u, iw * .62, 9 * u];
-      out.p = [0, 45 * u, iw * .8, 4 * u];
-      out.btn = [0, 56 * u, iw, 13 * u];
-      out.img = [0, 76 * u, iw, 50 * u];
-      ['c1', 'c2', 'c3'].forEach((c, i) => { out[c] = [0, (134 + i * 32) * u, iw, 26 * u]; });
-    }
-    return out;
-  }
-  const bm = {};
-  ORDER.forEach((k) => {
-    const el = blocks[k];
-    bm[k] = new Motion({ x: 0, y: 0, w: 0, h: 0 }, (v) => {
-      el.style.transform = `translate(${v.x}px, ${v.y}px)`;
-      el.style.width = `${Math.max(0, v.w)}px`; el.style.height = `${Math.max(0, v.h)}px`;
-    }, SPRING);
-  });
-  const fm = new Motion({ w: 0 }, (v) => { frameEl.style.width = `${v.w}px`; }, SOFT);
-  const pm = new Motion({ x: 0, w: 0 }, (v) => { pill.style.transform = `translateX(${v.x}px)`; pill.style.width = `${v.w}px`; }, SPRING);
-  function apply(m, imm) {
-    mode = m;
-    S = stage.offsetWidth; H = stage.offsetHeight;
-    const fw = frameW(m), u = UNIT;
-    const iw = fw - 2 * 14 * u, ih = H - (36 + 14) * u;
-    const L = layout(m, iw, ih);
-    fm.to({ w: fw }, { immediate: imm || !MOTION });
-    frameEl.style.borderRadius = m === 'desk' ? '.875rem' : '1.375rem';
-    ORDER.forEach((k, i) => { const [x, y, w, h] = L[k]; bm[k].to({ x, y, w, h }, { delay: imm ? 0 : i * 28, immediate: imm || !MOTION }); });
-    const lab = labels[m === 'desk' ? 0 : 1];
-    labels.forEach((l) => l.classList.toggle('is-on', l === lab));
-    pm.to({ x: lab.offsetLeft, w: lab.offsetWidth }, { immediate: imm || !MOTION });
-  }
-  apply('desk', true);
-  onLayout(() => apply(mode, true));
-  if (!MOTION) return;
-  let timer = 0;
-  const cycle = () => { timer = setTimeout(() => { apply(mode === 'desk' ? 'phone' : 'desk'); cycle(); }, 2600); };
-  loopWatch(art, () => { clearTimeout(timer); cycle(); }, () => { clearTimeout(timer); apply('desk', true); });
-}
-
-/* ==========================================================================
    07 Trabalhos: carrossel real da Vellora e deriva dos estudos
    ========================================================================== */
 function initWork() {
@@ -1536,6 +1416,14 @@ function initAnchors() {
 }
 
 /* ==========================================================================
+   Pendências: dados que ainda faltam, marcados com class="tbd" no index.html
+   ========================================================================== */
+function initPending() {
+  const n = $$('.tbd').length;
+  if (n) console.info(`[Vellora] ${n} dados ainda por preencher: procure class="tbd" no index.html.`);
+}
+
+/* ==========================================================================
    Partida
    ========================================================================== */
 function safe(name, fn) {
@@ -1554,14 +1442,13 @@ function boot() {
   safe('segmentos', initSegs);
   safe('passagens', initScrollBlur);
   safe('serviços', initCards);
-  safe('canais', initHub);
-  safe('telas', initRsp);
   safe('trabalhos', initWork);
   safe('processo', initProc);
   safe('dúvidas', initFaq);
   safe('rodapé', initFooter);
   safe('contato', initContact);
   safe('âncoras', initAnchors);
+  safe('pendências', initPending);
   safe('preloader', initPreloader);
   emitScroll();
   /* a altura da página muda (fontes, imagens): todos os módulos medem de novo */

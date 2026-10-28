@@ -64,8 +64,8 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/css/vellora.css?v=20261029">
-<script src="assets/js/site.js?v=20261029" defer></script>
+<link rel="stylesheet" href="assets/css/vellora.css?v=20261030">
+<script src="assets/js/site.js?v=20261030" defer></script>
 <script type="module" src="assets/js/fundo.js?v=20261028"></script>
 </head>
 <body>
@@ -78,10 +78,6 @@
   <symbol id="i-plus" viewBox="0 0 16 16"><path d="M8 2.5v11M2.5 8h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
   <symbol id="i-out" viewBox="0 0 16 16"><path d="M5 11 11 5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-close" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
-  <symbol id="i-globe" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="10" cy="10" r="7"/><path d="M3 10h14M10 3c2 2.2 2.9 4.5 2.9 7s-.9 4.8-2.9 7c-2-2.2-2.9-4.5-2.9-7s.9-4.8 2.9-7Z"/></g></symbol>
-  <symbol id="i-insta" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3.5" y="3.5" width="13" height="13" rx="4"/><circle cx="10" cy="10" r="3"/><circle cx="14" cy="6" r=".6" fill="currentColor"/></g></symbol>
-  <symbol id="i-doc" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M5.5 2.75h6l3.5 3.5v11h-9.5z"/><path d="M11.5 2.75v3.5H15M8 10h5M8 13h3.5"/></g></symbol>
-  <symbol id="i-store" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.5 8v8.5h13V8"/><path d="M2.75 4h14.5l-.9 3.2a2.2 2.2 0 0 1-4.2 0 2.2 2.2 0 0 1-4.3 0 2.2 2.2 0 0 1-4.2 0z"/><path d="M8 16.5v-4h4v4"/></g></symbol>
   <symbol id="i-cursor" viewBox="0 0 20 20"><path d="M5 3.5 15 9.2l-4.4 1.2-1.9 4.3z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
   <symbol id="i-frame" viewBox="0 0 20 20"><path d="M6.5 3v14M13.5 3v14M3 6.5h14M3 13.5h14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
   <symbol id="i-text" viewBox="0 0 20 20"><path d="M4.5 5.5V4h11v1.5M10 4v12M7.5 16h5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -125,20 +121,22 @@
         <ul>
           <li><a href="#servicos">Serviços</a></li>
           <li><a href="#trabalhos">Trabalhos</a></li>
+          <li><a href="#quem-faz">Quem faz</a></li>
           <li><a href="#processo">Processo</a></li>
           <li><a href="#duvidas">Dúvidas</a></li>
         </ul>
       </nav>
       <div class="nav__actions">
-        <a class="btn btn--light btn--md" href="#contato" data-open-contact><span class="btn__label">Fale conosco</span></a>
+        <a class="btn btn--light btn--md" href="#contato" data-open-contact><span class="btn__label">Pedir orçamento</span></a>
         <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu" data-menu-btn><i></i><i></i><i></i></button>
       </div>
       <nav class="menu" id="menu" aria-label="Menu" data-menu>
         <ul>
-          <li><a href="#servicos"><span class="menu__tile">01</span><span class="menu__txt"><strong>Serviços</strong><small>Sites, landing pages, identidade e Instagram</small></span></a></li>
-          <li><a href="#trabalhos"><span class="menu__tile">02</span><span class="menu__txt"><strong>Trabalhos</strong><small>Nosso projeto próprio</small></span></a></li>
-          <li><a href="#processo"><span class="menu__tile">03</span><span class="menu__txt"><strong>Processo</strong><small>Do primeiro papo ao lançamento</small></span></a></li>
-          <li><a href="#duvidas"><span class="menu__tile">04</span><span class="menu__txt"><strong>Dúvidas</strong><small>Antes de começar</small></span></a></li>
+          <li><a href="#servicos"><span class="menu__tile">01</span><span class="menu__txt"><strong>Serviços</strong><small>O que fazemos e quanto custa</small></span></a></li>
+          <li><a href="#trabalhos"><span class="menu__tile">02</span><span class="menu__txt"><strong>Trabalhos</strong><small>O padrão na prática</small></span></a></li>
+          <li><a href="#quem-faz"><span class="menu__tile">03</span><span class="menu__txt"><strong>Quem faz</strong><small>Quem cuida da sua marca</small></span></a></li>
+          <li><a href="#processo"><span class="menu__tile">04</span><span class="menu__txt"><strong>Processo</strong><small>Como funciona</small></span></a></li>
+          <li><a href="#duvidas"><span class="menu__tile">05</span><span class="menu__txt"><strong>Dúvidas</strong><small>Preço, prazo e pagamento</small></span></a></li>
         </ul>
       </nav>
     </div>
@@ -152,10 +150,10 @@
       <div class="hero__copy">
         <p class="chip" data-h="chip"><span class="chip__sq"></span><span class="chip__txt" data-h-type="120">Sites · Identidade visual · Instagram</span></p>
         <h1 class="display hero__title" id="hero-title" data-h="title"><span class="hero__l">Sua marca,</span> <span class="hero__l">levada a <em>sério</em>.</span></h1>
-        <p class="hero__sub" data-h="sub">Criamos sites, landing pages, identidade visual e Instagram profissional com um só padrão, para que o seu negócio seja reconhecido e escolhido no digital.</p>
+        <p class="hero__sub" data-h="sub">Criamos site, identidade visual e Instagram para negócios locais. Tudo no mesmo padrão, para o cliente confiar e chamar você.</p>
         <div class="hero__actions" data-h="actions">
-          <a class="btn btn--glow btn--lg" href="#contato" data-open-contact><span class="btn__label">Fale com a gente</span></a>
-          <a class="btn btn--glass btn--lg" href="#servicos"><span class="btn__label">Ver serviços</span></a>
+          <a class="btn btn--glow btn--lg" href="#contato" data-open-contact><span class="btn__label">Pedir orçamento</span></a>
+          <a class="btn btn--glass btn--lg" href="#servicos"><span class="btn__label">Serviços e preços</span></a>
         </div>
         <p class="hero__note" data-h="note"><span data-h-type="400">Brasília, DF · presencial ou online ·</span> <span data-h-type="1180">orçamento sem compromisso</span></p>
       </div>
@@ -260,9 +258,9 @@
     <div class="head" data-stage>
       <div class="head__main" data-r="rise">
         <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Serviços</p>
-        <h2 class="h2" id="svc-title" data-r="focus" data-d="70">Tudo em um só <em>lugar</em>.</h2>
+        <h2 class="h2" id="svc-title" data-r="focus" data-d="70">O que fazemos e quanto <em>custa</em>.</h2>
       </div>
-      <p class="head__aside" data-r="soft" data-d="140">Sites, landing pages, identidade visual e Instagram profissional, com o mesmo padrão em cada canal. Você pode começar por um serviço ou fazer tudo junto.</p>
+      <p class="head__aside" data-r="soft" data-d="140">Comece por um serviço ou faça tudo junto.</p>
     </div>
 
     <span class="hair" data-r="draw"></span>
@@ -271,12 +269,16 @@
       <div class="feat__copy" data-r="rise">
         <p class="feat__idx" data-r="roll" data-d="150">01</p>
         <h3 class="feat__title" data-r="soft" data-d="70">Sites institucionais</h3>
-        <p class="feat__body" data-r="soft" data-d="140">Um site que apresenta o seu negócio com clareza e transforma visitas em contatos. Cada página tem um papel: explicar o que você faz, gerar confiança e levar à conversa.</p>
+        <p class="feat__body" data-r="soft" data-d="140">Mostra quem você é, o que faz e como falar com você.</p>
         <ol class="nlist" data-r="fade" data-d="210">
-          <li><span>01</span>Páginas pensadas para gerar contatos</li>
-          <li><span>02</span>Perfeito no celular e no computador</li>
-          <li><span>03</span>Rápido para carregar</li>
+          <li><span>01</span>Feito para gerar contatos</li>
+          <li><span>02</span>Perfeito no celular</li>
+          <li><span>03</span>Rápido para abrir</li>
         </ol>
+        <dl class="facts" data-r="fade" data-d="250">
+          <div><dt>Prazo médio</dt><dd><span class="tbd">— semanas</span></dd></div>
+          <div><dt>A partir de</dt><dd><span class="tbd">R$ —</span></dd></div>
+        </dl>
         <a class="link" href="#contato" data-open-contact="Site institucional" data-r="fade" data-d="280">Quero um site <svg><use href="#i-arrow"/></svg></a>
       </div>
       <figure class="card feat__card" data-r="rise" data-d="70" data-loop="site" role="img" aria-label="Ilustração: a página inicial de um site institucional sendo montada.">
@@ -310,12 +312,16 @@
       <div class="feat__copy" data-r="rise">
         <p class="feat__idx" data-r="roll" data-d="150">02</p>
         <h3 class="feat__title" data-r="soft" data-d="70">Landing pages</h3>
-        <p class="feat__body" data-r="soft" data-d="140">Uma página com um único objetivo: apresentar um serviço ou uma campanha e levar o visitante a entrar em contato. Texto, estrutura e botões trabalham juntos para isso.</p>
+        <p class="feat__body" data-r="soft" data-d="140">Uma página para vender um serviço ou uma campanha.</p>
         <ol class="nlist" data-r="fade" data-d="210">
-          <li><span>01</span>Uma oferta, um objetivo</li>
-          <li><span>02</span>Estrutura pensada para a ação</li>
-          <li><span>03</span>Pronta para campanhas e anúncios</li>
+          <li><span>01</span>Um objetivo só: gerar contato</li>
+          <li><span>02</span>Texto e botões que levam à ação</li>
+          <li><span>03</span>Pronta para anúncios</li>
         </ol>
+        <dl class="facts" data-r="fade" data-d="250">
+          <div><dt>Prazo médio</dt><dd><span class="tbd">— semanas</span></dd></div>
+          <div><dt>A partir de</dt><dd><span class="tbd">R$ —</span></dd></div>
+        </dl>
         <a class="link" href="#contato" data-open-contact="Landing page" data-r="fade" data-d="280">Quero uma landing page <svg><use href="#i-arrow"/></svg></a>
       </div>
       <figure class="card feat__card" data-r="rise" data-d="70" data-loop="lp" role="img" aria-label="Ilustração: uma landing page com promessa, benefícios, prova e chamada para ação.">
@@ -353,12 +359,16 @@
       <div class="feat__copy" data-r="rise">
         <p class="feat__idx" data-r="roll" data-d="150">03</p>
         <h3 class="feat__title" data-r="soft" data-d="70">Identidade visual</h3>
-        <p class="feat__body" data-r="soft" data-d="140">Logo, cores e tipografia que fazem sua marca ser reconhecida. Um padrão que se mantém igual em qualquer canal: no site, no Instagram, nas propostas e na fachada.</p>
+        <p class="feat__body" data-r="soft" data-d="140">O visual que faz sua marca ser reconhecida em qualquer lugar.</p>
         <ol class="nlist" data-r="fade" data-d="210">
-          <li><span>01</span>Logotipo e suas variações</li>
-          <li><span>02</span>Paleta de cores</li>
-          <li><span>03</span>Tipografia</li>
+          <li><span>01</span>Logo e suas versões</li>
+          <li><span>02</span>Cores da marca</li>
+          <li><span>03</span>Fontes da marca</li>
         </ol>
+        <dl class="facts" data-r="fade" data-d="250">
+          <div><dt>Prazo médio</dt><dd><span class="tbd">— semanas</span></dd></div>
+          <div><dt>A partir de</dt><dd><span class="tbd">R$ —</span></dd></div>
+        </dl>
         <a class="link" href="#contato" data-open-contact="Identidade visual" data-r="fade" data-d="280">Quero uma identidade <svg><use href="#i-arrow"/></svg></a>
       </div>
       <figure class="card feat__card" data-r="rise" data-d="70" data-loop="id" role="img" aria-label="Ilustração: paleta de cores e tipografia da própria Vellora.">
@@ -387,12 +397,16 @@
       <div class="feat__copy" data-r="rise">
         <p class="feat__idx" data-r="roll" data-d="150">04</p>
         <h3 class="feat__title" data-r="soft" data-d="70">Instagram profissional</h3>
-        <p class="feat__body" data-r="soft" data-d="140">Um perfil organizado para que quem chega entenda o que você faz, confie e entre em contato. Bio, destaques e posts seguem o mesmo padrão visual da marca.</p>
+        <p class="feat__body" data-r="soft" data-d="140">Um perfil que passa confiança logo no primeiro olhar. <span class="tbd">Não inclui postar por você todo mês.</span></p>
         <ol class="nlist" data-r="fade" data-d="210">
-          <li><span>01</span>Bio estratégica</li>
+          <li><span>01</span>Bio que explica o que você faz</li>
           <li><span>02</span>Destaques organizados</li>
-          <li><span>03</span>Modelos de posts e carrosséis</li>
+          <li><span>03</span>Modelos de posts prontos</li>
         </ol>
+        <dl class="facts" data-r="fade" data-d="250">
+          <div><dt>Prazo médio</dt><dd><span class="tbd">— semanas</span></dd></div>
+          <div><dt>A partir de</dt><dd><span class="tbd">R$ —</span></dd></div>
+        </dl>
         <a class="link" href="#contato" data-open-contact="Instagram profissional" data-r="fade" data-d="280">Quero meu Instagram <svg><use href="#i-arrow"/></svg></a>
       </div>
       <figure class="card feat__card" data-r="rise" data-d="70" data-loop="ig" role="img" aria-label="Ilustração: perfil da Vellora no Instagram com os posts de apresentação da marca.">
@@ -424,84 +438,49 @@
         </div>
       </figure>
     </article>
-  </section>
-  </div></div>
 
-  <!-- ============================== 06 DIFERENCIAIS ============================== -->
-  <div class="sb" data-sb="enter leave"><div class="sb__in" data-sb-in>
-  <section class="dif" id="diferenciais" aria-labelledby="dif-title">
-    <div class="head" data-stage>
-      <div class="head__main" data-r="rise">
-        <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Diferenciais</p>
-        <h2 class="h2" id="dif-title" data-r="focus" data-d="70">Quem não é lembrado, não é <em>escolhido</em>.</h2>
+    <!-- o pacote completo e o guia de escolha -->
+    <div class="pack" id="marca-completa">
+      <article class="pack__offer" data-stage aria-labelledby="pack-title">
+        <h3 class="pack__title" id="pack-title" data-r="focus">Marca <em>completa</em></h3>
+        <p class="pack__copy" data-r="soft" data-d="70">Os três juntos, no mesmo padrão.</p>
+        <ul class="pack__list" data-r="fade" data-d="210">
+          <li><svg><use href="#i-check"/></svg>Identidade visual</li>
+          <li><svg><use href="#i-check"/></svg>Site institucional</li>
+          <li><svg><use href="#i-check"/></svg>Instagram profissional</li>
+        </ul>
+        <dl class="facts" data-r="fade" data-d="250">
+          <div><dt>Prazo médio</dt><dd><span class="tbd">— semanas</span></dd></div>
+          <div><dt>A partir de</dt><dd><span class="tbd">R$ —</span></dd></div>
+        </dl>
+        <a class="btn btn--glow btn--lg pack__btn" href="#contato" data-open-contact="Marca completa" data-r="rise" data-d="320"><span class="btn__label">Quero a marca completa</span></a>
+      </article>
+
+      <div class="pack__guide" data-stage>
+        <h3 class="pack__ask" data-r="soft">Não sabe por onde começar?</h3>
+        <ul class="guide" data-r="fade" data-d="70">
+          <li><button class="guide__row" type="button" data-open-contact="Identidade visual"><span class="guide__sit">Não tenho logo, ou ela está ultrapassada</span><span class="guide__rec">Identidade visual</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
+          <li><button class="guide__row" type="button" data-open-contact="Site institucional"><span class="guide__sit">Quero apresentar meu negócio</span><span class="guide__rec">Site institucional</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
+          <li><button class="guide__row" type="button" data-open-contact="Landing page"><span class="guide__sit">Quero divulgar um serviço</span><span class="guide__rec">Landing page</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
+          <li><button class="guide__row" type="button" data-open-contact="Instagram profissional"><span class="guide__sit">Meu Instagram está parado</span><span class="guide__rec">Instagram profissional</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
+          <li><button class="guide__row" type="button" data-open-contact="Marca completa"><span class="guide__sit">Quero resolver tudo</span><span class="guide__rec">Marca completa</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
+        </ul>
       </div>
-      <p class="head__aside" data-r="soft" data-d="140">Cuidamos do site, da identidade e do Instagram como uma coisa só. Cada projeto é desenhado para o seu negócio, com atenção ao que o seu cliente precisa entender.</p>
-    </div>
-
-    <div class="dif__cards">
-      <article class="dcard" data-stage>
-        <h3 class="dcard__title" data-r="soft" data-d="140">Um padrão em todos os canais</h3>
-        <p class="dcard__copy" data-r="soft" data-d="210">Site, Instagram, propostas e fachada falam a mesma língua. Quando o cliente reconhece a marca em qualquer canal, ela passa a ser lembrada.</p>
-        <div class="dcard__art hub-art" data-hub-card>
-          <p class="hub__label label" data-r="type" data-d="140">uma marca, todos os canais</p>
-          <div class="hub" data-hub>
-            <span class="hub__glow" data-hub-glow></span>
-            <span class="hub__orbit hub__orbit--in" data-hub-orbit="in"></span>
-            <span class="hub__orbit hub__orbit--out" data-hub-orbit="out"></span>
-            <svg class="hub__wires" data-hub-wires overflow="visible"></svg>
-            <span class="hub__pk" data-hub-pk></span><span class="hub__pk" data-hub-pk></span>
-            <span class="hub__pk" data-hub-pk></span><span class="hub__pk" data-hub-pk></span>
-            <ul class="hub__nodes" aria-label="Canais da marca">
-              <li class="hub__node hub__node--1"><span class="hub__ic"><svg><use href="#i-globe"/></svg><i class="hub__flash" data-hub-flash></i></span><span class="hub__name">site</span></li>
-              <li class="hub__node hub__node--2"><span class="hub__ic"><svg><use href="#i-insta"/></svg><i class="hub__flash" data-hub-flash></i></span><span class="hub__name">instagram</span></li>
-              <li class="hub__node hub__node--3"><span class="hub__ic"><svg><use href="#i-doc"/></svg><i class="hub__flash" data-hub-flash></i></span><span class="hub__name">propostas</span></li>
-              <li class="hub__node hub__node--4"><span class="hub__ic"><svg><use href="#i-store"/></svg><i class="hub__flash" data-hub-flash></i></span><span class="hub__name">fachada</span></li>
-            </ul>
-            <span class="hub__core"><img src="assets/img/vellora-simbolo-branco.svg?v=20261028" alt="" width="602" height="372"></span>
-          </div>
-          <p class="hub__cap label" data-hub-cap>logo · cores · tipografia · tom de voz</p>
-        </div>
-      </article>
-
-      <article class="dcard" data-stage>
-        <h3 class="dcard__title" data-r="soft" data-d="210">Pensado para o celular</h3>
-        <p class="dcard__copy" data-r="soft" data-d="280">Cada site é pensado para o celular e para o computador, com textos legíveis, botões fáceis de tocar e carregamento rápido.</p>
-        <div class="dcard__art rsp" data-rsp>
-          <p class="rsp__label label" data-r="type" data-d="210">o mesmo site, em qualquer tela</p>
-          <div class="rsp__stage" data-rsp-stage>
-            <div class="rsp__frame" data-rsp-frame>
-              <span class="rsp__bar" data-rsp-bar><i></i><i></i><i></i></span>
-              <div class="rsp__inner" data-rsp-inner>
-                <i class="rb rb--nav" data-b="nav"></i>
-                <i class="rb rb--t" data-b="t1"></i>
-                <i class="rb rb--t" data-b="t2"></i>
-                <i class="rb rb--p" data-b="p"></i>
-                <i class="rb rb--btn" data-b="btn"></i>
-                <i class="rb rb--img" data-b="img"></i>
-                <i class="rb rb--card" data-b="c1"></i>
-                <i class="rb rb--card" data-b="c2"></i>
-                <i class="rb rb--card" data-b="c3"></i>
-              </div>
-            </div>
-          </div>
-          <div class="rsp__seg" data-rsp-seg><span class="rsp__pill" data-rsp-pill></span><span class="is-on">computador</span><span>celular</span></div>
-        </div>
-      </article>
     </div>
   </section>
   </div></div>
 
-  <!-- ============================== 07 TRABALHOS ============================== -->
+  <!-- ============================== 05 TRABALHOS ============================== -->
   <div class="sb" data-sb="enter leave"><div class="sb__in" data-sb-in>
   <section class="work" id="trabalhos" aria-labelledby="work-title">
     <div class="work__blooms" aria-hidden="true" data-r="fade"><span class="bloom bloom--l" data-drift="1"></span><span class="bloom bloom--r" data-drift="-1"></span></div>
     <div class="head" data-stage>
       <div class="head__main" data-r="rise">
         <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Trabalhos</p>
-        <h2 class="h2" id="work-title" data-r="focus" data-d="70">Marcas levadas a <em>sério</em>.</h2>
+        <h2 class="h2" id="work-title" data-r="focus" data-d="70">O padrão na <em>prática</em>.</h2>
       </div>
       <div class="head__aside">
-        <p data-r="soft" data-d="140">Começamos pela nossa própria marca: o mesmo padrão que vamos levar para o seu negócio.</p>
+        <p data-r="soft" data-d="140">Este site, o Instagram e a marca da Vellora foram feitos por nós.</p>
         <a class="link" href="#contato" data-open-contact data-r="fade" data-d="280">Quer ver a sua aqui? <svg><use href="#i-arrow"/></svg></a>
       </div>
     </div>
@@ -526,14 +505,95 @@
         <p class="tag tag--glow" data-r="fade" data-d="70">Projeto próprio</p>
         <h3 class="case__name" id="case-vellora" data-r="focus" data-d="140">Vellora</h3>
         <p class="case__svc" data-r="type" data-d="210">Identidade visual · Instagram · Site</p>
-        <p class="case__text" data-r="soft" data-d="280">Uma marca que pratica o que entrega: o mesmo padrão no Instagram, nas propostas e neste site. O sistema parte da Vela, um quarto de círculo e um triângulo em dois tons, sobre um fundo azul quase preto em que o ciano é a única luz.</p>
-        <dl class="ficha" data-r="fade" data-d="350">
-          <div><dt>Cliente</dt><dd>Vellora</dd></div>
-          <div><dt>Serviços</dt><dd>Identidade, Instagram e site</dd></div>
-          <div><dt>Ano</dt><dd>2026</dd></div>
-        </dl>
+        <p class="case__text" data-r="soft" data-d="280">A mesma marca no Instagram, nas propostas e neste site.</p>
       </div>
     </article>
+
+    <!-- PRÓXIMOS TRABALHOS: cada cliente real entra como um <article class="case case--feat">
+         igual ao de cima (imagens, nome, serviços e uma frase curta).
+         Com 2 ou 3 casos reais, mova este bloco inteiro (05 TRABALHOS) para logo depois de 03 SEGMENTOS. -->
+  </section>
+  </div></div>
+
+  <!-- ============================== 06 POR QUE A VELLORA ============================== -->
+  <div class="sb" data-sb="enter leave"><div class="sb__in" data-sb-in>
+  <section class="dif" id="diferenciais" aria-labelledby="dif-title">
+    <div class="head" data-stage>
+      <div class="head__main" data-r="rise">
+        <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Por que a Vellora</p>
+        <h2 class="h2" id="dif-title" data-r="focus" data-d="70">O que você pode <em>esperar</em>.</h2>
+      </div>
+    </div>
+
+    <ul class="dif__promises">
+      <li class="pcard" data-stage>
+        <h3 class="pcard__title" data-r="soft">Você aprova cada etapa</h3>
+        <p class="pcard__copy" data-r="soft" data-d="70">Nada vai ao ar sem o seu ok.</p>
+      </li>
+      <li class="pcard" data-stage>
+        <h3 class="pcard__title" data-r="soft" data-d="70">Prazo por escrito</h3>
+        <p class="pcard__copy" data-r="soft" data-d="140">Você recebe a data de entrega na primeira conversa.</p>
+      </li>
+      <li class="pcard" data-stage>
+        <h3 class="pcard__title" data-r="soft" data-d="140">Tudo no seu nome</h3>
+        <p class="pcard__copy" data-r="soft" data-d="210"><span class="tbd">Site, domínio e arquivos são seus.</span></p>
+      </li>
+      <li class="pcard" data-stage>
+        <h3 class="pcard__title" data-r="soft" data-d="210">Direto com quem faz</h3>
+        <p class="pcard__copy" data-r="soft" data-d="280"><span class="tbd">Sem intermediários.</span></p>
+      </li>
+    </ul>
+  </section>
+  </div></div>
+
+  <!-- ============================== 07 QUEM FAZ ============================== -->
+  <div class="sb" data-sb="enter leave"><div class="sb__in" data-sb-in>
+  <section class="team" id="quem-faz" aria-labelledby="team-title">
+    <div class="head" data-stage>
+      <div class="head__main" data-r="rise">
+        <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Quem faz</p>
+        <h2 class="h2" id="team-title" data-r="focus" data-d="70">Quem vai cuidar da sua <em>marca</em>.</h2>
+      </div>
+    </div>
+
+    <!-- PREENCHER: uma ficha por pessoa. Troque o quadro "foto" por <img src="assets/img/..." alt="Nome"> -->
+    <ul class="team__people">
+      <li class="person" data-stage>
+        <div class="person__photo tbd" data-r="rise" aria-hidden="true">foto</div>
+        <div class="person__txt">
+          <p class="person__role label" data-r="type" data-d="140"><span class="tbd">função</span></p>
+          <h3 class="person__name" data-r="soft" data-d="70"><span class="tbd">Nome e sobrenome</span></h3>
+          <p class="person__bio" data-r="soft" data-d="210"><span class="tbd">Uma frase sobre a experiência dessa pessoa.</span></p>
+        </div>
+      </li>
+      <li class="person" data-stage>
+        <div class="person__photo tbd" data-r="rise" data-d="70" aria-hidden="true">foto</div>
+        <div class="person__txt">
+          <p class="person__role label" data-r="type" data-d="210"><span class="tbd">função</span></p>
+          <h3 class="person__name" data-r="soft" data-d="140"><span class="tbd">Nome e sobrenome</span></h3>
+          <p class="person__bio" data-r="soft" data-d="280"><span class="tbd">Uma frase sobre a experiência dessa pessoa.</span></p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- PREENCHER: depoimentos reais, com nome e negócio. Sem depoimentos ainda? Apague este bloco inteiro. -->
+    <div class="quotes">
+      <p class="quotes__cap label">o que dizem os clientes</p>
+      <ul class="quotes__list">
+        <li class="quote" data-stage data-r="rise">
+          <blockquote><p><span class="tbd">“Depoimento curto de um cliente, de preferência sobre o resultado.”</span></p></blockquote>
+          <p class="quote__who"><strong><span class="tbd">Nome do cliente</span></strong><small><span class="tbd">Negócio · cidade</span></small></p>
+        </li>
+        <li class="quote" data-stage data-r="rise" data-d="70">
+          <blockquote><p><span class="tbd">“Depoimento curto de um cliente, de preferência sobre o resultado.”</span></p></blockquote>
+          <p class="quote__who"><strong><span class="tbd">Nome do cliente</span></strong><small><span class="tbd">Negócio · cidade</span></small></p>
+        </li>
+        <li class="quote" data-stage data-r="rise" data-d="140">
+          <blockquote><p><span class="tbd">“Depoimento curto de um cliente, de preferência sobre o resultado.”</span></p></blockquote>
+          <p class="quote__who"><strong><span class="tbd">Nome do cliente</span></strong><small><span class="tbd">Negócio · cidade</span></small></p>
+        </li>
+      </ul>
+    </div>
   </section>
   </div></div>
 
@@ -545,15 +605,14 @@
         <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Processo</p>
         <h2 class="h2" id="proc-title" data-r="focus" data-d="70">Do primeiro papo ao <em>lançamento</em>.</h2>
       </div>
-      <p class="head__aside" data-r="soft" data-d="140">Um processo claro, com você por perto em cada etapa. Na primeira conversa, você recebe um cronograma com cada fase e a data de entrega.</p>
     </div>
 
     <ol class="proc__grid">
       <li class="wdg wdg--wide" data-stage data-wdg="chat">
         <div class="wdg__txt">
-          <p class="wdg__n label" data-r="type" data-d="140">01 · conversa</p>
+          <p class="wdg__n label" data-r="type" data-d="140">01</p>
           <h3 class="wdg__title" data-r="soft" data-d="210">Conversa</h3>
-          <p class="wdg__body" data-r="soft" data-d="280">Entendemos o seu negócio, o seu público e onde você quer chegar.</p>
+          <p class="wdg__body" data-r="soft" data-d="280">Você conta sobre o seu negócio. Nós mandamos o orçamento e o cronograma.</p>
         </div>
         <div class="wdg__art chat" aria-hidden="true">
           <div class="chat__msg chat__msg--in" data-k="m1"><span class="chat__av"><img src="assets/img/vellora-simbolo-cor.svg?v=20261028" alt="" width="602" height="372"></span><p>Conte sobre o seu negócio.</p></div>
@@ -564,9 +623,9 @@
       </li>
       <li class="wdg" data-stage data-wdg="curves">
         <div class="wdg__txt">
-          <p class="wdg__n label" data-r="type" data-d="210">02 · estratégia</p>
+          <p class="wdg__n label" data-r="type" data-d="210">02</p>
           <h3 class="wdg__title" data-r="soft" data-d="280">Estratégia</h3>
-          <p class="wdg__body" data-r="soft" data-d="350">Definimos posicionamento, mensagem e o papel de cada canal.</p>
+          <p class="wdg__body" data-r="soft" data-d="350">Você manda referências e o que já tem. Nós definimos a mensagem.</p>
         </div>
         <div class="wdg__art curves" aria-hidden="true">
           <div class="curves__box">
@@ -582,17 +641,17 @@
       </li>
       <li class="wdg" data-stage data-wdg="grid">
         <div class="wdg__txt">
-          <p class="wdg__n label" data-r="type" data-d="280">03 · criação</p>
+          <p class="wdg__n label" data-r="type" data-d="280">03</p>
           <h3 class="wdg__title" data-r="soft" data-d="350">Criação</h3>
-          <p class="wdg__body" data-r="soft" data-d="420">Desenhamos identidade, site e perfil com o mesmo padrão visual.</p>
+          <p class="wdg__body" data-r="soft" data-d="420">Nós criamos tudo. <span class="tbd">Você manda as fotos</span> e aprova cada etapa.</p>
         </div>
         <div class="wdg__art vgrid" aria-hidden="true"><ul data-vgrid></ul></div>
       </li>
       <li class="wdg wdg--wide" data-stage data-wdg="pins">
         <div class="wdg__txt">
-          <p class="wdg__n label" data-r="type" data-d="350">04 · lançamento</p>
+          <p class="wdg__n label" data-r="type" data-d="350">04</p>
           <h3 class="wdg__title" data-r="soft" data-d="420">Lançamento</h3>
-          <p class="wdg__body" data-r="soft" data-d="490">Colocamos tudo no ar e entregamos os arquivos organizados para o dia a dia.</p>
+          <p class="wdg__body" data-r="soft" data-d="490">Nós colocamos no ar e entregamos os arquivos.</p>
         </div>
         <div class="wdg__art pins" aria-hidden="true">
           <div class="pins__field"></div>
@@ -612,19 +671,22 @@
     <div class="faq__head" data-stage>
       <div data-r="rise">
         <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Dúvidas</p>
-        <h2 class="h2" id="faq-title" data-r="focus" data-d="70">Antes de <em>começar</em>.</h2>
+        <h2 class="h2" id="faq-title" data-r="focus" data-d="70">Perguntas <em>frequentes</em>.</h2>
       </div>
       <p class="faq__aside" data-r="soft" data-d="140">Não encontrou a sua dúvida? <a class="link link--inline" href="#contato" data-open-contact>Pergunte direto pra gente <svg><use href="#i-arrow"/></svg></a></p>
     </div>
     <ul class="faq__list">
-      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-1" id="qa-1-q">Preciso contratar os três serviços?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-1" role="region" aria-labelledby="qa-1-q" hidden><p>Não. Você pode começar por um deles. Quando site, identidade e Instagram andam juntos, a marca ganha mais consistência, e a gente indica o melhor caminho para o seu momento.</p></div></li>
-      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-2" id="qa-2-q">Qual a diferença entre site institucional e landing page?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-2" role="region" aria-labelledby="qa-2-q" hidden><p>O site institucional apresenta o negócio como um todo: quem você é, o que faz e como falar com você. A landing page tem um objetivo só, como divulgar um serviço ou uma campanha, e leva o visitante direto ao contato.</p></div></li>
-      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-3" id="qa-3-q">Quanto tempo leva um projeto?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-3" role="region" aria-labelledby="qa-3-q" hidden><p>Depende do escopo. Na primeira conversa, você recebe um cronograma com cada etapa e a data de entrega.</p></div></li>
-      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-4" id="qa-4-q">Quanto custa?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-4" role="region" aria-labelledby="qa-4-q" hidden><p>Cada proposta é montada a partir do que o seu negócio precisa. Conte sobre o projeto e enviamos um orçamento sem compromisso.</p></div></li>
-      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-5" id="qa-5-q">Já tenho logo. Vocês fazem só o site?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-5" role="region" aria-labelledby="qa-5-q" hidden><p>Sim. Partimos da identidade que você já tem e, se fizer sentido, sugerimos ajustes para que ela funcione bem no digital.</p></div></li>
-      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-6" id="qa-6-q">O site funciona bem no celular?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-6" role="region" aria-labelledby="qa-6-q" hidden><p>Sim. Cada site é pensado para o celular e para o computador, com textos legíveis, botões fáceis de tocar e carregamento rápido.</p></div></li>
-      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-7" id="qa-7-q">E depois que tudo estiver no ar?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-7" role="region" aria-labelledby="qa-7-q" hidden><p>Você recebe os arquivos organizados para o dia a dia. Se precisar de ajustes ou atualizações depois do lançamento, é só falar com a gente para combinarmos o melhor formato.</p></div></li>
-      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-8" id="qa-8-q">Vocês atendem fora de Brasília?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-8" role="region" aria-labelledby="qa-8-q" hidden><p>Nosso foco são negócios de Brasília, com reuniões presenciais ou online. Se você está em outra cidade, fale com a gente do mesmo jeito.</p></div><span class="hair hair--qa hair--end" data-r="draw" data-d="120"></span></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-1" id="qa-1-q">Quanto custa?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-1" role="region" aria-labelledby="qa-1-q" hidden><p>Site a partir de <span class="tbd">R$ —</span>. Landing page, <span class="tbd">R$ —</span>. Identidade visual, <span class="tbd">R$ —</span>. Instagram, <span class="tbd">R$ —</span>. Marca completa, <span class="tbd">R$ —</span>. Você recebe o valor fechado antes de começar.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-2" id="qa-2-q">Quanto tempo leva?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-2" role="region" aria-labelledby="qa-2-q" hidden><p>Landing page: <span class="tbd">— semanas</span>. Site: <span class="tbd">— semanas</span>. Identidade visual: <span class="tbd">— semanas</span>. Instagram: <span class="tbd">— semanas</span>. A data de entrega vem por escrito.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-3" id="qa-3-q">Como funciona o pagamento?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-3" role="region" aria-labelledby="qa-3-q" hidden><p><span class="tbd">Como o valor é dividido, as formas de pagamento e se dá para parcelar.</span></p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-4" id="qa-4-q">Tem mensalidade?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-4" role="region" aria-labelledby="qa-4-q" hidden><p><span class="tbd">Se existe mensalidade e se domínio e hospedagem estão inclusos (se não, quanto custam por ano).</span> Ajustes depois do lançamento são combinados à parte.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-5" id="qa-5-q">Vocês escrevem os textos e fazem as fotos?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-5" role="region" aria-labelledby="qa-5-q" hidden><p><span class="tbd">Quem escreve os textos e de onde vêm as fotos.</span></p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-6" id="qa-6-q">Vocês postam no meu Instagram?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-6" role="region" aria-labelledby="qa-6-q" hidden><p><span class="tbd">Não. Entregamos o perfil pronto e os modelos de posts. Postar por você todo mês é contratado à parte.</span></p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-7" id="qa-7-q">Quantos ajustes posso pedir?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-7" role="region" aria-labelledby="qa-7-q" hidden><p><span class="tbd">— rodadas</span> em cada etapa.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-8" id="qa-8-q">Preciso contratar tudo?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-8" role="region" aria-labelledby="qa-8-q" hidden><p>Não. Você pode começar por um serviço.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-9" id="qa-9-q">Já tenho logo. Vocês fazem só o site?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-9" role="region" aria-labelledby="qa-9-q" hidden><p>Sim. Usamos a sua marca e, se precisar, sugerimos ajustes.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-10" id="qa-10-q">Site ou landing page?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-10" role="region" aria-labelledby="qa-10-q" hidden><p>O site apresenta o negócio inteiro. A landing page vende uma coisa só, como um serviço ou uma campanha.</p></div></li>
+      <li class="qa" data-stage data-r="rise"><span class="hair hair--qa" data-r="draw"></span><h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-11" id="qa-11-q">Vocês atendem fora de Brasília?<span class="qa__ic"><svg><use href="#i-plus"/></svg></span></button></h3><div class="qa__a" id="qa-11" role="region" aria-labelledby="qa-11-q" hidden><p>Nosso foco é Brasília, mas as reuniões também podem ser online. Fale com a gente.</p></div><span class="hair hair--qa hair--end" data-r="draw" data-d="120"></span></li>
     </ul>
   </section>
 
@@ -636,9 +698,9 @@
       <div class="foot__cta" data-f="cta">
         <p class="foot__eyebrow label" data-f="eyebrow">contato</p>
         <h2 class="foot__title"><span class="foot__line" data-f="line">Vamos tirar sua marca do <em>improviso?</em></span></h2>
-        <p class="foot__copy" data-f="copy">Conte sobre o seu negócio. A gente responde com os próximos passos e um orçamento sem compromisso.</p>
+        <p class="foot__copy" data-f="copy">Conte o que você precisa. Respondemos <span class="tbd">em até 1 dia útil</span>.</p>
         <div class="foot__actions" data-f="actions">
-          <a class="btn btn--glow btn--lg" href="#contato" data-open-contact><span class="btn__label">Fale com a gente</span></a>
+          <a class="btn btn--glow btn--lg" href="#contato" data-open-contact><span class="btn__label">Pedir orçamento</span></a>
           <a class="btn btn--outline btn--lg" data-contact="whatsapp" target="_blank" rel="noopener" hidden><span class="btn__label">WhatsApp</span><svg class="btn__out"><use href="#i-out"/></svg></a>
         </div>
       </div>
@@ -649,7 +711,7 @@
           <path class="g-front" data-f="gfront" d="M194 99 V218 H271 Z"/>
         </svg>
         <a class="foot__logo" href="#inicio" aria-label="Vellora, voltar ao início"><img src="assets/img/vellora-horizontal-cor.webp?v=20261028" alt="Vellora" width="1551" height="278"></a>
-        <p class="foot__tag" data-f="tag">Sites, landing pages, identidade visual e Instagram profissional para negócios que querem ser levados a sério.</p>
+        <p class="foot__tag" data-f="tag">Site, identidade visual e Instagram no mesmo padrão.</p>
         <span class="foot__hair" data-f="bhair"></span>
         <div class="foot__social" data-f="social">
           <p class="label" id="foot-social">fale com a gente</p>
@@ -674,16 +736,14 @@
       <div class="foot__company" data-f="company">
         <span class="foot__mark"><img src="assets/img/vellora-simbolo-cor.svg?v=20261028" alt="" width="602" height="372"></span>
         <p class="foot__name">Vellora</p>
-        <p class="foot__about">Criamos sites, identidade visual e Instagram profissional com clareza, consistência e personalidade.</p>
-        <p class="foot__base label">Sites · Identidade visual · Instagram</p>
       </div>
       <nav class="foot__cols" aria-label="Rodapé">
-        <div class="foot__col" data-f="col"><p class="label">serviços</p><ul><li><a href="#sites">Sites institucionais</a></li><li><a href="#landing-pages">Landing pages</a></li><li><a href="#identidade-visual">Identidade visual</a></li><li><a href="#instagram">Instagram profissional</a></li></ul></div>
-        <div class="foot__col" data-f="col"><p class="label">vellora</p><ul><li><a href="#trabalhos">Trabalhos</a></li><li><a href="#processo">Processo</a></li><li><a href="#duvidas">Dúvidas</a></li></ul></div>
-        <div class="foot__col" data-f="col"><p class="label">contato</p><ul><li><a href="#contato" data-open-contact>Fale conosco</a></li><li data-contact-item="whatsapp" hidden><a data-contact="whatsapp" target="_blank" rel="noopener">WhatsApp</a></li><li data-contact-item="instagram" hidden><a data-contact="instagram" target="_blank" rel="noopener">Instagram</a></li><li data-contact-item="email" hidden><a data-contact="email">E-mail</a></li></ul></div>
+        <div class="foot__col" data-f="col"><p class="label">serviços</p><ul><li><a href="#sites">Sites institucionais</a></li><li><a href="#landing-pages">Landing pages</a></li><li><a href="#identidade-visual">Identidade visual</a></li><li><a href="#instagram">Instagram profissional</a></li><li><a href="#marca-completa">Marca completa</a></li></ul></div>
+        <div class="foot__col" data-f="col"><p class="label">vellora</p><ul><li><a href="#trabalhos">Trabalhos</a></li><li><a href="#quem-faz">Quem faz</a></li><li><a href="#processo">Processo</a></li><li><a href="#duvidas">Dúvidas</a></li></ul></div>
+        <div class="foot__col" data-f="col"><p class="label">contato</p><ul><li><a href="#contato" data-open-contact>Pedir orçamento</a></li><li data-contact-item="whatsapp" hidden><a data-contact="whatsapp" target="_blank" rel="noopener">WhatsApp</a></li><li data-contact-item="instagram" hidden><a data-contact="instagram" target="_blank" rel="noopener">Instagram</a></li><li data-contact-item="email" hidden><a data-contact="email">E-mail</a></li></ul></div>
       </nav>
       <span class="foot__rule foot__rule--2" data-f="rule2"></span>
-      <div class="foot__legal" data-f="legal"><p>© 2026 Vellora. Todos os direitos reservados.</p><p>Brasília, DF</p></div>
+      <div class="foot__legal" data-f="legal"><p>© 2026 Vellora. Todos os direitos reservados.</p><p><span class="tbd">CNPJ —</span> · Brasília, DF</p></div>
     </div>
   </footer>
 </main>
@@ -696,10 +756,9 @@
     <div data-contact-form-wrap>
       <p class="label contact__eyebrow">fale com a gente</p>
       <h2 class="contact__title" id="contact-title">Vamos <em>conversar</em>.</h2>
-      <p class="contact__lead" data-contact-lead>Conte um pouco sobre o seu negócio. A mensagem fica pronta para você enviar.</p>
+      <p class="contact__lead" data-contact-lead>Conte em poucas palavras o que você precisa.</p>
       <form class="contact__form" data-contact-form novalidate>
         <div class="field"><label for="cf-nome">Nome</label><input id="cf-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required></div>
-        <div class="field"><label for="cf-empresa">Empresa</label><input id="cf-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Nome da empresa"></div>
         <div class="field"><label for="cf-servico">Serviço</label>
           <select id="cf-servico" name="servico">
             <option value="">Ainda não sei</option>
