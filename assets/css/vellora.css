@@ -68,12 +68,12 @@
   --sec-pad: 8rem;
   --h1: 4.75rem;
   --h2: 3rem;
-  --hero-frame: 47.5rem;
+  --hero-frame: 40rem;
   --hero-extra: max(0px, calc(100svh - var(--nav-h) - var(--hero-frame)));
 }
-@media (max-width: 1200px) { :root { --page: 64rem; --inset: 3rem; --sec-pad: 6rem; --h1: 3.25rem; --h2: 2.5rem; --hero-frame: 44.5rem; } }
-@media (max-width: 900px)  { :root { --page: 48rem; --inset: 3rem; --nav-h: 4rem; --sec-pad: 5rem; --h1: 2.875rem; --h2: 2.25rem; --hero-frame: 67rem; } }
-@media (max-width: 580px)  { :root { --page: 24.375rem; --inset: 1.25rem; --nav-h: 3.5rem; --sec-pad: 4.5rem; --h1: 2.5rem; --h2: 2rem; --hero-frame: 65.5rem; } }
+@media (max-width: 1200px) { :root { --page: 64rem; --inset: 3rem; --sec-pad: 6rem; --h1: 3.25rem; --h2: 2.5rem; --hero-frame: 38rem; } }
+@media (max-width: 900px)  { :root { --page: 48rem; --inset: 3rem; --nav-h: 4rem; --sec-pad: 5rem; --h1: 2.875rem; --h2: 2.25rem; --hero-frame: 36rem; } }
+@media (max-width: 580px)  { :root { --page: 24.375rem; --inset: 1.25rem; --nav-h: 3.5rem; --sec-pad: 4.5rem; --h1: 2.5rem; --h2: 2rem; --hero-frame: 34rem; } }
 
 /* A raiz acompanha a largura: cada quadro sai 1:1 na sua largura de referência */
 html { font-size: min(1.111111vw, 17.7778px); -webkit-text-size-adjust: 100%; }
@@ -264,188 +264,49 @@ html[data-preload] .page { transform: translateY(200vh); }
 @media (max-width: 580px) { .nav__actions { gap: .5rem; } .nav__actions .btn { height: 2.5rem; padding: 0 .75rem; } .nav__actions .btn__arrow { display: none; } }
 
 /* =========================================================================
-   02 HERO
+   02 HERO: texto centralizado sobre a placa de chamas
    ========================================================================= */
 .hero { position: relative; height: calc(var(--hero-frame) + var(--hero-extra)); }
 .hero__frame { position: absolute; inset-inline: 0; top: calc(var(--hero-extra) / 2); height: var(--hero-frame); }
-.hero__copy { position: absolute; left: var(--inset); top: 8.5rem; width: 33rem; display: flex; flex-direction: column; align-items: flex-start; z-index: 2; }
+.hero__copy { position: absolute; inset: 0 var(--inset); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 2; }
 /* Rótulo do hero: barrinha ciano e maiúsculas espaçadas, igual aos carrosséis */
 .chip { display: inline-flex; align-items: center; gap: .75rem; height: 1.5rem; font: 700 .875rem/1.25rem var(--sans); letter-spacing: .3em; text-transform: uppercase; color: var(--vl-ciano); overflow: clip; }
 .chip__sq { width: .25rem; height: 1.125rem; border-radius: 1px; background: var(--vl-ciano); flex: none; }
 @media (max-width: 580px) { .chip { font-size: .75rem; letter-spacing: .16em; } }
-.hero__title { margin-top: 2rem; }
+.hero__title { margin-top: 2rem; max-width: 60rem; text-wrap: balance; }
 .hero__l { display: block; }
-/* Título principal: a 2ª linha em ciano */
-.hero__l + .hero__l { color: var(--vl-ciano); }
-.hero__sub { margin-top: 1.75rem; max-width: 29.5rem; font-size: 1.125rem; line-height: 1.6; color: var(--t2); }
-.hero__actions { display: flex; gap: .75rem; margin-top: 2.5rem; }
+.hero__sub { margin-top: 1.75rem; max-width: 40rem; font-size: 1.125rem; line-height: 1.6; color: var(--t2); text-wrap: balance; }
+.hero__actions { display: flex; justify-content: center; gap: .75rem; margin-top: 2.5rem; }
 .hero__note { margin-top: 1.5rem; font: 500 .75rem/1.25rem var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--t3); }
 .hero__note span { white-space: nowrap; }
-
-.hero__tilt { position: absolute; inset: 0; pointer-events: none; transform-origin: 76.3889% 50%; z-index: 1; }
-/* O brilho fica só no logo do topo e no botão principal: sem halo atrás da janela */
-.hero__bloom { display: none; }
-
-/* Janela de projeto */
-.win { position: absolute; left: 47.5rem; top: 4.25rem; width: 42.5rem; height: 39rem; overflow: clip; border-radius: 1.75rem 0 0 1.75rem; background: rgba(11, 34, 54, .5); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); }
-.win::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; padding: 1px; background: linear-gradient(to bottom right, rgba(95, 211, 243, .6) 0%, rgba(221, 247, 255, .36) 18%, rgba(221, 247, 255, .16) 40%, rgba(221, 247, 255, .07) 60%, rgba(221, 247, 255, .07) 100%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); pointer-events: none; }
-.win__grid { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(120, 170, 210, .22) 0 .0625rem, transparent .095rem); background-size: 1.5rem 1.3125rem; background-position: .375rem .25rem; opacity: .5; }
-.win__chrome, .win__runs { position: absolute; inset: 0; }
-.win__corner { position: absolute; width: .25rem; height: .25rem; border-radius: 50%; background: rgba(221, 247, 255, .22); }
-.win__corner--a { left: .9375rem; top: .9375rem; }
-.win__corner--b { left: .9375rem; top: 37.6875rem; }
-.win__title { position: absolute; left: 2.4375rem; top: 2.4375rem; font-size: 1rem; line-height: 1.5rem; color: var(--t2); white-space: nowrap; }
-.win__div { position: absolute; left: 11.25rem; top: 2.75rem; width: 1px; height: .875rem; background: rgba(120, 170, 210, .22); }
-.win__meta { position: absolute; left: 12.25rem; top: 2.5625rem; font: 500 .75rem/1.25rem var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--t1); white-space: nowrap; }
-.win__rule { position: absolute; left: 0; right: 0; top: 5.4375rem; height: 1px; background: rgba(120, 170, 210, .1); }
-.win__tools { position: absolute; left: 2.4375rem; top: 6.9375rem; display: flex; flex-direction: column; gap: .5rem; }
-.win__tools li { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: .625rem; border: 1px solid rgba(120, 170, 210, .12); background: rgba(221, 247, 255, .04); color: var(--t2); }
-.win__tools li.is-on { border-color: rgba(120, 170, 210, .34); background: rgba(30, 136, 182, .16); color: var(--t1); }
-.win__tools svg { width: 1.25rem; height: 1.25rem; }
-.win__zoom { position: absolute; right: 2.3125rem; top: 6.9375rem; padding: .3125rem .6875rem; border-radius: .5rem; border: 1px solid rgba(120, 170, 210, .14); background: rgba(221, 247, 255, .05); font: 500 .75rem/1.25rem var(--sans); letter-spacing: .06em; color: var(--t2); }
-.win__status { position: absolute; right: 2.4375rem; top: 2.5625rem; display: flex; align-items: center; gap: .5rem; font: 500 .75rem/1.25rem var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--lilas); white-space: nowrap; }
-.win__status span { width: .375rem; height: .375rem; border-radius: 50%; background: var(--lilas); box-shadow: none; }
-
-.win__flow { position: absolute; inset: 0; }
-.fan { position: absolute; overflow: visible; }
-.fan path { fill: none; stroke-width: 2; stroke-linecap: round; }
-.node { position: absolute; display: flex; flex-direction: column; justify-content: center; gap: .25rem; height: 4.75rem; padding: .8125rem 1.1875rem; border-radius: 1rem; border: 1px solid var(--line-2); background: rgba(11, 34, 54, .55); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); white-space: nowrap; }
-.node strong { font: 500 1rem/1.5rem var(--sans); color: var(--t1); }
-.node span { font-size: .8125rem; line-height: 1.25rem; color: var(--t3); }
-.node.is-glow { border-color: rgba(95, 211, 243, .42); box-shadow: none; }
-.node--a { left: 10.5625rem; top: 10.125rem; width: 13.125rem; }
-.node--b { left: 10.5625rem; top: 20.125rem; width: 13.125rem; }
-.node--c { left: 28.6875rem; top: 15.125rem; width: 11.25rem; }
-.wchip { position: absolute; left: 28.6875rem; top: 20.5rem; display: flex; align-items: center; gap: .5rem; padding: .1875rem .6875rem; border-radius: .375rem; border: 1px solid rgba(120, 170, 210, .14); background: rgba(11, 34, 54, .55); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); font-size: .8125rem; line-height: 1.25rem; color: var(--t2); white-space: nowrap; }
-.wchip span { width: .375rem; height: .375rem; border-radius: 50%; background: var(--t3); }
-.blabel { position: absolute; padding: .1875rem .4375rem; border-radius: .375rem; border: 1px solid var(--line-2); background: rgba(11, 34, 54, .55); font: 500 .6875rem/1.25rem var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--t2); }
-.blabel--a { left: 6.5rem; top: 13.5rem; }
-.blabel--b { left: 6.5rem; top: 19.625rem; }
-.port { position: absolute; width: .5rem; height: .5rem; border-radius: 50%; background: var(--nevoa); border: 2px solid var(--noite); z-index: 2; }
-.port--1 { left: 10.3125rem; top: 12.1875rem; } .port--2 { left: 10.3125rem; top: 22.1875rem; }
-.port--3 { left: 23.4375rem; top: 12.1875rem; } .port--4 { left: 23.4375rem; top: 22.1875rem; }
-.port--5 { left: 28.4375rem; top: 17.1875rem; }
-.flash { position: absolute; width: .5rem; height: .5rem; border-radius: 50%; background: var(--lilas); box-shadow: none; opacity: 0; z-index: 3; }
-.flash--a { left: 23.4375rem; top: 12.1875rem; } .flash--b { left: 23.4375rem; top: 22.1875rem; } .flash--c { left: 28.4375rem; top: 17.1875rem; }
-.packets { position: absolute; left: 0; top: 0; width: 42.375rem; height: 38.875rem; overflow: visible; z-index: 4; }
-.pk-halo { fill: rgba(30, 136, 182, .38); } .pk-core { fill: var(--v100); }
-.pk-halo--alt { fill: rgba(143, 166, 188, .26); } .pk-core--alt { fill: var(--t2); }
-
-.win__rule2 { position: absolute; left: 2.4375rem; top: 27.5625rem; width: 37.5rem; height: 1px; background: rgba(120, 170, 210, .1); }
-.win__runs-label { position: absolute; left: 2.4375rem; top: 28.8125rem; font: 500 .75rem/1.25rem var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--t3); }
-.feed { position: absolute; left: 2.4375rem; top: 30.875rem; width: 37.5rem; height: 5.5625rem; }
-.feed li { position: absolute; left: 0; right: 0; top: 0; height: 1.3125rem; font-size: .875rem; line-height: 1.3125rem; font-variant-numeric: tabular-nums; white-space: nowrap; --pitch: 2.125rem; }
-.feed__dot { position: absolute; left: 0; top: .5rem; width: .375rem; height: .375rem; border-radius: 50%; background: var(--t3); }
-.feed__dot::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--lilas); box-shadow: none; opacity: var(--live, 0); }
-.feed__n { position: absolute; left: 1.25rem; color: var(--t3); }
-.feed__name { position: absolute; left: 3.75rem; color: var(--t2); }
-.feed__cat { position: absolute; right: 0; color: var(--t3); font: 500 .6875rem/1.3125rem var(--sans); letter-spacing: .12em; text-transform: uppercase; }
-
-.hero__trigger { position: absolute; left: 40.625rem; top: 19.5rem; width: 12.5rem; z-index: 3; }
-.node--t { position: relative; left: 0; top: 0; width: 100%; }
-.port--over { left: -.25rem; top: 2.0625rem; }
-.port--out, .flash--t { left: 12.25rem; top: 2rem; }
 
 /* Entrada da hero: estado inicial */
 .is-motion [data-h="chip"], .is-motion [data-h="actions"], .is-motion [data-h="note"] { opacity: 0; transform: translate3d(0, 1.5rem, 0); }
 .is-motion [data-h="title"] { opacity: 0; filter: blur(10px); --reveal: 0%; transform: translate3d(0, 1.5rem, 0); }
-.is-motion [data-h="sub"], .is-motion [data-h="chrome"], .is-motion [data-h="status"], .is-motion [data-h="blabel"], .is-motion [data-h="wchip"] { opacity: 0; }
-.is-motion [data-h^="node"] { opacity: 0; transform: translateY(.5rem); }
-.is-motion [data-h="port"], .is-motion [data-h="port5"], .is-motion [data-h="pover"], .is-motion [data-h="pout"] { opacity: 0; transform: scale(.4); }
-.is-motion [data-h="grid"] { -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0, transparent 0); mask-image: radial-gradient(circle at 50% 50%, #000 0, transparent 0); }
-.is-motion .fan path { visibility: hidden; }
+.is-motion [data-h="sub"] { opacity: 0; }
 
 /* 1024 */
 @media (max-width: 1200px) {
-  .hero__copy { left: var(--inset); top: 8.75rem; width: 25rem; }
   .hero__title { margin-top: 1.75rem; }
   .hero__sub { font-size: 1.0625rem; margin-top: 1.375rem; }
   .hero__actions { margin-top: 2rem; }
   .hero__actions .btn--lg { height: 3.25rem; padding: 0 1.375rem; font-size: .9375rem; }
-  .hero__bloom { left: 14.75rem; top: -5.9375rem; width: 60.3125rem; height: 56.4375rem; }
-  .win { left: 31.75rem; top: 1.6875rem; width: 32.25rem; height: 41.1875rem; }
-  .win__corner--a { left: auto; right: 1rem; top: 1rem; } .win__corner--b { display: none; }
-  .win__title { left: 1.4375rem; top: 1.4375rem; }
-  .win__div { left: 10.25rem; top: 1.75rem; }
-  .win__meta { left: 11.25rem; top: 1.5625rem; }
-  .win__rule { top: 3.9375rem; }
-  .win__tools { left: 1.4375rem; top: 4.75rem; flex-direction: row; }
-  .win__zoom { right: 1.4375rem; top: 4.75rem; padding: .4375rem .6875rem; }
-  .win__status { right: 1.4375rem; top: 1.5625rem; }
-  .node { align-items: center; gap: 0; padding: .6875rem .9375rem; height: 3.875rem; }
-  .node strong { font-size: .875rem; line-height: 1.25rem; }
-  .node span { font-size: .75rem; }
-  .node--a { left: 3.0625rem; top: 16.0625rem; width: 11.75rem; }
-  .node--b { left: 17.3125rem; top: 16.0625rem; width: 11.75rem; }
-  .node--c { left: 10.1875rem; top: 24.0625rem; width: 11.75rem; }
-  .wchip { left: 13.25rem; top: 28.8125rem; }
-  .blabel--a { left: 10.875rem; top: 13rem; } .blabel--b { left: 18rem; top: 13rem; }
-  .port { display: none; }
-  .flash--a { left: 8.6875rem; top: 15.8125rem; } .flash--b { left: 22.9375rem; top: 15.8125rem; } .flash--c { left: 15.8125rem; top: 23.8125rem; }
-  .packets { width: 32.125rem; height: 41.0625rem; }
-  .win__rule2 { left: 1.4375rem; top: 31.5625rem; width: 29.25rem; }
-  .win__runs-label { left: 1.4375rem; top: 32.625rem; }
-  .feed { left: 1.4375rem; top: 34.875rem; width: 29.25rem; height: 4.75rem; }
-  .feed li { --pitch: 1.75rem; height: 1.25rem; line-height: 1.25rem; }
-  .feed__dot { top: .4375rem; } .feed__n { left: 1.125rem; } .feed__name { left: 3.5rem; }
-  .hero__trigger { left: 42rem; top: 9.6875rem; width: 11.75rem; }
-  .port--over { display: none; }
-  .port--out, .flash--t { display: block; left: 5.625rem; top: 3.625rem; }
 }
 /* 768 */
 @media (max-width: 900px) {
-  .hero__copy { left: var(--inset); right: var(--inset); top: 2.5rem; width: auto; align-items: center; text-align: center; }
   .hero__title { margin-top: 1.5rem; }
-  .hero__sub { max-width: 34rem; margin-top: 1.25rem; }
+  .hero__sub { margin-top: 1.25rem; }
   .hero__actions { margin-top: 1.75rem; }
   .hero__note { margin-top: 1.25rem; }
-  .hero__tilt { transform-origin: 50% 66.5%; }
-  .hero__bloom { left: -15.375rem; top: 9rem; width: 78.75rem; height: 78.125rem; }
-  .win { left: 7.875rem; top: 27.5rem; width: 32.25rem; height: 36.875rem; border-radius: 1.75rem; }
-  .win__corner { display: none; }
-  .node--a { left: 4.1875rem; top: 15.875rem; width: 10.75rem; }
-  .node--b { left: 17.1875rem; top: 15.875rem; width: 10.75rem; }
-  .node--c { left: 10.6875rem; top: 23.625rem; width: 10.75rem; }
-  .node { padding-block: .5625rem; height: 3.75rem; }
-  .wchip { left: 13.25rem; top: 28.375rem; }
-  .blabel--a { left: 10.625rem; top: 12.9375rem; } .blabel--b { left: 18.1875rem; top: 12.9375rem; }
-  .port { display: block; }
-  .port--1 { left: 9.3125rem; top: 19.375rem; } .port--2 { left: 22.3125rem; top: 19.375rem; }
-  .port--3 { left: 9.3125rem; top: 15.625rem; } .port--4 { left: 22.3125rem; top: 15.625rem; }
-  .port--5 { left: 15.8125rem; top: 23.375rem; }
-  .flash--a { left: 9.3125rem; top: 15.625rem; } .flash--b { left: 22.3125rem; top: 15.625rem; } .flash--c { left: 15.8125rem; top: 23.375rem; }
-  .packets { width: 32.125rem; height: 36.75rem; }
-  .win__rule2 { top: 31.25rem; }
-  .win__runs-label { top: 32.0625rem; }
-  .feed { top: 34.0625rem; height: 1.25rem; }
-  .hero__trigger { left: 18.625rem; top: 35.6875rem; width: 10.75rem; }
-  .hero__trigger .node { height: 3.75rem; padding-top: .6875rem; }
-  .port--out, .flash--t { left: 5.125rem; top: 3.5rem; }
 }
 /* 390 */
 @media (max-width: 580px) {
-  .hero__copy { top: 2rem; }
   .chip { height: 2rem; gap: .625rem; padding: 0 .75rem 0 .625rem; font-size: .6875rem; letter-spacing: .12em; }
   .hero__title { margin-top: 1.25rem; }
   .hero__sub { font-size: 1rem; line-height: 1.55; margin-top: 1rem; }
   .hero__actions { flex-direction: column; align-self: stretch; gap: .625rem; margin-top: 1.5rem; }
   .hero__actions .btn--lg { height: 3.25rem; }
   .hero__note { margin-top: 1.125rem; font-size: .6875rem; letter-spacing: .1em; line-height: 1.125rem; display: flex; flex-direction: column; align-items: center; }
-  .hero__tilt { transform-origin: 50% 71.6%; }
-  .hero__bloom { left: -4.875rem; top: 15rem; width: 34.125rem; height: 40rem; }
-  .win { left: 1.25rem; top: 31.5rem; width: 21.875rem; height: 32.1875rem; }
-  .win__title { left: 1.1875rem; }
-  .win__div, .win__meta { display: none; }
-  .win__tools { left: 1.1875rem; }
-  .win__zoom { right: 1.1875rem; }
-  .win__status { right: 1.1875rem; }
-  .win__flow { transform-origin: 4.1875rem 8.125rem; translate: -3rem 0; scale: .8158; }
-  .win__rule2 { left: 1.1875rem; top: 27.1875rem; width: 19.375rem; }
-  .win__runs-label { left: 1.1875rem; top: 28rem; }
-  .feed { left: 1.1875rem; top: 30rem; width: 19.375rem; }
-  .feed__cat { display: none; }
-  .hero__trigger { left: 7.8125rem; top: 39.6875rem; transform-origin: 0 0; scale: .8158; }
-  .port--out, .flash--t { left: 4.1875rem; top: 3.5rem; width: .4375rem; height: .4375rem; }
 }
 
 /* =========================================================================
@@ -1036,33 +897,6 @@ html[data-preload] .pre, html[data-preload-closing] .pre { display: block; }
 .hero__plate { position: absolute; top: 0; bottom: var(--plate-b); left: calc(50% - 50vw); right: calc(50% - 50vw); z-index: 0; overflow: clip; background: var(--vl-superficie); pointer-events: none; }
 .hero__plate canvas { display: block; width: 100%; height: 100%; }
 .hero__frame { z-index: 1; }
-
-/* ---------- Hero: a janela de projeto simétrica ----------
-   No original ela sangrava pela borda direita (cantos retos à direita, os
-   pontinhos só à esquerda). Agora os quatro cantos são iguais, então ela
-   precisa de ar à direita para o canto aparecer. Mas a borda esquerda não
-   pode andar: no quadro de 1440 o nó "Identidade visual" já encosta no título,
-   e no de 1024 a janela já encosta no rótulo do hero. Então o grupo encolhe em
-   volta de um ponto que deixa essa borda parada (translate = (borda − origem)
-   × (1 − escala); origem = 76,3889% da página) e só a borda direita recua:
-     1440: nó em 40,625rem, origem 68,75rem, 5%  → recua ~2,5rem
-     1024: janela em 31,75rem, origem 48,889rem, 7% → recua ~2,25rem
-   O `translate` e o `scale` somam ao `transform` que o site.js usa para
-   inclinar a janela. */
-.win { border-radius: 1.75rem; }
-.win__chrome::before, .win__chrome::after { content: ""; position: absolute; width: .25rem; height: .25rem; border-radius: 50%; background: rgba(221, 247, 255, .22); }
-.win__chrome::before { right: .9375rem; top: .9375rem; }
-.win__chrome::after { right: .9375rem; top: 37.6875rem; }
-@media (min-width: 1201px) { .hero__tilt { scale: .95; translate: -1.40625rem 0; } }
-@media (max-width: 1200px) {
-  .hero__tilt { scale: .93; translate: -1.2rem 0; }
-  .win__chrome::before { right: auto; left: 1rem; top: 1rem; }
-  .win__chrome::after { display: none; }
-}
-@media (max-width: 900px) {
-  .hero__tilt { scale: none; translate: none; }
-  .win__chrome::before { display: none; }
-}
 
 /* ---------- Corpo: os cartões-janela ----------
    O canvas entra como primeiro filho, com z-index -1 dentro do cartão isolado:
