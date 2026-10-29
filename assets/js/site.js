@@ -1337,11 +1337,10 @@ function initContact() {
 
   const dlg = $('[data-contact-dialog]'); if (!dlg) return;
   const form = $('[data-contact-form]', dlg), formWrap = $('[data-contact-form-wrap]', dlg), done = $('[data-contact-done]', dlg);
-  const sendLabel = $('[data-contact-send]', dlg), err = $('[data-contact-err]', dlg);
+  const err = $('[data-contact-err]', dlg);
   const preview = $('[data-contact-preview]', dlg), doneText = $('[data-contact-done-text]', dlg), copyBtn = $('[data-contact-copy]', dlg);
   const select = $('#cf-servico', dlg);
   const channel = wa ? 'whatsapp' : em ? 'email' : null;
-  sendLabel.textContent = channel === 'whatsapp' ? 'Continuar no WhatsApp' : channel === 'email' ? 'Continuar por e-mail' : 'Preparar mensagem';
   let last = null, message = '';
   function open(service, trigger) {
     last = trigger || document.activeElement;
