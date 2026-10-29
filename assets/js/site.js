@@ -13,8 +13,8 @@
 -------------------------------------------------------------------------- */
 const CONTATO = {
   whatsapp: '',  // só números, com DDI e DDD. Ex.: 5561912345678
-  instagram: '', // usuário sem @. Ex.: vellora
-  email: ''      // ex.: contato@vellora.com.br
+  instagram: 'vellora.marketing', // usuário sem @. Ex.: vellora
+  email: 'velloramarketingg@gmail.com' // provisório. Ex.: contato@vellora.com.br
 };
 
 /* ---------- Ambiente ---------- */
