@@ -28,8 +28,9 @@ Estrutura e movimento adaptados do template Relay; identidade do guia da marca p
    - tempo de resposta "em até 1 dia útil" (hero e contato).
 4. **Quem faz:** a seção (pessoas e depoimentos) está desativada num comentário no `index.html`.
    Reative quando houver fotos e depoimentos reais. O CNPJ saiu do rodapé até existir.
-5. **Trabalhos:** com 2 ou 3 casos reais, cada um entra como um `case case--feat` e o bloco
-   `05 TRABALHOS` sobe para logo depois de `03 SEGMENTOS` (há um comentário no lugar).
+5. **Trabalhos:** a seção saiu do site. Para voltar com 2 ou 3 casos reais, recupere o bloco
+   `05 TRABALHOS` do `index.html` no commit `653028e`, coloque-o logo depois de `03 SEGMENTOS`
+   e devolva "Trabalhos" ao menu (desktop e celular) e à coluna "vellora" do rodapé.
 
 ## Rodar localmente
 
