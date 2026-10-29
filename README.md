@@ -23,11 +23,12 @@ Estrutura e movimento adaptados do template Relay; identidade do guia da marca p
    classe. O console do navegador avisa quantos ainda faltam. São eles:
    - preço inicial e prazo médio de cada serviço e da Marca completa (nos serviços e na dúvida "Quanto custa?");
    - pagamento, mensalidade, domínio e hospedagem, textos e fotos, rodadas de ajuste (nas dúvidas);
-   - o que o Instagram profissional inclui (gestão mensal ou não), em Serviços e nas dúvidas;
-   - "Tudo no seu nome" e "Direto com quem faz" (Por que a Vellora);
-   - nome, função, foto e bio de cada pessoa, e os depoimentos (Quem faz);
-   - tempo de resposta (contato) e CNPJ (rodapé).
-4. **Trabalhos:** com 2 ou 3 casos reais, cada um entra como um `case case--feat` e o bloco
+   - "Não inclui postagens mensais" (Instagram profissional, em Serviços);
+   - "Tudo no seu nome" (Sem surpresas) e "Você envia as fotos" (Processo);
+   - tempo de resposta "em até 1 dia útil" (hero e contato).
+4. **Quem faz:** a seção (pessoas e depoimentos) está desativada num comentário no `index.html`.
+   Reative quando houver fotos e depoimentos reais. O CNPJ saiu do rodapé até existir.
+5. **Trabalhos:** com 2 ou 3 casos reais, cada um entra como um `case case--feat` e o bloco
    `05 TRABALHOS` sobe para logo depois de `03 SEGMENTOS` (há um comentário no lugar).
 
 ## Rodar localmente
