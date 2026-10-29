@@ -219,11 +219,11 @@ html[data-preload] .page { transform: translateY(200vh); }
 .nlist span { font-size: .75rem; letter-spacing: .06em; color: var(--t3); font-variant-numeric: tabular-nums; flex: none; }
 
 /* Prazo e investimento: duas casas lado a lado */
-.facts { display: grid; grid-template-columns: 1fr 1fr; border-radius: .75rem; border: 1px solid var(--line); background: var(--surface); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); border-radius: .75rem; border: 1px solid var(--line); background: var(--surface); }
 .facts div { display: flex; flex-direction: column; gap: .25rem; padding: .75rem 1rem; }
 .facts div + div { border-left: 1px solid var(--line); }
 .facts dt { font: 600 .6875rem/1rem var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--t3); }
-.facts dd { font: 700 1.125rem/1.5rem var(--sans); color: var(--t1); font-variant-numeric: tabular-nums; }
+.facts dd { font: 700 1.125rem/1.5rem var(--sans); color: var(--t1); font-variant-numeric: tabular-nums; text-wrap: balance; }
 
 /* =========================================================================
    01 NAVEGAÇÃO
