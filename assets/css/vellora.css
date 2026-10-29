@@ -835,7 +835,7 @@ html[data-preload] .page { transform: translateY(200vh); }
 .contact { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 1rem; border: 0; background: transparent; color: var(--t1); overflow-y: auto; }
 .contact[open] { display: flex; }
 .contact::backdrop { background: rgba(6, 18, 31, .74); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.contact__panel { position: relative; width: min(38rem, 100%); margin: auto; padding: 2.5rem; border-radius: 2rem; border: 1px solid var(--line); background: radial-gradient(70% 50% at 50% 0%, rgba(30, 136, 182, .16), transparent 70%), var(--panel); }
+.contact__panel { position: relative; width: min(42rem, 100%); margin: auto; padding: 2.5rem; border-radius: 2rem; border: 1px solid var(--line); background: radial-gradient(70% 50% at 50% 0%, rgba(30, 136, 182, .16), transparent 70%), var(--panel); }
 .contact__close { position: absolute; right: 1.25rem; top: 1.25rem; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: var(--vl-raio-botao); border: 1px solid var(--line-2); color: var(--t2); }
 .contact__close svg { width: 1rem; height: 1rem; }
 .contact__close:hover { color: var(--t1); border-color: var(--line-3); }
@@ -845,7 +845,8 @@ html[data-preload] .page { transform: translateY(200vh); }
 .contact__lead { margin-top: .75rem; color: var(--t2); font-size: 1rem; line-height: 1.6; }
 .contact__form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.75rem; }
 .field { display: flex; flex-direction: column; gap: .5rem; }
-.field--full, .contact__form .field:nth-child(3) { grid-column: 1 / -1; }
+.field--full { grid-column: 1 / -1; }
+.field__opt { color: var(--t3); }
 .field label { font-size: .875rem; color: var(--t2); }
 .field input, .field select, .field textarea { width: 100%; min-height: 3rem; padding: .75rem 1rem; border-radius: .25rem; border: 1px solid rgba(120, 170, 210, .22); background: var(--noite); color: var(--t1); font: 400 1rem/1.4 var(--sans); outline: none; transition: border-color .2s var(--ease), box-shadow .2s var(--ease); }
 .field textarea { resize: vertical; min-height: 6rem; }
