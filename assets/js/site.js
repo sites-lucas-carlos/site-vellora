@@ -1150,13 +1150,16 @@ function initContact() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(form);
-    const nome = String(data.get('nome') || '').trim(), empresa = String(data.get('empresa') || '').trim();
-    const servico = String(data.get('servico') || '').trim(), msg = String(data.get('mensagem') || '').trim();
-    if (!nome) { err.hidden = false; $('#cf-nome', dlg).focus(); return; }
+    const val = (k) => String(data.get(k) || '').trim();
+    const nome = val('nome'), empresa = val('empresa'), whats = val('whatsapp'), email = val('email');
+    const segmento = val('segmento'), servico = val('servico'), msg = val('mensagem');
+    if (!nome || (!whats && !email)) { err.hidden = false; $(!nome ? '#cf-nome' : '#cf-whats', dlg).focus(); return; }
     err.hidden = true;
     message = `Olá, Vellora! Meu nome é ${nome}${empresa ? `, da ${empresa}` : ''}.`
+      + (segmento ? `\nSegmento: ${segmento}.` : '')
       + (servico ? `\nTenho interesse em: ${servico}.` : '')
-      + (msg ? `\n\n${msg}` : '');
+      + (msg ? `\n\nObjetivo: ${msg}` : '')
+      + `\n\nContato: ${[whats, email].filter(Boolean).join(' · ')}`;
     preview.textContent = message;
     if (channel === 'whatsapp') {
       window.open(`https://wa.me/${wa}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');

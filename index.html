@@ -659,7 +659,23 @@
       <h2 class="contact__title" id="contact-title">Vamos <em>conversar</em>.</h2>
       <p class="contact__lead" data-contact-lead>Conte em poucas palavras o que você precisa.</p>
       <form class="contact__form" data-contact-form novalidate>
-        <div class="field"><label for="cf-nome">Nome</label><input id="cf-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required></div>
+        <div class="field"><label for="cf-nome">Nome</label><input id="cf-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome completo" required></div>
+        <div class="field"><label for="cf-whats">WhatsApp</label><input id="cf-whats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000"></div>
+        <div class="field"><label for="cf-email">E-mail</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br"></div>
+        <div class="field"><label for="cf-empresa">Empresa</label><input id="cf-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Nome da empresa"></div>
+        <div class="field"><label for="cf-segmento">Segmento</label>
+          <select id="cf-segmento" name="segmento">
+            <option value="">Selecione</option>
+            <option>Alimentação e delivery</option>
+            <option>Saúde e bem-estar</option>
+            <option>Beleza e estética</option>
+            <option>Comércio e varejo</option>
+            <option>Serviços profissionais</option>
+            <option>Construção e reformas</option>
+            <option>Educação</option>
+            <option>Outro</option>
+          </select>
+        </div>
         <div class="field"><label for="cf-servico">Serviço</label>
           <select id="cf-servico" name="servico">
             <option value="">Ainda não sei</option>
@@ -670,8 +686,8 @@
             <option>Marca completa</option>
           </select>
         </div>
-        <div class="field field--full"><label for="cf-msg">Sobre o seu negócio</label><textarea id="cf-msg" name="mensagem" rows="3" placeholder="O que você faz e o que precisa agora"></textarea></div>
-        <p class="field__err" data-contact-err role="alert" hidden>Conte como podemos te chamar.</p>
+        <div class="field field--full"><label for="cf-msg">Qual é o seu principal objetivo? <span class="field__opt">(opcional)</span></label><textarea id="cf-msg" name="mensagem" rows="4" placeholder="Ex.: aparecer no Google e receber mais pedidos de orçamento"></textarea></div>
+        <p class="field__err" data-contact-err role="alert" hidden>Informe seu nome e um WhatsApp ou e-mail para a gente responder.</p>
         <button class="btn btn--glow btn--lg contact__send" type="submit"><span class="btn__label">Pedir orçamento</span></button>
       </form>
     </div>
