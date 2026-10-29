@@ -1,10 +1,10 @@
 /* ==========================================================================
-   VELLORA: fundo da página inteira (three.js r0.143.0)
-   "Corner Flames": chamas turbulentas saindo dos cantos superior esquerdo e
-   inferior direito, sobre uma vinheta escura, em loop. Quad em clip-space,
-   três composers (torus, bloom e final) e o FinalPass da especificação.
-   Cores adaptadas à paleta Cobalto e ciano do guia da marca:
-   chama = Azul #1E88B6, dobra fria = Profundo #0D3B66, vinheta = Fundo #06121F.
+   VELLORA: chamas de canto na placa do hero e nos cartões-janela
+   "Corner Flames" (three.js r0.143.0) nas cores da marca. Em vez de cobrir
+   a página inteira, ele desenha dentro da placa do hero.
+   No mesmo quadro, cada cartão [data-janela] copia a sua fatia desse desenho.
+   A fatia é medida na caixa que envolve todas as células do grupo, então um
+   grupo lê um fundo só, contínuo de uma célula à outra.
    ========================================================================== */
 import * as THREE from 'three'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
@@ -37,10 +37,17 @@ function hexToVec3(hex) {
   return new THREE.Vector3(((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255)
 }
 
+// posição no documento pelo layout (offset*), sem os deslocamentos das entradas
+function docBox(el) {
+  let x = 0, y = 0
+  for (let n = el; n; n = n.offsetParent) { x += n.offsetLeft; y += n.offsetTop }
+  return { x, y, w: el.offsetWidth, h: el.offsetHeight }
+}
+
 const LAYERS = { NONE: 0, TORUS_SCENE: 1, BLOOM_SCENE: 2, ENTIRE_SCENE: 3 }
 
 function start() {
-  if (!canvas || 'bot' in root.dataset) { if (canvas) canvas.remove(); return }
+  if (!canvas || 'bot' in root.dataset) return
 
   let renderer
   try {
@@ -82,7 +89,7 @@ function start() {
       }`
   }
 
-  // área visível da janela (sem a barra de rolagem), igual ao tamanho do canvas fixo
+  // o tamanho da placa do hero (o canvas a preenche)
   const size = () => ({ w: canvas.clientWidth || window.innerWidth, h: canvas.clientHeight || window.innerHeight })
   const { w: w0, h: h0 } = size()
 
@@ -170,10 +177,56 @@ function start() {
   mesh.layers.enable(LAYERS.ENTIRE_SCENE)
   scene.add(mesh)
 
-  /* Tamanho */
+  /* As janelas: um canvas 2D por cartão [data-janela], agrupados pelo valor */
+  const groups = new Map()
+  const windows = Array.from(document.querySelectorAll('[data-janela]')).map((cell) => {
+    const slot = document.createElement('span')
+    slot.className = 'janela__asset'
+    slot.setAttribute('aria-hidden', 'true')
+    const c = document.createElement('canvas')
+    slot.appendChild(c)
+    cell.prepend(slot)
+    cell.classList.add('is-janela')
+    const win = { cell, canvas: c, ctx: c.getContext('2d', { alpha: false }), visible: false, lit: false, u: null }
+    const key = cell.dataset.janela
+    if (!groups.has(key)) groups.set(key, [])
+    groups.get(key).push(win)
+    return win
+  })
+
+  // a caixa de cada grupo e a fatia de cada célula dentro dela
+  function measure() {
+    for (const list of groups.values()) {
+      const boxes = list.map((win) => docBox(win.cell))
+      const L = Math.min(...boxes.map((b) => b.x)), T = Math.min(...boxes.map((b) => b.y))
+      const W = Math.max(...boxes.map((b) => b.x + b.w)) - L, H = Math.max(...boxes.map((b) => b.y + b.h)) - T
+      list.forEach((win, i) => {
+        const b = boxes[i]
+        win.u = { x: b.x - L, y: b.y - T, w: b.w, h: b.h, W, H }
+        // as chamas são macias: 1x basta e poupa a cópia
+        const cw = Math.max(1, b.w), ch = Math.max(1, b.h)
+        if (win.canvas.width !== cw || win.canvas.height !== ch) { win.canvas.width = cw; win.canvas.height = ch }
+      })
+    }
+  }
+
+  function copyWindows(all) {
+    const sw = canvas.width, sh = canvas.height
+    for (const win of windows) {
+      if (!win.u || (!all && !win.visible)) continue
+      const { x, y, w, h, W, H } = win.u
+      win.ctx.drawImage(canvas, x / W * sw, y / H * sh, w / W * sw, h / H * sh, 0, 0, win.canvas.width, win.canvas.height)
+      if (!win.lit) { win.lit = true; win.canvas.classList.add('is-lit') }
+    }
+  }
+
+  /* Tamanho (a página muda de altura à toa; a placa, raramente) */
+  let last = ''
   function resize() {
     const { w, h } = size()
     const dpr = pixelRatio()
+    if (last === `${w}x${h}@${dpr}`) return
+    last = `${w}x${h}@${dpr}`
     renderer.setPixelRatio(dpr)
     renderer.setSize(w, h, false)
     camera.aspect = w / h
@@ -181,24 +234,34 @@ function start() {
     for (const c of [torusComposer, bloomComposer, finalComposer]) { c.setPixelRatio(dpr); c.setSize(w, h) }
   }
   resize()
+  measure()
 
-  function draw() {
+  // desenhar e copiar no mesmo quadro: depois dele o buffer do WebGL não é garantido
+  function draw(all) {
     sceneObj.render()
     camera.layers.set(LAYERS.TORUS_SCENE); torusComposer.render()
     camera.layers.set(LAYERS.BLOOM_SCENE); bloomComposer.render()
     camera.layers.set(LAYERS.ENTIRE_SCENE); finalComposer.render()
+    copyWindows(all)
   }
 
-  // "Reduzir movimento": um quadro parado, já aceso, redesenhado só ao redimensionar
-  if (reduceMotion) {
-    sceneObj.appearStart = -1e6
-    draw()
+  // tudo que muda de tamanho (a placa, os cartões, a página) mede de novo
+  const watched = [canvas, ...windows.map((w) => w.cell), document.querySelector('.page') || document.body]
+  function onResize(after) {
     let queued = false
-    window.addEventListener('resize', () => {
+    const ro = new ResizeObserver(() => {
       if (queued) return
       queued = true
-      requestAnimationFrame(() => { queued = false; resize(); draw() })
+      requestAnimationFrame(() => { queued = false; resize(); measure(); after() })
     })
+    watched.forEach((el) => ro.observe(el))
+  }
+
+  // "Reduzir movimento": um quadro parado, já aceso, redesenhado só quando algo muda de tamanho
+  if (reduceMotion) {
+    sceneObj.appearStart = -1e6
+    draw(true)
+    onResize(() => draw(true))
     return
   }
 
@@ -209,18 +272,26 @@ function start() {
     }).observe(root, { attributes: true, attributeFilter: ['data-preload'] })
   }
 
-  let resizeQueued = false
-  window.addEventListener('resize', () => {
-    if (resizeQueued) return
-    resizeQueued = true
-    requestAnimationFrame(() => { resizeQueued = false; resize() })
-  })
-
+  /* Só anima enquanto a placa ou alguma janela estiver na tela */
+  let plateVisible = true, rafId = 0
   function render() {
-    requestAnimationFrame(render)
-    draw()
+    rafId = 0
+    if (!plateVisible && !windows.some((w) => w.visible)) return
+    rafId = requestAnimationFrame(render)
+    draw(false)
   }
-  render()
+  const wake = () => { if (!rafId) rafId = requestAnimationFrame(render) }
+  onResize(() => {})
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.target === canvas) plateVisible = e.isIntersecting
+      else { const win = windows.find((w) => w.canvas === e.target); if (win) win.visible = e.isIntersecting }
+    }
+    wake()
+  })
+  io.observe(canvas)
+  windows.forEach((w) => io.observe(w.canvas))
+  wake()
 }
 
 start()

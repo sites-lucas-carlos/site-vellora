@@ -64,9 +64,9 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/css/vellora.css?v=20261030">
+<link rel="stylesheet" href="assets/css/vellora.css?v=20261031">
 <script src="assets/js/site.js?v=20261030" defer></script>
-<script type="module" src="assets/js/fundo.js?v=20261028"></script>
+<script type="module" src="assets/js/fundo.js?v=20261031"></script>
 </head>
 <body>
 
@@ -101,9 +101,6 @@
 </div>
 
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-
-<!-- ============================== FUNDO (WebGL: chamas de canto) ============================== -->
-<canvas class="fundo" id="scene" aria-hidden="true"></canvas>
 
 <div class="site">
 <main class="page" id="conteudo">
@@ -145,6 +142,8 @@
 
   <!-- ============================== 02 HERO ============================== -->
   <section class="hero" id="inicio" aria-labelledby="hero-title" data-hero>
+    <!-- a placa: as chamas de uma borda à outra da tela; em cima e embaixo, o Fundo da página -->
+    <div class="hero__plate" aria-hidden="true"><canvas id="scene"></canvas></div>
     <div class="hero__frame">
 
       <div class="hero__copy">
@@ -441,7 +440,7 @@
 
     <!-- o pacote completo e o guia de escolha -->
     <div class="pack" id="marca-completa">
-      <article class="pack__offer" data-stage aria-labelledby="pack-title">
+      <article class="pack__offer" data-janela="pack" data-stage aria-labelledby="pack-title">
         <h3 class="pack__title" id="pack-title" data-r="focus">Marca <em>completa</em></h3>
         <p class="pack__copy" data-r="soft" data-d="70">Os três juntos, no mesmo padrão.</p>
         <ul class="pack__list" data-r="fade" data-d="210">
@@ -526,19 +525,19 @@
     </div>
 
     <ul class="dif__promises">
-      <li class="pcard" data-stage>
+      <li class="pcard" data-janela="dif" data-stage>
         <h3 class="pcard__title" data-r="soft">Você aprova cada etapa</h3>
         <p class="pcard__copy" data-r="soft" data-d="70">Nada vai ao ar sem o seu ok.</p>
       </li>
-      <li class="pcard" data-stage>
+      <li class="pcard" data-janela="dif" data-stage>
         <h3 class="pcard__title" data-r="soft" data-d="70">Prazo por escrito</h3>
         <p class="pcard__copy" data-r="soft" data-d="140">Você recebe a data de entrega na primeira conversa.</p>
       </li>
-      <li class="pcard" data-stage>
+      <li class="pcard" data-janela="dif" data-stage>
         <h3 class="pcard__title" data-r="soft" data-d="140">Tudo no seu nome</h3>
         <p class="pcard__copy" data-r="soft" data-d="210"><span class="tbd">Site, domínio e arquivos são seus.</span></p>
       </li>
-      <li class="pcard" data-stage>
+      <li class="pcard" data-janela="dif" data-stage>
         <h3 class="pcard__title" data-r="soft" data-d="210">Direto com quem faz</h3>
         <p class="pcard__copy" data-r="soft" data-d="280"><span class="tbd">Sem intermediários.</span></p>
       </li>
@@ -608,7 +607,7 @@
     </div>
 
     <ol class="proc__grid">
-      <li class="wdg wdg--wide" data-stage data-wdg="chat">
+      <li class="wdg wdg--wide" data-janela="proc" data-stage data-wdg="chat">
         <div class="wdg__txt">
           <p class="wdg__n label" data-r="type" data-d="140">01</p>
           <h3 class="wdg__title" data-r="soft" data-d="210">Conversa</h3>
@@ -647,7 +646,7 @@
         </div>
         <div class="wdg__art vgrid" aria-hidden="true"><ul data-vgrid></ul></div>
       </li>
-      <li class="wdg wdg--wide" data-stage data-wdg="pins">
+      <li class="wdg wdg--wide" data-janela="proc" data-stage data-wdg="pins">
         <div class="wdg__txt">
           <p class="wdg__n label" data-r="type" data-d="350">04</p>
           <h3 class="wdg__title" data-r="soft" data-d="420">Lançamento</h3>
@@ -695,7 +694,7 @@
     <div class="foot__glows" aria-hidden="true"><span class="aur aur--violet"></span><span class="aur aur--blue"></span><span class="aur aur--bloom"></span></div>
 
     <div class="foot__panels" data-foot-top>
-      <div class="foot__cta" data-f="cta">
+      <div class="foot__cta" data-janela="foot" data-f="cta">
         <p class="foot__eyebrow label" data-f="eyebrow">contato</p>
         <h2 class="foot__title"><span class="foot__line" data-f="line">Vamos tirar sua marca do <em>improviso?</em></span></h2>
         <p class="foot__copy" data-f="copy">Conte o que você precisa. Respondemos <span class="tbd">em até 1 dia útil</span>.</p>

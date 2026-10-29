@@ -178,11 +178,10 @@ html[data-preload] .page { transform: translateY(200vh); }
 /* ---------- Pendência: dado que ainda falta (contorno laranja). Ao preencher, apague a classe ---------- */
 .tbd { outline: 1px dashed rgba(255, 184, 77, .9); outline-offset: 2px; border-radius: 2px; background: rgba(255, 184, 77, .12); }
 
-/* ---------- Fundo: chamas de canto em WebGL (assets/js/fundo.js) ----------
-   Canvas fixo atrás de tudo. Ele mesmo pinta o Fundo #06121F com vinheta;
-   sem WebGL (robôs, falha, "reduzir movimento" sem GPU) fica o Fundo liso. */
-.fundo { position: fixed; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; pointer-events: none; }
-html[data-bot] .fundo { display: none; }
+/* ---------- Fundo ----------
+   A página é Fundo liso. As chamas de canto (WebGL, assets/js/fundo.js) só
+   aparecem na placa do hero e nos cartões-janela: veja "Chamas: a placa do
+   hero e os cartões-janela", no fim do arquivo. */
 
 /* ---------- Placa de vidro (Serviços → Processo) ---------- */
 .slab { position: relative; }
@@ -1014,6 +1013,65 @@ html[data-preload] .pre, html[data-preload-closing] .pre { display: block; }
 .pre__tile { position: absolute; left: calc(50% - 2.375rem); top: calc(50% - 2.375rem); width: 4.75rem; height: 4.75rem; }
 .pre__logo { position: absolute; inset: -12%; width: 124%; height: 124%; object-fit: contain; }
 .pre__mark { position: absolute; inset: 0; opacity: 0; }
+
+/* =========================================================================
+   CHAMAS: A PLACA DO HERO E OS CARTÕES-JANELA
+   Hero: as chamas aparecem numa placa que vai de uma borda à outra da tela;
+   em cima e embaixo dela, o Fundo da página.
+   Corpo: alguns cartões viram janelas ([data-janela]) para o mesmo quadro das
+   chamas. As células de um grupo dividem um fundo só, recortado da caixa que
+   envolve todas elas (assets/js/fundo.js), então a chama atravessa de uma
+   para a outra. Fica depois dos estilos do hero porque os sobrescreve.
+   ========================================================================= */
+:root {
+  --plate-b: 1.5rem;          /* placa do hero: o Fundo que sobra embaixo; em cima, a navegação */
+}
+@media (max-width: 1200px) { :root { --plate-b: 1.25rem; } }
+@media (max-width: 900px)  { :root { --plate-b: 1rem; } }
+@media (max-width: 580px)  { :root { --plate-b: .5rem; } }
+
+/* ---------- Hero: a placa ----------
+   Sai da largura da página até as bordas da tela, como a placa de vidro, e
+   por isso não tem cantos arredondados. Sem WebGL fica Superfície lisa. */
+.hero__plate { position: absolute; top: 0; bottom: var(--plate-b); left: calc(50% - 50vw); right: calc(50% - 50vw); z-index: 0; overflow: clip; background: var(--vl-superficie); pointer-events: none; }
+.hero__plate canvas { display: block; width: 100%; height: 100%; }
+.hero__frame { z-index: 1; }
+
+/* ---------- Hero: a janela de projeto simétrica ----------
+   No original ela sangrava pela borda direita (cantos retos à direita, os
+   pontinhos só à esquerda). Agora os quatro cantos são iguais, então ela
+   precisa de ar à direita para o canto aparecer. Mas a borda esquerda não
+   pode andar: no quadro de 1440 o nó "Identidade visual" já encosta no título,
+   e no de 1024 a janela já encosta no rótulo do hero. Então o grupo encolhe em
+   volta de um ponto que deixa essa borda parada (translate = (borda − origem)
+   × (1 − escala); origem = 76,3889% da página) e só a borda direita recua:
+     1440: nó em 40,625rem, origem 68,75rem, 5%  → recua ~2,5rem
+     1024: janela em 31,75rem, origem 48,889rem, 7% → recua ~2,25rem
+   O `translate` e o `scale` somam ao `transform` que o site.js usa para
+   inclinar a janela. */
+.win { border-radius: 1.75rem; }
+.win__chrome::before, .win__chrome::after { content: ""; position: absolute; width: .25rem; height: .25rem; border-radius: 50%; background: rgba(221, 247, 255, .22); }
+.win__chrome::before { right: .9375rem; top: .9375rem; }
+.win__chrome::after { right: .9375rem; top: 37.6875rem; }
+@media (min-width: 1201px) { .hero__tilt { scale: .95; translate: -1.40625rem 0; } }
+@media (max-width: 1200px) {
+  .hero__tilt { scale: .93; translate: -1.2rem 0; }
+  .win__chrome::before { right: auto; left: 1rem; top: 1rem; }
+  .win__chrome::after { display: none; }
+}
+@media (max-width: 900px) {
+  .hero__tilt { scale: none; translate: none; }
+  .win__chrome::before { display: none; }
+}
+
+/* ---------- Corpo: os cartões-janela ----------
+   O canvas entra como primeiro filho, com z-index -1 dentro do cartão isolado:
+   fica acima do fundo do cartão (que continua lá enquanto as chamas não
+   acendem, e sem WebGL) e abaixo de todo o conteúdo, sem mexer nele. */
+.is-janela { position: relative; isolation: isolate; }
+.janela__asset { position: absolute; inset: 0; z-index: -1; overflow: hidden; border-radius: inherit; pointer-events: none; }
+.janela__asset canvas { display: block; width: 100%; height: 100%; opacity: 0; transition: opacity .8s var(--ease); }
+.janela__asset canvas.is-lit { opacity: 1; }
 
 /* ---------- Movimento reduzido ---------- */
 @media (prefers-reduced-motion: reduce) {

@@ -9,7 +9,8 @@ Estrutura e movimento adaptados do template Relay; identidade do guia da marca p
 - `index.html` — página única com todas as seções
 - `assets/css/vellora.css` — tokens do guia da marca (`--vl-*`) e estilos (grade em 4 quadros: 1440 / 1024 / 768 / 390)
 - `assets/js/site.js` — motor de molas, entradas, seções e janela de contato
-- `assets/js/fundo.js` — fundo da página inteira em WebGL: chamas nos cantos (three.js r0.143.0 via CDN)
+- `assets/js/fundo.js` — chamas de canto em WebGL (three.js r0.143.0 via CDN), na placa do hero e nos
+  cartões marcados com `data-janela` (cada grupo divide um fundo contínuo)
 - `assets/img/` — logo horizontal, Vela (SVG colorida e branca), favicons e posts da Vellora
 
 ## Antes de publicar
