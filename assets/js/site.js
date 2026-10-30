@@ -852,35 +852,31 @@ function initCards() {
 }
 
 /* ==========================================================================
-   07 Trabalhos: carrossel real da Vellora e deriva dos estudos
+   03b Projetos: cada janela toca a gravação do site, e deriva dos brilhos
+   O vídeo (5 s) só carrega quando o cartão chega perto e toca enquanto está na
+   tela. Ao terminar, some sobre o hero parado (o mesmo 1º quadro) e recomeça,
+   sem o corte seco do loop. Sem movimento, ou com economia de dados, fica o hero.
    ========================================================================== */
 function initWork() {
-  const car = $('[data-carousel]');
-  if (car) {
-    const slides = $$('.carousel__track li', car), dotsBox = $('[data-carousel-dots]', car);
-    let idx = 0, timer = 0, paused = false, live = false;
-    const ms = slides.map((li, i) => new Motion({ o: i === 0 ? 1 : 0 }, (v) => { li.style.opacity = v.o; }, SOFT));
-    const dots = slides.map((li, i) => {
-      const b = document.createElement('button');
-      b.type = 'button'; b.setAttribute('aria-label', `Slide ${i + 1} de ${slides.length}`);
-      b.setAttribute('aria-current', String(i === 0));
-      b.addEventListener('click', () => { go(i); restart(); });
-      dotsBox.append(b);
-      return b;
+  const saveData = !!(navigator.connection && navigator.connection.saveData);
+  if (MOTION && !saveData) for (const v of $$('[data-shot]')) {
+    let live = false, timer = 0;
+    v.muted = true;
+    const load = () => {
+      if (v.getAttribute('src')) return;
+      const big = innerWidth > 900 && v.clientWidth * (devicePixelRatio || 1) > 720;
+      v.src = big ? v.dataset.src : v.dataset.srcSm;
+      v.preload = 'auto';
+    };
+    const play = () => { const p = v.play(); if (p) p.catch(() => {}); };
+    v.addEventListener('playing', () => v.classList.add('is-on'));
+    v.addEventListener('ended', () => {
+      v.classList.remove('is-on');
+      timer = setTimeout(() => { v.currentTime = 0; if (live) timer = setTimeout(play, 700); }, 550);
     });
-    slides.forEach((li, i) => { li.setAttribute('aria-hidden', String(i !== 0)); });
-    function go(i) {
-      if (i === idx) return;
-      ms[idx].to({ o: 0 }); slides[idx].setAttribute('aria-hidden', 'true'); dots[idx].setAttribute('aria-current', 'false');
-      idx = i;
-      ms[idx].to({ o: 1 }); slides[idx].setAttribute('aria-hidden', 'false'); dots[idx].setAttribute('aria-current', 'true');
-    }
-    const restart = () => { clearInterval(timer); if (live && !paused && MOTION) timer = setInterval(() => go((idx + 1) % slides.length), 2800); };
-    car.addEventListener('pointerenter', () => { paused = true; restart(); });
-    car.addEventListener('pointerleave', () => { paused = false; restart(); });
-    car.addEventListener('focusin', () => { paused = true; restart(); });
-    car.addEventListener('focusout', () => { paused = false; restart(); });
-    loopWatch(car, () => { live = true; restart(); }, () => { live = false; restart(); });
+    const near = new IntersectionObserver(([e]) => { if (e.isIntersecting) { load(); near.disconnect(); } }, { rootMargin: '600px 0px' });
+    near.observe(v);
+    loopWatch(v.closest('[data-proj]'), () => { live = true; load(); clearTimeout(timer); play(); }, () => { live = false; clearTimeout(timer); v.pause(); });
   }
   if (!MOTION) return;
   /* deriva: blooms (±40 px), presa à rolagem */
