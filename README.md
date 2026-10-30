@@ -28,9 +28,13 @@ Estrutura e movimento adaptados do template Relay; identidade do guia da marca p
    - tempo de resposta "em até 1 dia útil" (hero e contato).
 4. **Quem faz:** a seção (pessoas e depoimentos) está desativada num comentário no `index.html`.
    Reative quando houver fotos e depoimentos reais. O CNPJ saiu do rodapé até existir.
-5. **Trabalhos:** a seção saiu do site. Para voltar com 2 ou 3 casos reais, recupere o bloco
-   `05 TRABALHOS` do `index.html` no commit `653028e`, coloque-o logo depois de `03 SEGMENTOS`
-   e devolva "Trabalhos" ao menu (desktop e celular) e à coluna "vellora" do rodapé.
+5. **Projetos:** a seção logo depois de `03 SEGMENTOS` mostra sites de clientes no ar. Cada um é um
+   `<li class="proj">` com:
+   - `assets/video/projeto-*.mp4`: 5 s do site rolando, gravados em 1440 × 900 a 60 fps (H.264, sem som),
+     e `projeto-*-720.mp4`, a mesma gravação para telas pequenas;
+   - `assets/img/projeto-*-hero.webp` (e `-hero-720.webp`): o 1º quadro do vídeo, mostrado até ele tocar;
+   - `assets/img/projeto-*-mobile.webp`: o topo no celular (390 × 844, salvo com 400 px).
+   O primeiro (`proj--feat`) ocupa a largura toda. Os links para os sites ficaram de fora por enquanto.
 
 ## Rodar localmente
 

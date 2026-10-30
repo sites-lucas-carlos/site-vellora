@@ -64,8 +64,8 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/css/vellora.css?v=20261103">
-<script src="assets/js/site.js?v=20261102" defer></script>
+<link rel="stylesheet" href="assets/css/vellora.css?v=20261108">
+<script src="assets/js/site.js?v=20261104" defer></script>
 <script type="module" src="assets/js/fundo.js?v=20261031"></script>
 </head>
 <body>
@@ -116,6 +116,7 @@
       </a>
       <nav class="nav__links" aria-label="Principal">
         <ul>
+          <li><a href="#projetos">Projetos</a></li>
           <li><a href="#por-que">Por que</a></li>
           <li><a href="#servicos">Serviços</a></li>
           <li><a href="#processo">Processo</a></li>
@@ -128,10 +129,11 @@
       </div>
       <nav class="menu" id="menu" aria-label="Menu" data-menu>
         <ul>
-          <li><a href="#por-que"><span class="menu__tile">01</span><span class="menu__txt"><strong>Por que</strong><small>O que você ganha</small></span></a></li>
-          <li><a href="#servicos"><span class="menu__tile">02</span><span class="menu__txt"><strong>Serviços</strong><small>O que fazemos</small></span></a></li>
-          <li><a href="#processo"><span class="menu__tile">03</span><span class="menu__txt"><strong>Processo</strong><small>Como funciona</small></span></a></li>
-          <li><a href="#duvidas"><span class="menu__tile">04</span><span class="menu__txt"><strong>Dúvidas</strong><small>Orçamento, prazo e pagamento</small></span></a></li>
+          <li><a href="#projetos"><span class="menu__tile">01</span><span class="menu__txt"><strong>Projetos</strong><small>Sites que já estão no ar</small></span></a></li>
+          <li><a href="#por-que"><span class="menu__tile">02</span><span class="menu__txt"><strong>Por que</strong><small>O que você ganha</small></span></a></li>
+          <li><a href="#servicos"><span class="menu__tile">03</span><span class="menu__txt"><strong>Serviços</strong><small>O que fazemos</small></span></a></li>
+          <li><a href="#processo"><span class="menu__tile">04</span><span class="menu__txt"><strong>Processo</strong><small>Como funciona</small></span></a></li>
+          <li><a href="#duvidas"><span class="menu__tile">05</span><span class="menu__txt"><strong>Dúvidas</strong><small>Orçamento, prazo e pagamento</small></span></a></li>
         </ul>
       </nav>
     </div>
@@ -185,6 +187,80 @@
         <li class="tile"><span class="tile__box"><span class="tile__on"></span><span class="tile__txt"><svg><use href="#i-plus"/></svg></span></span><span class="tile__label">E outros</span></li>
       </ul>
     </div>
+  </section>
+  </div></div>
+
+  <!-- ============================== PROJETOS: sites de clientes, no ar ==============================
+       Cada projeto: 5 s do site rolando em assets/video/projeto-*.mp4 (gravado em 1440 × 900; a versão
+       -720 vai para telas pequenas), o 1º quadro em assets/img/projeto-*-hero.webp (mostrado até o vídeo
+       tocar) e o topo no celular em projeto-*-mobile.webp (390 px, ×2). -->
+  <div class="sb" data-sb="enter leave"><div class="sb__in" data-sb-in>
+  <section class="work" id="projetos" aria-labelledby="work-title">
+    <div class="work__blooms" aria-hidden="true" data-r="fade"><span class="bloom bloom--l" data-drift="1"></span><span class="bloom bloom--r" data-drift="-1"></span></div>
+    <div class="head" data-stage>
+      <div class="head__main" data-r="rise">
+        <p class="badge"><span class="badge__star"><svg><use href="#i-star"/></svg><i data-r="pulse" data-d="250"></i></span>Projetos</p>
+        <h2 class="h2" id="work-title" data-r="focus" data-d="70">Sites que já estão <em>no ar</em>.</h2>
+      </div>
+      <div class="head__aside">
+        <p data-r="soft" data-d="140">São sites de clientes, no ar agora. Cada janela mostra o site rolando, do jeito que o visitante vê.</p>
+        <div class="head__cta" data-r="fade" data-d="280">
+          <a class="btn btn--glow btn--lg" href="#contato" data-open-contact="Site institucional"><span class="btn__label">Quero um site assim</span></a>
+          <small>Sem compromisso: primeiro uma conversa sobre o seu negócio. Preço só depois, se fizer sentido.</small>
+        </div>
+      </div>
+    </div>
+
+    <ul class="projs">
+      <li class="proj proj--feat" data-proj data-stage>
+        <div class="proj__media" data-r="rise">
+          <div class="shot">
+            <div class="bw__bar"><i></i><i></i><i></i></div>
+            <div class="shot__view">
+              <img src="assets/img/projeto-vortex-hero.webp?v=20261030" srcset="assets/img/projeto-vortex-hero-720.webp?v=20261030 720w, assets/img/projeto-vortex-hero.webp?v=20261030 1440w" sizes="(max-width: 900px) 90vw, 52vw" alt="Site da Vortex no computador" width="1440" height="900" loading="lazy" decoding="async">
+              <video muted playsinline preload="none" disablepictureinpicture aria-hidden="true" data-shot data-src="assets/video/projeto-vortex.mp4?v=20261030" data-src-sm="assets/video/projeto-vortex-720.mp4?v=20261030"></video>
+            </div>
+          </div>
+          <div class="phone"><img src="assets/img/projeto-vortex-mobile.webp?v=20261030" alt="Site da Vortex no celular" width="400" height="866" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="proj__body">
+          <p class="proj__seg" data-r="fade" data-d="140">Agência de marketing</p>
+          <h3 class="proj__name" data-r="focus" data-d="70">Vortex</h3>
+          <p class="proj__text" data-r="soft" data-d="210">Página única que apresenta o time, os serviços e o processo, e leva o visitante direto ao pedido de proposta.</p>        </div>
+      </li>
+      <li class="proj" data-proj data-stage>
+        <div class="proj__media" data-r="rise">
+          <div class="shot">
+            <div class="bw__bar"><i></i><i></i><i></i></div>
+            <div class="shot__view">
+              <img src="assets/img/projeto-caio-hero.webp?v=20261030" srcset="assets/img/projeto-caio-hero-720.webp?v=20261030 720w, assets/img/projeto-caio-hero.webp?v=20261030 1440w" sizes="(max-width: 900px) 90vw, 37vw" alt="Site do Dr. Caio Rodrigo no computador" width="1440" height="900" loading="lazy" decoding="async">
+              <video muted playsinline preload="none" disablepictureinpicture aria-hidden="true" data-shot data-src="assets/video/projeto-caio.mp4?v=20261030" data-src-sm="assets/video/projeto-caio-720.mp4?v=20261030"></video>
+            </div>
+          </div>
+          <div class="phone"><img src="assets/img/projeto-caio-mobile.webp?v=20261030" alt="Site do Dr. Caio Rodrigo no celular" width="400" height="866" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="proj__body">
+          <p class="proj__seg" data-r="fade" data-d="140">Ortopedista · Brasília</p>
+          <h3 class="proj__name" data-r="focus" data-d="70">Dr. Caio Rodrigo</h3>
+          <p class="proj__text" data-r="soft" data-d="210">Condições tratadas, tratamentos, depoimentos em vídeo e os dois consultórios, com o agendamento a um toque.</p>        </div>
+      </li>
+      <li class="proj" data-proj data-stage>
+        <div class="proj__media" data-r="rise">
+          <div class="shot">
+            <div class="bw__bar"><i></i><i></i><i></i></div>
+            <div class="shot__view">
+              <img src="assets/img/projeto-vitalisse-hero.webp?v=20261030" srcset="assets/img/projeto-vitalisse-hero-720.webp?v=20261030 720w, assets/img/projeto-vitalisse-hero.webp?v=20261030 1440w" sizes="(max-width: 900px) 90vw, 37vw" alt="Site da Vitalisse no computador" width="1440" height="900" loading="lazy" decoding="async">
+              <video muted playsinline preload="none" disablepictureinpicture aria-hidden="true" data-shot data-src="assets/video/projeto-vitalisse.mp4?v=20261030" data-src-sm="assets/video/projeto-vitalisse-720.mp4?v=20261030"></video>
+            </div>
+          </div>
+          <div class="phone"><img src="assets/img/projeto-vitalisse-mobile.webp?v=20261030" alt="Site da Vitalisse no celular" width="400" height="866" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="proj__body">
+          <p class="proj__seg" data-r="fade" data-d="140">Esmalteria e depilação · Brasília</p>
+          <h3 class="proj__name" data-r="focus" data-d="70">Vitalisse</h3>
+          <p class="proj__text" data-r="soft" data-d="210">Duas unidades, preços abertos, a equipe e o agendamento pelo WhatsApp, tudo fácil de achar no celular.</p>        </div>
+      </li>
+    </ul>
   </section>
   </div></div>
 
@@ -640,7 +716,7 @@
       </div>
       <nav class="foot__cols" aria-label="Rodapé">
         <div class="foot__col" data-f="col"><p class="label">serviços</p><ul><li><a href="#sites">Sites institucionais</a></li><li><a href="#landing-pages">Landing pages</a></li><li><a href="#identidade-visual">Identidade visual</a></li><li><a href="#instagram">Instagram profissional</a></li><li><a href="#marca-completa">Marca completa</a></li></ul></div>
-        <div class="foot__col" data-f="col"><p class="label">vellora</p><ul><li><a href="#processo">Processo</a></li><li><a href="#duvidas">Dúvidas</a></li></ul></div>
+        <div class="foot__col" data-f="col"><p class="label">vellora</p><ul><li><a href="#projetos">Projetos</a></li><li><a href="#processo">Processo</a></li><li><a href="#duvidas">Dúvidas</a></li></ul></div>
         <div class="foot__col" data-f="col"><p class="label">contato</p><ul><li><a href="#contato" data-open-contact>Pedir orçamento</a></li><li data-contact-item="whatsapp" hidden><a data-contact="whatsapp" target="_blank" rel="noopener">WhatsApp</a></li><li data-contact-item="instagram" hidden><a data-contact="instagram" target="_blank" rel="noopener">Instagram</a></li><li data-contact-item="email" hidden><a data-contact="email">E-mail</a></li></ul></div>
       </nav>
       <span class="foot__rule foot__rule--2" data-f="rule2"></span>

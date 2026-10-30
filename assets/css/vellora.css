@@ -115,7 +115,7 @@ html[data-preload] .page { transform: translateY(200vh); }
 /* Títulos: Inter Bold, branco; uma palavra (ou a 2ª linha) em ciano */
 .display, .h2, .case__name { font-weight: 700; color: var(--t1); letter-spacing: -.02em; }
 .display em, .h2 em, .case__name em { font-style: normal; color: var(--accent-word); }
-.h2 { font-size: var(--h2); line-height: 1.1; }
+.h2 { font-size: var(--h2); line-height: 1.1; text-wrap: balance; }
 .display { font-size: var(--h1); line-height: 1.04; }
 
 /* Entradas: estado inicial antes do JS (só com movimento) */
@@ -191,13 +191,17 @@ html[data-preload] .page { transform: translateY(200vh); }
 /* ---------- Cabeçalho de seção ---------- */
 .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 3rem; padding-bottom: 4rem; }
 .head__main { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; max-width: 47.5rem; }
-.head__aside { width: 27.5rem; flex: none; padding-bottom: .25rem; color: var(--t2); font-size: 1.0625rem; line-height: 1.6; display: flex; flex-direction: column; gap: 1rem; }
+.head__aside { width: 27.5rem; flex: none; padding-bottom: .25rem; color: var(--t2); font-size: 1.0625rem; line-height: 1.6; display: flex; flex-direction: column; gap: 1rem; text-wrap: balance; }
+/* Chamada da seção: botão + uma linha que tira o peso do primeiro contato */
+.head__cta { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; margin-top: .5rem; }
+.head__cta small { font-size: .875rem; line-height: 1.5; color: var(--t3); text-wrap: balance; }
 .hair { display: block; height: 1px; background: rgba(120, 170, 210, .12); transform-origin: left; }
 @media (max-width: 1200px) {
   .head { flex-direction: column; align-items: center; text-align: center; gap: 1rem; padding-bottom: 2.5rem; }
   .head__main { align-items: center; gap: 1.25rem; }
   .head__aside { width: 32rem; align-items: center; }
   .head__aside .link { align-self: center; }
+  .head__cta { align-items: center; }
 }
 @media (max-width: 580px) {
   .head { padding-bottom: 2rem; gap: .875rem; }
@@ -608,45 +612,66 @@ html[data-preload] .page { transform: translateY(200vh); }
 }
 
 /* =========================================================================
-   05 TRABALHOS
+   03b PROJETOS: sites de clientes, cada um numa janela que rola
    ========================================================================= */
 .work { position: relative; padding: var(--sec-pad) var(--inset) 0; }
 .work__blooms { position: absolute; inset: 0; overflow: clip; pointer-events: none; }
 .bloom { position: absolute; border-radius: 50%; }
 .bloom--l { left: -2.5rem; top: 10rem; width: 58.75rem; height: 42.5rem; background: radial-gradient(closest-side, rgba(13, 59, 102, .28), transparent); }
 .bloom--r { left: 37.5rem; top: 40rem; width: 58.75rem; height: 42.5rem; background: radial-gradient(closest-side, rgba(30, 136, 182, .12), rgba(30, 136, 182, .08) 50%, transparent); }
-.work .head, .work .hair, .case--feat { position: relative; }
-.case.case--feat { display: grid; grid-template-columns: 26rem 1fr; gap: 4.5rem; align-items: center; padding: 4rem 0 0; }
-.case__media { padding-bottom: 2.75rem; }
-.carousel { position: relative; aspect-ratio: 4 / 5; border-radius: 1.125rem; }
-.carousel__track { position: absolute; inset: 0; overflow: clip; border-radius: inherit; border: 1px solid var(--line); background: var(--ameixa); }
-.carousel__track li { position: absolute; inset: 0; opacity: 0; }
-.carousel__track li:first-child { opacity: 1; }
-.carousel__track img { width: 100%; height: 100%; object-fit: cover; }
-.carousel__dots { position: absolute; left: 50%; bottom: -2.5rem; display: flex; gap: .125rem; transform: translateX(-50%); }
-.carousel__dots button { position: relative; width: 1.5rem; height: 1.5rem; border-radius: 50%; }
-.carousel__dots button::after { content: ""; position: absolute; left: 50%; top: 50%; width: .375rem; height: .375rem; margin: -.1875rem 0 0 -.1875rem; border-radius: 50%; background: rgba(221, 247, 255, .35); transition: background .3s var(--ease), transform .3s var(--ease); }
-.carousel__dots button[aria-current="true"]::after { background: var(--lilas); box-shadow: none; transform: scale(1.35); }
-.case__body { display: flex; flex-direction: column; gap: 1rem; max-width: 40rem; }
-.case__name { font-size: 4.5rem; line-height: 1; letter-spacing: -.035em; margin-top: .5rem; }
-.case__svc { font: 500 .75rem/1.25rem var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--lilas); }
-.case__body .case__text { font-size: 1.125rem; line-height: 1.6; color: var(--t2); }
-.case .case__text { font-size: .9375rem; line-height: 1.6; color: var(--t2); }
+.work .head { position: relative; }
+
+.projs { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5rem 3rem; }
+.proj { position: relative; display: flex; flex-direction: column; gap: 1.75rem; min-width: 0; }
+.proj--feat { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) 22rem; gap: 4rem; align-items: center; }
+
+/* A mídia: janela do navegador e, sobreposto no canto, o celular */
+.proj__media { position: relative; padding: 0 2.5rem 2.5rem 0; }
+.shot { overflow: clip; border-radius: 1rem; border: 1px solid var(--line-2); background: var(--vl-superficie); box-shadow: 0 2rem 4rem -1.5rem rgba(0, 0, 0, .55); }
+.shot .bw__bar { background: rgba(6, 18, 31, .72); }
+/* O hero parado (1º quadro do vídeo) fica embaixo; o vídeo aparece por cima quando toca */
+.shot__view { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+.shot__view img, .shot__view video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.shot__view video { opacity: 0; transition: opacity .5s var(--ease); }
+.shot__view video.is-on { opacity: 1; }
+.phone { position: absolute; right: 0; bottom: 0; width: 10rem; padding: .3125rem; border-radius: 1.5rem; border: 1px solid var(--line-3); background: var(--vl-fundo); box-shadow: 0 1.5rem 3rem -.5rem rgba(0, 0, 0, .6); }
+.phone img { width: 100%; height: auto; border-radius: 1.1875rem; }
+
+.proj__body { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; }
+.proj__seg { font: 600 .75rem/1.25rem var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--vl-ciano); }
+.proj__name { font: 700 2rem/1.1 var(--sans); letter-spacing: -.02em; color: var(--t1); }
+.proj--feat .proj__name { font-size: 3rem; }
+.proj__text { font-size: .9375rem; line-height: 1.6; color: var(--t2); max-width: 30rem; }
+.proj--feat .proj__text { font-size: 1.0625rem; }
 
 @media (max-width: 1200px) {
-  .case.case--feat { grid-template-columns: 21rem 1fr; gap: 3rem; padding: 3rem 0 0; }
-  .case__name { font-size: 3.5rem; }
-  .case__body .case__text { font-size: 1rem; }
   .bloom--r { left: 10rem; }
+  .projs { gap: 4rem 1.5rem; }
+  .proj--feat { grid-template-columns: minmax(0, 1fr) 17rem; gap: 2.5rem; }
+  .proj--feat .proj__name { font-size: 2.5rem; }
+  .proj--feat .proj__text { font-size: 1rem; }
+  .proj__media { padding: 0 2rem 2rem 0; }
+  .phone { width: 8rem; }
+  .proj:not(.proj--feat) .phone { width: 6.5rem; padding: .25rem; border-radius: 1.125rem; }
+  .proj:not(.proj--feat) .phone img { border-radius: .875rem; }
 }
 @media (max-width: 900px) {
-  .case.case--feat { grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
-  .case__name { font-size: 3rem; }
+  .projs { grid-template-columns: minmax(0, 1fr); gap: 4rem; }
+  .proj--feat { display: flex; align-items: stretch; gap: 1.75rem; }
+  .proj:not(.proj--feat) .phone { width: 8rem; padding: .3125rem; border-radius: 1.5rem; }
+  .proj:not(.proj--feat) .phone img { border-radius: 1.1875rem; }
+  .proj__name, .proj--feat .proj__name { font-size: 2.25rem; }
 }
 @media (max-width: 580px) {
-  .case.case--feat { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0 0; }
-  .case__name { font-size: 2.75rem; }
   .bloom--l, .bloom--r { width: 30rem; height: 30rem; left: -6rem; }
+  .projs { gap: 3.5rem; }
+  .proj, .proj--feat { gap: 1.25rem; }
+  .proj__media { padding: 0 1.25rem 1.5rem 0; }
+  .shot { border-radius: .75rem; }
+  .phone, .proj:not(.proj--feat) .phone { width: 5.5rem; padding: .1875rem; border-radius: 1rem; }
+  .phone img, .proj:not(.proj--feat) .phone img { border-radius: .8125rem; }
+  .proj__name, .proj--feat .proj__name { font-size: 1.75rem; }
+  .proj__text, .proj--feat .proj__text { font-size: 1rem; }
 }
 
 /* =========================================================================
